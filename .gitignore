@@ -1,1 +1,5 @@
 .DS_Store
+output/
+tmp/
+Gemfile.lock
+crash.log
