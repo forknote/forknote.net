@@ -1,0 +1,16 @@
+<h2 class="title">
+  <a href="<%= @item.path %>"><%= @item[:title] %></a>
+</h2>
+
+<div class="meta">
+  <ul>
+  <li class="published">
+    <span class="fa fa-calendar"></span>
+    <%= post_date @item %>
+  </li>
+  <li class="who_when">
+    <%= avatar_for(@item[:author_name]) %>
+      <a href="https://github.com/<%= @item[:author_name] %>"><%= @item[:author_name] %></a>
+  </li>
+</ul>
+</div>

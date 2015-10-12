@@ -1,0 +1,31 @@
+<%= render 'head' %>
+
+<body class="contact">
+  <%= render 'header' %>
+  <div id="wrapper">
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <div class="sidebar-shell">
+        <h2>Support</h2>
+        <ul class="headlines sidebar-module">
+          <li><a href="mailto:support@forknote.net"><i class="fa fa-envelope-o fa-fw"></i>&nbsp; support@forknote.net</a></li>
+          <li><a href="irc://chat.freenode.net/#forknote"><i class="fa fa-comments-o fa-fw"></i>&nbsp; IRC: #forknote</a></li>
+          <li><a href="https://github.com/forknote/forknote/issues"><i class="fa fa-bug fa-fw"></i>&nbsp; Report a bug</a></li>
+          <li><a href="https://github.com/forknote/forknote"><i class="fa fa-github fa-fw"></i>&nbsp; Forknote source code</a></li>
+        </ul>
+
+        <h2>Community resources</h2>
+        <ul class="headlines sidebar-module">
+          <li><a href="https://bitcointalk.org/index.php?topic=1079306.0"><i class="fa fa-bitcoin fa-fw"></i>&nbsp; Bitcointalk thread</a></li>
+          <li><a href="https://bytecointalk.org/showthread.php?tid=55"><i class="fa fa-link fa-fw"></i>&nbsp; Bytecointalk thread</a></li>
+          <li><a href="https://twitter.com/forknote_dev"><i class="fa fa-twitter fa-fw"></i>&nbsp; Twitter</a></li>
+        </ul>
+    </div>
+
+  </div><!-- #wrapper -->
+  
+  <%= render 'footer' %>
+</body>
+</html>

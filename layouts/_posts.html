@@ -1,0 +1,7 @@
+<% @posts.each_with_index do |article, idx| %>
+<div class="change" id="<%= article.path %>">
+<%= render '_meta', :item => article %>
+<%= get_post_start(article) %>
+
+</div>
+<% end %>

@@ -1,0 +1,9 @@
+---
+title: "Forknote: Blog"
+is_hidden: true
+author_name: forknote
+author_uri: http://forknote.net/blog/
+layout: false
+---
+
+<%= atom_feed :limit => 30, :articles => posts_list %>

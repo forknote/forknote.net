@@ -1,0 +1,32 @@
+<%= render 'head' %>
+
+<body class="api <%= ENV['DEV_MODE'] ? 'dev-mode' : '' %>">
+  <%= render 'header' %>
+
+  <div class="sub-nav <%= @item[:subnav_class] %>">
+    <h2><a href="/documentation/">Documentation</a></h2>
+
+    <ul>
+      <li><a href="/documentation/" class="subnav-documentation">Documentation</a></li>
+      <li><a href="/guides/" class="subnav-guides">Guides</a></li>
+    </ul>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <div id="js-sidebar" class="sidebar-shell">
+    
+      <%= render @item[:sidebar_nav] %>
+
+      <div class="sidebar-module notice">
+        <p>This website is a <a href="https://github.com/forknote/forknote.net/tree/master" target="_blank">public GitHub repository</a>. Please help us by forking the project and adding to it.</p>
+      </div>
+    </div><!-- sidebar-shell -->
+  </div><!-- #wrapper -->
+
+  <%= render 'footer' %>
+</body>
+</html>
