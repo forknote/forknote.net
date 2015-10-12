@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta http-equiv="imagetoolbar" content="false" />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <title>Payment gateway overview and configuration | Forknote</title>
+  <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
+  <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="/css/pygments.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/documentation.js" type="text/javascript"></script>
+</head>
+
+
+<body class="api ">
+  <div id="header-wrapper">
+  <div id="header">
+    <div>
+      <a class="logo" href="/">Forknote</a>
+      <ul class="nav">
+        <li><a href="/download/" class="nav-download">Download</a></li>
+        <li><a href="/coins/" class="nav-coins">Coins</a></li>
+        <li><a href="/developers/" class="nav-developers">Developers</a></li>
+        <li><a href="/blog/" class="nav-blog">Blog</a></li>
+        <li><a href="/contact/" class="nav-contact">Support</a></li>
+        <li id="search-container">
+          <input type="text" id="searchfield" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" /><label class="search-placeholder">Search</label>
+          <div class="cancel-search"></div>
+          <ul id="search-results">
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div><!-- #header -->
+</div><!-- #header-wrapper -->
+
+
+  <div class="sub-nav docs-documentation">
+    <h2><a href="/documentation/">Documentation</a></h2>
+
+    <ul>
+      <li><a href="/documentation/" class="subnav-documentation">Documentation</a></li>
+      <li><a href="/guides/" class="subnav-guides">Guides</a></li>
+    </ul>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      
+<h1 id="payment-gateway-overview-and-configuration">Payment gateway overview and configuration</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#configure-forknote-rpc-wallet" id="markdown-toc-configure-forknote-rpc-wallet">Configure Forknote RPC Wallet</a></li>
+  <li><a href="#example-of-a-config-file" id="markdown-toc-example-of-a-config-file">Example of a config file</a></li>
+  <li><a href="#generate-a-new-wallet" id="markdown-toc-generate-a-new-wallet">Generate a new wallet</a></li>
+  <li><a href="#start-forknote-rpc-wallet" id="markdown-toc-start-forknote-rpc-wallet">Start Forknote RPC Wallet</a></li>
+  <li><a href="#run-forknote-rpc-wallet" id="markdown-toc-run-forknote-rpc-wallet">Run Forknote RPC Wallet</a></li>
+  <li><a href="#forknote-rpc-wallet-json-rpc-api" id="markdown-toc-forknote-rpc-wallet-json-rpc-api">Forknote RPC Wallet JSON RPC API</a></li>
+</ul>
+
+<p>This wiki section describes Forknote integration process into your service with Forknote e-commerce solution called Forknote RPC Wallet. Forknote RPC Wallet is a HTTP server which provides JSON 2.0 RPC interface for Forknote payment operations and address management. Forknote RPC Wallet allows you to accept incoming payments, generate an address for each user via <a href="/documentation/payment_gateway/json_rpc_api/">Forknote RPC Wallet JSON RPC API</a> and much more. <a href="/documentation/payment_gateway/json_rpc_api/">Forknote RPC Wallet JSON RPC API</a> page contains detailed description of every method.</p>
+
+<h2 id="configure-forknote-rpc-wallet">Configure Forknote RPC Wallet</h2>
+
+<p>To configure RPC wallet you can use both command line and config file. Config file allows you to configure your settings only once and use “–config” option further. The command below launches Forknote RPC Wallet with a specific config file:</p>
+
+<pre><code> $ ./walletd --config /home/Downloads/myconfig.conf
+</code></pre>
+
+<p>To get help on available options run:</p>
+
+<pre><code> $ ./walletd -h
+</code></pre>
+
+<p>Please note, Forknote RPC Wallet config file may consist only of these options:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+      <th>Config Example</th>
+      <th>Console Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bind-address</td>
+      <td>Which address to bind Forknote RPC Wallet to. Default value is 0.0.0.0</td>
+      <td>bind-address = 127.0.0.1</td>
+      <td>–bind-address 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>bind-port</td>
+      <td>Which port to bind Forknote RPC Wallet to. Default value is 8070</td>
+      <td>bind-port = 8071</td>
+      <td>–bind-port 8071</td>
+    </tr>
+    <tr>
+      <td>daemon-address</td>
+      <td>Forknote daemon (forknoted) address for remote daemon connection infrastructure</td>
+      <td>daemon-address = 127.0.0.1</td>
+      <td>–daemon-address 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>daemon-port</td>
+      <td>Forknote daemon (forknoted) port for remote daemon connection infrastructure. Default Forknote daemon ports are 8080 and 8081</td>
+      <td>daemon-port = 8080</td>
+      <td>–daemon-port 8080</td>
+    </tr>
+    <tr>
+      <td>wallet-file</td>
+      <td>Mandatory’’’. Your wallet’s file name</td>
+      <td>wallet-file = mywallet</td>
+      <td>–wallet-file mywallet</td>
+    </tr>
+    <tr>
+      <td>wallet-password</td>
+      <td>Mandatory. Your wallet’s password</td>
+      <td>wallet-password = mypassword</td>
+      <td>–wallet-password mypassword</td>
+    </tr>
+    <tr>
+      <td>generate-wallet</td>
+      <td>Generate new wallet</td>
+      <td> </td>
+      <td>–generate-wallet</td>
+    </tr>
+    <tr>
+      <td>log-file</td>
+      <td>A name of log file that you want to use for logging. Default is walletd.log</td>
+      <td>log-file = mylog.log</td>
+      <td>–log-file mylog.log</td>
+    </tr>
+    <tr>
+      <td>server-root</td>
+      <td>Working directory that you wish to use for Forknote RPC Wallet. Default is current working directory.</td>
+      <td>server-root = /home/Downloads/RPCWallet</td>
+      <td>–server-root /home/Downloads/RPCWallet</td>
+    </tr>
+    <tr>
+      <td>log-level</td>
+      <td>Level of logging. Default is 1.</td>
+      <td>log-level = 2</td>
+      <td>–log-level 2</td>
+    </tr>
+    <tr>
+      <td>testnet</td>
+      <td>Allows you to run Forknote RPC Wallet in testnet.</td>
+      <td>testnet = no</td>
+      <td>–testnet no</td>
+    </tr>
+    <tr>
+      <td>local</td>
+      <td>Option that allows you to start Forknote RPC Wallet as an in-process node</td>
+      <td>local</td>
+      <td>–local</td>
+    </tr>
+    <tr>
+      <td>p2p-bind-ip</td>
+      <td>Interface for p2p network protocol</td>
+      <td>p2p-bind-ip = 0.0.0.0</td>
+      <td>–p2p-bind-ip 0.0.0.0</td>
+    </tr>
+    <tr>
+      <td>p2p-bind-port</td>
+      <td>Port for p2p network protocol</td>
+      <td>p2p-bind-port = 29080</td>
+      <td>–p2p-bind-port 29080</td>
+    </tr>
+    <tr>
+      <td>p2p-external-port</td>
+      <td>External port for p2p network protocol (if port forwarding used with NAT)</td>
+      <td>p2p-external-port = 443</td>
+      <td>–p2p-external-port 443</td>
+    </tr>
+    <tr>
+      <td>allow-local-ip</td>
+      <td>Allow local ip add to peer list, mostly in debug purposes</td>
+      <td> </td>
+      <td>–allow-local-ip</td>
+    </tr>
+    <tr>
+      <td>add-peer</td>
+      <td>Manually add peer to local peerlist</td>
+      <td>add-peer = 127.0.0.1</td>
+      <td>–add-peer 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>add-priority-node</td>
+      <td>Specify list of peers to connect to and attempt to keep the connection open</td>
+      <td>add-priority-node = 127.0.0.1</td>
+      <td>–add-priority-node 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>add-exclusive-node</td>
+      <td>Specify list of peers to connect to only. If this option is given the options add-priority-node and seed-node are ignored</td>
+      <td>add-exclusive-node = 127.0.0.1</td>
+      <td>–add-exclusive-node 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>seed-node</td>
+      <td>Connect to a node to retrieve peer addresses, and disconnect</td>
+      <td>seed-node = 127.0.0.1</td>
+      <td>–seed-node 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>hide-my-port</td>
+      <td>Do not announce yourself as peerlist candidate</td>
+      <td>hide-my-port</td>
+      <td>–hide-my-port</td>
+    </tr>
+    <tr>
+      <td>P2P_STAT_TRUSTED<br>_PUB_KEY</td>
+      <td>P2P stat trusted pub key</td>
+      <td>P2P_STAT_TRUSTED<br>_PUB_KEY = 4d..eb</td>
+      <td>–P2P_STAT_TRUSTED<br>_PUB_KEY 4d..eb</td>
+    </tr>
+    <tr>
+      <td>BYTECOIN_NETWORK</td>
+      <td>Used for network packages in order not to mix two different cryptocoin networks</td>
+      <td>BYTECOIN_NETWORK = 11100111-1100-0101-1011-001210110110</td>
+      <td>–BYTECOIN_NETWORK 11100111-1100-0101-1011-001210110110</td>
+    </tr>
+    <tr>
+      <td>GENESIS_COINBASE<br>_TX_HEX</td>
+      <td>The hex of the transaction in the genesis block</td>
+      <td>GENESIS_COINBASE<br>_TX_HEX = 01..4a</td>
+      <td>–GENESIS_COINBASE<br>_TX_HEX 01..4a</td>
+    </tr>
+    <tr>
+      <td>CRYPTONOTE_<br>PUBLIC_ADDRESS_<br>BASE58_PREFIX</td>
+      <td>Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator</td>
+      <td>CRYPTONOTE_<br>PUBLIC_ADDRESS_<br>BASE58_PREFIX = 86</td>
+      <td>–CRYPTONOTE_<br>PUBLIC_ADDRESS_<br>BASE58_PREFIX 86</td>
+    </tr>
+    <tr>
+      <td>MONEY_SUPPLY</td>
+      <td>Total amount of coins to be emitted.</td>
+      <td>MONEY_SUPPLY = 18446744073709551615</td>
+      <td>–MONEY_SUPPLY 18446744073709551615</td>
+    </tr>
+    <tr>
+      <td>EMISSION_<br>SPEED_FACTOR</td>
+      <td>Constant defines emission curve slope. This parameter is required to calulate block reward.</td>
+      <td>EMISSION_<br>SPEED_FACTOR = 18</td>
+      <td>–EMISSION_<br>SPEED_FACTOR 18</td>
+    </tr>
+    <tr>
+      <td>DIFFICULTY_TARGET</td>
+      <td>Difficulty target is an ideal time period between blocks. Measured in seconds.</td>
+      <td>DIFFICULTY_TARGET = 120</td>
+      <td>–DIFFICULTY_TARGET 120</td>
+    </tr>
+    <tr>
+      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE</td>
+      <td>The maximum size of a block not resulting into penelty.</td>
+      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE = 20000</td>
+      <td>–CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE 20000</td>
+    </tr>
+    <tr>
+      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE_V1</td>
+      <td>The maximum size of a block not resulting into penelty. Used only by old (v1) coins</td>
+      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE_V1 = 10000</td>
+      <td>–CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE_V1 10000</td>
+    </tr>
+    <tr>
+      <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT</td>
+      <td>1 coin = 10^(this value) atomic units</td>
+      <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT = 8</td>
+      <td>–CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT 8</td>
+    </tr>
+    <tr>
+      <td>MINIMUM_FEE</td>
+      <td>Transactions with less than this fee wouldn’t be accepted by daemons</td>
+      <td>MINIMUM_FEE = 1000000</td>
+      <td>–MINIMUM_FEE 1000000</td>
+    </tr>
+    <tr>
+      <td>DEFAULT_<br>DUST_THRESHOLD</td>
+      <td>The amount bellow this value will be considered as dust</td>
+      <td>DEFAULT_<br>DUST_THRESHOLD = 1000000</td>
+      <td>–DEFAULT_<br>DUST_THRESHOLD 1000000</td>
+    </tr>
+    <tr>
+      <td>CRYPTONOTE_<br>MINED_MONEY_<br>UNLOCK_WINDOW</td>
+      <td>Number of blocks to unlock miner transactions</td>
+      <td>CRYPTONOTE_<br>MINED_MONEY_<br>UNLOCK_WINDOW = 10</td>
+      <td>–CRYPTONOTE_<br>MINED_MONEY_<br>UNLOCK_WINDOW 10</td>
+    </tr>
+    <tr>
+      <td>MAX_BLOCK_<br>SIZE_INITIAL</td>
+      <td>The size of the initial block. Used to correct error in v1 coins</td>
+      <td>MAX_BLOCK_<br>SIZE_INITIAL = 20480</td>
+      <td>–MAX_BLOCK_<br>SIZE_INITIAL 20480</td>
+    </tr>
+    <tr>
+      <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY</td>
+      <td>Expected number of blocks per day. Used to correct error in v1 coins</td>
+      <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY = 720</td>
+      <td>–EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY 720</td>
+    </tr>
+    <tr>
+      <td>UPGRADE_HEIGHT</td>
+      <td>Block hight to move to blocks with major version 2. Use ‘1’ for new blockchains</td>
+      <td>UPGRADE_HEIGHT = 1</td>
+      <td>–UPGRADE_HEIGHT 1</td>
+    </tr>
+    <tr>
+      <td>DIFFICULTY_CUT</td>
+      <td>Timestamps to cut after sorting</td>
+      <td>DIFFICULTY_CUT = 60</td>
+      <td>–DIFFICULTY_CUT 60</td>
+    </tr>
+    <tr>
+      <td>DIFFICULTY_LAG</td>
+      <td>Lag of calculating the difficulty in terms of blocks</td>
+      <td>DIFFICULTY_LAG = 15</td>
+      <td>–DIFFICULTY_LAG 15</td>
+    </tr>
+    <tr>
+      <td>MAX_TRANSACTION<br>_SIZE_LIMIT</td>
+      <td>Maximum size of the transactions sent through simplewallet</td>
+      <td>MAX_TRANSACTION<br>_SIZE_LIMIT = 20000</td>
+      <td>–MAX_TRANSACTION<br>_SIZE_LIMIT 20000</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="example-of-a-config-file">Example of a config file</h2>
+
+<pre class="terminal">$ cat ./notrealcoin.conf 
+
+seed-node=1.1.1.1:17100
+seed-node=2.2.2.2:17100
+seed-node=seed.notarealcoin.com:17100
+GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
+p2p-bind-port=17100
+rpc-bind-port=17101
+MONEY_SUPPLY=18446744073709551615
+DEFAULT_DUST_THRESHOLD=1000000
+MINIMUM_FEE=1000000
+CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
+CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
+BYTECOIN_NETWORK=2e799881-7aab-d4dc-19d1-15895b79d6bf
+CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
+CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
+UPGRADE_HEIGHT=1
+wallet-file = mywallet
+wallet-password = mypassword
+daemon-port = 17100
+bind-port = 9090
+
+</pre>
+
+<p>Note: config file’s path is relative to current working directory, not server root.</p>
+
+<p>Note: options “wallet-file” and “wallet-password” should ALWAYS be set (in either command line or config file mode).</p>
+
+<p>Note: “wallet-file” and “log-file” options are relative to “server-root”. “server-root” default is the current working directory.</p>
+
+<h2 id="generate-a-new-wallet">Generate a new wallet</h2>
+
+<p>To start using RPC wallet you must first generate a wallet. Wallet file is the only file that stores all data required to run your service. It contains user addresses and private keys required to operate them. Make sure to backup this file regularly.</p>
+
+<p>To generate a new wallet you should run the following command:</p>
+
+<pre><code> $ ./walletd --config /home/Downloads/myconfig.conf --generate-wallet
+</code></pre>
+
+<p>where:</p>
+
+<ul>
+  <li>
+<strong>&lt;mywallet&gt;</strong> is the wallet file name and a path to it (relative or absolute); path is optional in this argument, specifying only a wallet’s name will result in new *.wallet file located in the same folder as RPC Wallet</li>
+  <li>
+<strong>&lt;mypass&gt;</strong> is a secret password for the new wallet file. Whichever you like;</li>
+  <li>
+<strong>–generate-wallet</strong> option tells RPC wallet to generate wallet file and exit.</li>
+</ul>
+
+<p>Note: if <strong>&lt;mywallet&gt;</strong> exists Forknote RPC Wallet will show you the notification and will ask you to provide a different name.</p>
+
+<p>If the operation was successful you will get a corresponding message with your new Forknote address. At the same time Forknote RPC Wallet will save your wallet with .wallet extension on the local disk (in the same folder where Forknote RPC Wallet is located) and shut down.</p>
+
+<h2 id="start-forknote-rpc-wallet">Start Forknote RPC Wallet</h2>
+
+<p>There are two ways to start Forknote RPC Wallet:</p>
+
+<h3 id="start-with-a-remote-connection-to-the-daemon">Start with a remote connection to the Daemon</h3>
+
+<p>Remote connection allows you to bind your Forknote RPC Wallet to a remote Forknote daemon (forknoted). You may establish Forknote daemon on both local and remote machines and connect to. Such type of connection allows you to start Forknote RPC Wallet on a relatively slow machine while heavy loaded daemon is going to work on a separate powerful server.</p>
+
+<ul>
+  <li>For local daemons use localhost or 127.0.0.1 as an IP address.</li>
+  <li>For remote daemons specify the remote daemon’s IP address.</li>
+</ul>
+
+<p>Default Forknote daemon ports are 8080 and 8081.</p>
+
+<p>Add the following lines to your configuration file to start Forknote RPC Wallet with a remote connection:</p>
+
+<pre><code>daemon-address=&lt;remote_ip&gt;
+daemon-port=8080
+</code></pre>
+
+<p>Note: Forknote daemon (forknoted) should be running at the moment RPC wallet is starting in a remote connection mode.</p>
+
+<p>Note: Forknote RPC Wallet will still provide some functionality even if Daemon server fails. For example, you will be able to generate addresses for your users.</p>
+
+<h3 id="start-as-in-process-node">Start as in-process node</h3>
+
+<p>You can also start Forknote RPC Wallet with an in-process node. This allows you to start RPC Wallet out-of-box with no external daemon required. You will get a fully functional node for Forknote network inside Forknote RPC Wallet. You don’t have to download or install anything besides Forknote RPC Wallet. This approach will help reduce the overheads required for infrastructure maintenance.</p>
+
+<p>Use the following command to start Forknote RPC Wallet with an in-process node</p>
+
+<pre><code> $ ./walletd --config /home/Downloads/myconfig.conf --local
+</code></pre>
+
+<h2 id="run-forknote-rpc-wallet">Run Forknote RPC Wallet</h2>
+
+<p>Forknote RPC wallet can be started in both daemon and console modes.</p>
+
+<ul>
+  <li>
+    <p><strong>Daemon mode</strong> - Forknote RPC Wallet is launched in the background, while you can continue to work with a console window.</p>
+  </li>
+  <li>
+    <p><strong>Console mode</strong> - Forknote RPC Wallet is launched and prints log messages on the screen.</p>
+  </li>
+</ul>
+
+<p>Forknote RPC wallet starts in console mode by default.</p>
+
+<h3 id="start-as-daemon-unix-only">Start as daemon (UNIX only)</h3>
+
+<p>To start RPC wallet as daemon just set “–daemon” (or short “-d”) option.</p>
+
+<pre><code> ./walletd --config /home/Downloads/myconfig.conf --daemon
+</code></pre>
+
+<p>Note: it’s a common practice for daemons to set server root directory.</p>
+
+<p>Server root is the directory where RPC Wallet stores all its files. All relative paths in RPC Wallet configuration are relative to the server root directory.</p>
+
+<h3 id="start-as-service-windows-only">Start as service (Windows only)</h3>
+
+<p>To run RPC wallet as a service on Windows you have to do the following:</p>
+
+<ol>
+  <li>
+    <p>Create a config file and place it in the same directory as your RPC wallet’s executable resides in.</p>
+
+    <p>A note for Windows Users: In case the server root in config file is not specified all paths should be ABSOLUTE. If you set server root you can use relative paths (relative to your server root);</p>
+  </li>
+  <li>
+    <p>Register your Forknote RPC Wallet as a service. To do so, run the following command as an ADMINISTRATOR:</p>
+
+    <pre><code> walletd.exe --config /home/Downloads/myconfig.conf --register-service
+</code></pre>
+  </li>
+  <li>
+    <p>After you see message about successful service registration you can run it in your Services panel.</p>
+  </li>
+</ol>
+
+<h3 id="uninstall-service-windows-only">Uninstall service (Windows only)</h3>
+
+<p>If you want to delete RPC wallet you have to unregister windows service first (if you have registered it before). Run as an ADMINISTRATOR:</p>
+
+<pre><code> walletd.exe --config /home/Downloads/myconfig.conf --unregister-service
+</code></pre>
+
+<h2 id="forknote-rpc-wallet-json-rpc-api">Forknote RPC Wallet JSON RPC API</h2>
+
+<p>Forknote RPC Wallet API allows you to create addresses for your users, accept and send transactions and much more. Here is an example of integration scheme:</p>
+
+<ol>
+  <li>Create a unique address for each user to identify his particular deposits with <strong>create_address()</strong> method.</li>
+  <li>When user is going to fund his account he will send you a transaction to this address. To know about new transactions run <strong>get_transaction_count()</strong> method (e.g., every 5 minutes). This method returns you a cumulative number of transactions; number of the transaction corresponds to its ID. This way you will be able to notice when number of your transactions have changed.</li>
+  <li>Run <strong>get_transaction()</strong> method to receive amounts and addresses of new incoming transactions.</li>
+  <li>Fund these amounts to the corresponding user accounts.</li>
+  <li>Withdraw with <strong>send_transaction()</strong> method that allows you to send transaction to one or several addresses.</li>
+</ol>
+
+<p>Detailed description for every Forknote RPC Wallet API method can be found here: <a href="/documentation/payment_gateway/json_rpc_api/">Forknote RPC Wallet JSON RPC API</a></p>
+
+
+    </div>
+
+    <div id="js-sidebar" class="sidebar-shell">
+    
+            <div class="js-toggle-list sidebar-module expandable">
+        <ul>
+          <li><h3><a href="/documentation/">Overview</a></h3></li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/daemon/" title="forknote daemon configuration and commands">Daemon</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/daemon/html-rpc-api/">HTTP RPC API</a></li>
+              <li><a href="/documentation/daemon/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/simplewallet/" title="forknote simplewallet configuration and commands">Simplewallet</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/simplewallet/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/payment-gateway/">Payment gateway</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/payment-gateway/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-module notice">
+        <p>This website is a <a href="https://github.com/forknote/forknote.net/tree/master" target="_blank">public GitHub repository</a>. Please help us by forking the project and adding to it.</p>
+      </div>
+    </div><!-- sidebar-shell -->
+  </div><!-- #wrapper -->
+
+    <div id="footer" >
+    <div class="lower_footer">
+      <ul class="footer-cell">
+        <li><a href="https://bytecoin.org">Based on Bytecoin</a></li>
+        <li><a href="https://cryptonote.org">Cryptonote technology</a></li>
+      </ul>
+
+      <span class="footer-cell">
+        <a href="http://forknote.net/" class="mega-octicon forknote-small"></a>
+      </span>
+
+      <ul class="footer-cell">
+        <li><a href="https://github.com/forknote/forknote">Source code</a></li>
+        <li><a href="https://twitter.com/forknote_dev">Twitter</a></li>
+        <li><a href="https://bitcointalk.org/index.php?topic=1079306.0">Bitcointalk</a></li>
+      </ul>
+    </div>
+
+    <div class="wrapper">
+      <p>&copy; <span class="js-year"></span> Forknote. All rights reserved.</p>
+    </div>
+
+  </div><!-- /#footer -->
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-883823-25', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script src="/js/retina.js" type="text/javascript"></script>
+</body>
+</html>
