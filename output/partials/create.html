@@ -1,0 +1,187 @@
+
+    <div class="content coin-form">
+
+      <h1 id="create-config-file" class="page-header">Create configuration file</h1>
+      <form role="form" name="coinForm">
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.CRYPTONOTE_NAME">Coin name</label>
+            <input class="form-control" name="core_CRYPTONOTE_NAME" type="text" ng-model="coin.core.CRYPTONOTE_NAME" ng-change="cryptonoteNameChanged()"
+            required
+            id="coin.core.CRYPTONOTE_NAME"
+            placeholder="Example: dashcoin"/>
+            <p class="help-block error-color" ng-if="coinForm.core_CRYPTONOTE_NAME.$error.required">Required field</p>
+          </div>
+
+            <div class="form-group" show-errors>
+              <label class="control-label"
+              for="coin.core.CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX">Address prefix</label>
+              <div class="input-group" show-errors="">
+                <input class="form-control" name="core_CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX" type="number" ng-model="coin.core.CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX"
+                id="coin.core.CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX"
+                ng-minlength="1" ng-maxlength="19" required
+                ng-change="addressPrefixChanged()" />
+                <span class="input-group-addon" id="basic-addon1" ng-bind="address_prefix"></span>
+              </div>
+              <p class="help-block error-color" ng-if="coinForm.core_CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX.$error.required">Required field</p>
+            </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.MONEY_SUPPLY">Money supply (atomic units)</label><br />
+            <div class="input-group">
+              <input type="text" class="form-control" name="MONEY_SUPPLY" ng-model="MONEY_SUPPLY"
+              ng-pattern="/^(\d{1,19}|1[0-7][0-9]{18}|18[0-3][0-9]{17}|184[0-3][0-9]{16}|1844[0-5][0-9]{15}|18446[0-6][0-9]{14}|184467[0-3][0-9]{13}|1844674[0-3][0-9]{12}|184467440[0-6][0-9]{10}|1844674407[0-2][0-9]{9}|18446744073[0-6][0-9]{8}|1844674407370[0-8][0-9]{6}|18446744073709[0-4][0-9]{5}|184467440737095[0-4][0-9]{4}|18446744073709550[0-9]{3}|18446744073709551[0-5][0-9]{2}|1844674407370955160[0-9]|1844674407370955161[0-5])$/"
+              required
+              ng-change="moneySupplyChanged()"
+              placeholder="Money supply" aria-describedby="basic-addon1">
+              <span class="input-group-addon" id="basic-addon1">{{coinAmountHumanReadable | number:0}} coins</span>
+            </div>
+            <p class="help-block error-color" ng-if="coinForm.MONEY_SUPPLY.$error.required">Required field</p>
+            <p class="help-block error-color" ng-if="coinForm.MONEY_SUPPLY.$error.pattern">The max amount of atomic units is 18446744073709551615</p>
+          </div>
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT">Coin decimal point</label>
+            <input class="form-control" name="core_CRYPTONOTE_DISPLAY_DECIMAL_POINT" type="number" pattern="\d+"
+            ng-model="coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT" required
+            id="coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT"
+            ng-change="supplyParameterChanged()"
+            min="0"
+            max="19" />
+            <p class="help-block error-color" ng-if="coinForm.core_CRYPTONOTE_DISPLAY_DECIMAL_POINT.$error.required">Required field</p>
+            <p class="help-block error-color" ng-if="coinForm.core_CRYPTONOTE_DISPLAY_DECIMAL_POINT.$error.min">Min: 0</p>
+            <p class="help-block error-color" ng-if="coinForm.core_CRYPTONOTE_DISPLAY_DECIMAL_POINT.$error.max">Max: 19</p>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.PREMINED_PERCENT">Percent of premined coins</label>
+            <div class="input-group">
+              <input class="form-control" name="core_PREMINED_PERCENT" type="number" pattern="\d+" ng-model="coin.core.PREMINED_PERCENT" required
+              id="coin.core.PREMINED_PERCENT"
+              ng-change="supplyParameterChanged()"
+              min="0"
+              max="100" aria-describedby="premine-addon" />
+              <span class="input-group-addon" id="premine-addon">{{coinPremineHumanReadable | number:0}} coins</span>
+              <p class="help-block error-color" ng-if="coinForm.core_PREMINED_PERCENT.$error.min">Min: 1</p>
+              <p class="help-block error-color" ng-if="coinForm.core_PREMINED_PERCENT.$error.max">Max: 100</p>
+            </div>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.EMISSION_SPEED_FACTOR">Emission speed factor</label>
+            <input class="form-control" name="core_EMISSION_SPEED_FACTOR" type="number" pattern="\d+"
+            ng-model="coin.core.EMISSION_SPEED_FACTOR" required
+            id="coin.core.EMISSION_SPEED_FACTOR"
+            min="{{EmissionSpeedFactorOptions.min}}"
+            max="{{EmissionSpeedFactorOptions.max}}"
+            step="{{EmissionSpeedFactorOptions.step}}" />
+            <p class="help-block error-color" ng-if="coinForm.core_EMISSION_SPEED_FACTOR.$error.required">Required field</p>
+            <p class="help-block error-color" ng-if="coinForm.core_EMISSION_SPEED_FACTOR.$error.min">Min: {{EmissionSpeedFactorOptions.min}}</p>
+            <p class="help-block error-color" ng-if="coinForm.core_EMISSION_SPEED_FACTOR.$error.max">Max: {{EmissionSpeedFactorOptions.max}}</p>
+          </div>
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.DIFFICULTY_TARGET">Difficulty target (in seconds)</label>
+            <input class="form-control" name="core_DIFFICULTY_TARGET" type="number" pattern="\d+"
+            ng-model="coin.core.DIFFICULTY_TARGET" required
+            ng-change="difficultyTargetChanged()"
+            id="coin.core.DIFFICULTY_TARGET"
+            min="{{difficultyTargetOptions.min}}"
+            max="{{difficultyTargetOptions.max}}"
+            step="{{difficultyTargetOptions.step}}" />
+            <p class="help-block error-color" ng-if="coinForm.core_DIFFICULTY_TARGET.$error.required">Required field</p>
+            <p class="help-block error-color" ng-if="coinForm.core_DIFFICULTY_TARGET.$error.min">Min: {{difficultyTargetFormater(difficultyTargetOptions.min)}}</p>
+            <p class="help-block error-color" ng-if="coinForm.core_DIFFICULTY_TARGET.$error.max">Max: {{difficultyTargetFormater(difficultyTargetOptions.max)}}</p>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.GENESIS_COINBASE_TX_HEX">Genesis coinbase transaction hex</label>
+            <input class="form-control" name="core_GENESIS_COINBASE_TX_HEX" type="text" ng-model="coin.core.GENESIS_COINBASE_TX_HEX"
+            id="coin.core.GENESIS_COINBASE_TX_HEX"
+            placeholder="Example: 010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101ef4a72e5952f95eb628cfb8aed8cdd53ce9665890d603d66bd34f88197129434"/>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label"
+            for="coin.core.SEED_NODES">Seed nodes</label>
+            <div class="input-group">
+              <input class="form-control" name="newSeedNode" type="text" ng-model="newSeedNode"
+              id="newSeedNode"
+              ng-pattern="/^((([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])|(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9‌​]{2}|2[0-4][0-9]|25[0-5]))(:\d{4,5})?$/"
+              placeholder="127.0.0.1"/>
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="addToSeedNodes()">Add seed node</button>
+              </span>
+            </div>
+            <p class="help-block error-color" ng-if="coinForm.newSeedNode.$error.pattern">Not valid IP or hostname</p>
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="item in coin.core.SEED_NODES">{{item}} <a href="" ng-click="removeSeedNode(item)" class="remove">[remove]</a></li>
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <button type="button" class="btn btn-lg btn-outline-blue" ng-click="show_config_modal()">View config</button>
+          </div>
+      </form>
+
+    </div>
+
+
+    <div class="sidebar-shell coin-form">
+
+        <h2>Guides</h2>
+        <ul class="headlines sidebar-module">
+          <li><a href="/guides/create-coin/"><i class="fa fa-lightbulb-o  fa-fw"></i>&nbsp; Create coin</a></li>
+          <li><a href="/guides/starting-seed-node/"><i class="fa fa-lightbulb-o  fa-fw"></i>&nbsp; Start seed node</a></li>
+          <li><a href="/guides/troubleshooting/"><i class="fa fa-info  fa-fw"></i>&nbsp; Troubleshooting</a></li>
+        </ul>
+
+        <h2>Charts</h2>
+        <div google-chart chart="emission_chart" style="{{cssStyle} sidebar-module" on-ready="chartReady()"></div>
+        <div google-chart chart="coins_per_block_chart" style="{{cssStyle} sidebar-module" on-ready="chartReady()"></div>
+    </div>
+
+
+<div id="coin_daemon_config_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4>{{ coin.core.CRYPTONOTE_NAME }}.conf</h4>
+        <div class="highlight"><pre><code class="language-c" data-lang="c">
+<span style="margin:0" ng-repeat="line in coin_daemon_config|nlToArray track by $index">{{line}}
+</span>
+        </code></pre></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
+        <button type="button" class="btn btn-outline-grey" data-dismiss="modal" ng-click="show_json_modal()">Vew as json</button>
+        <button type="button" class="btn btn-outline-grey" data-dismiss="modal" ng-click="randomize()">Randomize</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+
+
+<div id="coin_daemon_json_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4>{{ coin.core.CRYPTONOTE_NAME }}.json</h4>
+        <div class="highlight"><pre><code class="language-c" data-lang="c">
+<span style="margin:0" ng-repeat="line in coin_json_stringified|nlToArray track by $index">{{line}}
+</span>
+        </code></pre></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
+        <button type="button" class="btn btn-outline-grey" data-dismiss="modal" ng-click="show_config_modal()">View as config file</button>
+      </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
