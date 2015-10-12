@@ -1,6 +1,6 @@
-# developer.github.com
+# forknote.net
 
-This is a GitHub API resource built with [nanoc][nanoc].
+This is a Forknote API resource built with [nanoc][nanoc].
 
 All submissions are welcome. To submit a change, fork this repo, commit your changes, and send us a [pull request](http://help.github.com/send-pull-requests/).
 
