@@ -1,4 +1,4 @@
-{:	data{�I"/:ET{:default{	:	lastI"t<!DOCTYPE html>
+{:	data{�I"/:ET{:default{	:	lastI"t<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18315,7 +18315,7 @@ I"
 <h1 id="section">Форма за контакт</h1>
 
 <p>Не сте попълнили задължително поле. Моля, върнете се и попълнете задължителните полета, преди да изпратите съобщението си.</p>
-;T;@�I"!/static/assets/js/base58.js/;T{;{ I""/static/assets/js/cn_util.js/;T{;{ I"!/static/assets/js/config.js/;T{;{ I"!/static/assets/js/crypto.js/;T{;{ I")/static/assets/js/lib/biginteger.js/;T{;{ I"#/static/assets/js/mnemonic.js/;T{;{ I"%/static/dist/ng-google-chart.js/;T{;{ I"$/static/dist/showErrors.min.js/;T{;{ I""/static/partials/create.html/;T{;{ I" /static/partials/create.js/;T{;{ I"'/static/images/forknote-large.png/;T{;{ I"*/static/images/forknote-large@2x.png/;T{;{ I"'/static/images/forknote-small.png/;T{;{ I"*/static/images/forknote-small@2x.png/;T{;{ I"/coins/;T{;{	;I"T0<!DOCTYPE html>
+;T;@�I"!/static/assets/js/base58.js/;T{;{ I""/static/assets/js/cn_util.js/;T{;{ I"!/static/assets/js/config.js/;T{;{ I"!/static/assets/js/crypto.js/;T{;{ I")/static/assets/js/lib/biginteger.js/;T{;{ I"#/static/assets/js/mnemonic.js/;T{;{ I"%/static/dist/ng-google-chart.js/;T{;{ I"$/static/dist/showErrors.min.js/;T{;{ I""/static/partials/create.html/;T{;{ I" /static/partials/create.js/;T{;{ I"'/static/images/forknote-large.png/;T{;{ I"*/static/images/forknote-large@2x.png/;T{;{ I"'/static/images/forknote-small.png/;T{;{ I"*/static/images/forknote-small@2x.png/;T{;{ I"/coins/;T{;{	;I"�/<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18472,12 +18472,11 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <!-- Dashcoin modal -->
 <div id="dashcoin_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
@@ -18513,12 +18512,11 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <!-- Oneevilcoin modal -->
 <div id="oneevilcoin_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
@@ -18541,12 +18539,11 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <!-- Ethanolium modal -->
 <div id="ethanolium_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
@@ -18569,12 +18566,11 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
@@ -18617,7 +18613,7 @@ I"
   <script src="/js/retina.js" type="text/javascript"></script>
 </body>
 </html>
-;T;	I"&$
+;T;	I"�#
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 <div class="full-width dev-program-callout">
@@ -18732,7 +18728,6 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
@@ -18771,7 +18766,6 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
@@ -18796,7 +18790,6 @@ I"
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
-      </div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -18823,13 +18816,12 @@ I"
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>;T;
-I"$
+I"�#
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 <div class="full-width dev-program-callout">
@@ -18944,12 +18936,11 @@ I"$
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <!-- Dashcoin modal -->
 <div id="dashcoin_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
@@ -18985,12 +18976,11 @@ I"$
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <!-- Oneevilcoin modal -->
 <div id="oneevilcoin_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
@@ -19013,12 +19003,11 @@ I"$
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <!-- Ethanolium modal -->
 <div id="ethanolium_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
@@ -19041,12 +19030,11 @@ I"$
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div>
 <!-- /.modal-content -->
   </div>
 <!-- /.modal-dialog -->
-<p>&lt;/div&gt;</p>
+</div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
@@ -49547,4 +49535,4 @@ I"�
   <li><a href="/guide/starting-seed-node/">Starting seed node</a></li>
 </ul>
 
-;T;@E:versioni
+;T;@EI"/static/CNAME/;T{;{ :versioni

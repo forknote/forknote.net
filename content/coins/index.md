@@ -118,7 +118,6 @@ body_class: coins
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
@@ -157,7 +156,6 @@ body_class: coins
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
@@ -183,7 +181,6 @@ body_class: coins
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
       </div>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
@@ -208,7 +205,6 @@ body_class: coins
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
-      </div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
