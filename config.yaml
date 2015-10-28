@@ -45,7 +45,7 @@ data_sources:
     items_root: /static
 
 # For the atom feed.
-base_url: http://bezkaries.com
+base_url: http://forknote.net
 
 # Articles per page for the blog
 page_size: 5

@@ -59,7 +59,7 @@ body_class: coins
     <p>A few tips you start:</p>
     <ul>
       <li><a href="/guides/getting-started/">Get started guide</a></li>
-      <li><a href="/documentation/cryptonote_generator/forknote/">Why Forknote is better?</a></li>
+      <li><a href="/documentation/cryptonote-generator/forknote/">Why Forknote is better?</a></li>
     </ul>
   </div>
 

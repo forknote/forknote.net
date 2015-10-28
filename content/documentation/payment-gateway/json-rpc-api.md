@@ -694,5 +694,5 @@ Output example:
      }
 
 
-[Forknote_RPC_Wallet]: /documentation/payment_gateway/
-[Configure_Forknote_RPC_Wallet]: /documentation/payment_gateway/#configure-forknote-rpc-wallet
+[Forknote_RPC_Wallet]: /documentation/payment-gateway/
+[Configure_Forknote_RPC_Wallet]: /documentation/payment-gateway/#configure-forknote-rpc-wallet

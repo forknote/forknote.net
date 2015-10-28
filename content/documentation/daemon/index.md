@@ -21,7 +21,7 @@ sidebar_nav: sidebar-documentation
       --config-file arg (=./configs/-.conf) Specify configuration file
 
 
-##Command line options and settings options:
+##Command line options and settings options
 
 
 Option | Description | &nbsp;&nbsp;Config&nbsp;Example&nbsp;&nbsp; | &nbsp;&nbsp;Console&nbsp;Example&nbsp;&nbsp;
@@ -78,17 +78,24 @@ seed-node=1.1.1.1:17100
 seed-node=2.2.2.2:17100
 seed-node=seed.notarealcoin.com:17100
 GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
-p2p-bind-port=17100
-rpc-bind-port=17101
+EMISSION_SPEED_FACTOR=18
+DIFFICULTY_TARGET=120
+CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
 MONEY_SUPPLY=18446744073709551615
+PREMINED_PERCENT=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
-CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
+CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=60000
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
-BYTECOIN_NETWORK=2e799881-7aab-d4dc-19d1-15895b79d6bf
+p2p-bind-port=29829
+rpc-bind-port=29830
+BYTECOIN_NETWORK=64954525-ff98-5ed4-0576-7c5a0b9c18cc
+CRYPTONOTE_NAME=test
+UPGRADE_HEIGHT=1
 CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
 CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
-UPGRADE_HEIGHT=1
+
 </pre>
 
 ##Daemon commands

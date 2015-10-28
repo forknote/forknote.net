@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', function($scope, $timeout, $document) {
+angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$timeout', function($scope, $http, $timeout, $document) {
 
     $scope.coin = {};
     $scope.coin.base_coin = {};
@@ -296,7 +296,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', fu
 // Core changed
     $scope.coreChanged = function () {
         if ($scope.base_coin == "bytecoin") {
-            $scope.coin.plugins = [ "core/bytecoin.json", "print-genesis-tx.json" ];
+            $scope.coin.extensions = [ "core/bytecoin.json", "print-genesis-tx.json" ];
             $scope.coin.base_coin.name = "bytecoin";
             $scope.coin.base_coin.git = "https://github.com/amjuarez/bytecoin.git";
         }
@@ -328,6 +328,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', fu
 // Money supply changed
     $scope.moneySupplyChanged = function () {
         //bigint
+        var str = $scope.MONEY_SUPPLY.toString();
         $scope.supplyParameterChanged();
 
         $scope.coin.core.MINIMUM_FEE = Math.pow(10, (str.length - 14));
@@ -384,6 +385,25 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', fu
 
         console.log(base_reward);
     }
+// Get genesis transaction hex
+    $scope.get_genesis_tx = function() {      
+        // Writing it to the server
+        //      
+        var dataObj = {
+                MoneySupply : $scope.coin.core.MONEY_SUPPLY,
+                EmissionSpeedFactor : $scope.coin.core.EMISSION_SPEED_FACTOR,
+                DifficultyTarget : $scope.coin.core.DIFFICULTY_TARGET,
+                PercentPreminedCoins : $scope.coin.core.PREMINED_PERCENT
+        };
+        var res = $http.post('http://api.forknote.net:8080/genesis_tx/', dataObj);
+        res.success(function(data, status, headers, config) {
+            alert( "success message: " + JSON.stringify({data: data}));
+        });
+        res.error(function(data, status, headers, config) {
+            alert( "failure message: " + JSON.stringify({data: data}));
+        }); 
+    };
+
 
 // Cryptonote_name changed
     $scope.cryptonoteNameChanged = function () {
@@ -438,6 +458,9 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', fu
     $scope.show_config_modal = function () {
         $scope.$broadcast('show-errors-check-validity');
         if ($scope.coinForm.$valid) {
+
+        console.log("valid form");
+//            $scope.get_genesis_tx();
             setTimeout(function(){$('#coin_daemon_config_modal').modal('show')}, 100);
             $scope.create_daemon_config();
         }
@@ -452,7 +475,6 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', fu
             setTimeout(function(){$('#coin_daemon_json_modal').modal('show')}, 100);
         }
     }
-
 
 // Randomize
     $scope.randomize = function () {
@@ -491,6 +513,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$timeout', fu
             $scope.coin_daemon_config += "seed_nodes=127.0.0.1:" + $scope.coin.core['P2P_DEFAULT_PORT'];
         }
     }
+
 
 
     $scope.chartReady = function () {

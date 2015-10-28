@@ -78,17 +78,24 @@ seed-node=1.1.1.1:17100
 seed-node=2.2.2.2:17100
 seed-node=seed.notarealcoin.com:17100
 GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
-p2p-bind-port=17100
-rpc-bind-port=17101
+EMISSION_SPEED_FACTOR=18
+DIFFICULTY_TARGET=120
+CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
 MONEY_SUPPLY=18446744073709551615
+PREMINED_PERCENT=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
-CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
+CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=60000
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
-BYTECOIN_NETWORK=2e799881-7aab-d4dc-19d1-15895b79d6bf
+p2p-bind-port=29829
+rpc-bind-port=29830
+BYTECOIN_NETWORK=64954525-ff98-5ed4-0576-7c5a0b9c18cc
+CRYPTONOTE_NAME=test
+UPGRADE_HEIGHT=1
 CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
 CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
-UPGRADE_HEIGHT=1
+
 wallet-file = mywallet
 wallet-password = mypassword
 daemon-port = 17100
@@ -96,11 +103,11 @@ bind-port = 9090
 
 </pre>
 
-Note: config file's path is relative to current working directory, not server root.
+*Note: config file's path is relative to current working directory, not server root.*
 
-Note: options "wallet-file" and "wallet-password" should ALWAYS be set (in either command line or config file mode).
+*Note: options "wallet-file" and "wallet-password" should ALWAYS be set (in either command line or config file mode).*
 
-Note: "wallet-file" and "log-file" options are relative to "server-root". "server-root" default is the current working directory.
+*Note: "wallet-file" and "log-file" options are relative to "server-root". "server-root" default is the current working directory.*
 
 
 ##Generate a new wallet
@@ -117,7 +124,7 @@ where:
 * **&lt;mypass&gt;** is a secret password for the new wallet file. Whichever you like;
 * **--generate-wallet** option tells RPC wallet to generate wallet file and exit.
 
-Note: if **&lt;mywallet&gt;** exists Forknote RPC Wallet will show you the notification and will ask you to provide a different name.
+*Note: if **&lt;mywallet&gt;** exists Forknote RPC Wallet will show you the notification and will ask you to provide a different name.*
 
 If the operation was successful you will get a corresponding message with your new Forknote address. At the same time Forknote RPC Wallet will save your wallet with .wallet extension on the local disk (in the same folder where Forknote RPC Wallet is located) and shut down.
 
@@ -140,9 +147,9 @@ Add the following lines to your configuration file to start Forknote RPC Wallet 
     daemon-address=<remote_ip>
     daemon-port=8080
 
-Note: Forknote daemon (forknoted) should be running at the moment RPC wallet is starting in a remote connection mode.
+*Note: Forknote daemon (forknoted) should be running at the moment RPC wallet is starting in a remote connection mode.*
 
-Note: Forknote RPC Wallet will still provide some functionality even if Daemon server fails. For example, you will be able to generate addresses for your users.
+*Note: Forknote RPC Wallet will still provide some functionality even if Daemon server fails. For example, you will be able to generate addresses for your users.*
 
 ###Start as in-process node
 
@@ -168,7 +175,7 @@ To start RPC wallet as daemon just set "--daemon" (or short "-d") option.
 
      ./walletd --config /home/Downloads/myconfig.conf --daemon
 
-Note: it's a common practice for daemons to set server root directory. 
+*Note: it's a common practice for daemons to set server root directory.*
 
 Server root is the directory where RPC Wallet stores all its files. All relative paths in RPC Wallet configuration are relative to the server root directory.
 
@@ -206,4 +213,4 @@ Forknote RPC Wallet API allows you to create addresses for your users, accept an
 Detailed description for every Forknote RPC Wallet API method can be found here: [Forknote RPC Wallet JSON RPC API][Forknote_RPC_Wallet_JSON_RPC_API]
 
 
-[Forknote_RPC_Wallet_JSON_RPC_API]: /documentation/payment_gateway/json_rpc_api/
+[Forknote_RPC_Wallet_JSON_RPC_API]: /documentation/payment-gateway/json-rpc-api/

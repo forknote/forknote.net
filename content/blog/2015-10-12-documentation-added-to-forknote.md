@@ -21,9 +21,9 @@ Guides for the most common questions were created:
 [documentation-daemon]: /documentation/daemon/
 [documentation-simplewallet]: /documentation/simplewallet/
 [documentation-payment-gateway]: /documentation/payment-gateway/
-[guide-get-started]: /guide/getting-started/
-[guide-create-coin]: /guide/create-coin/
-[guide-starting-seed-node]: /guide/starting-seed-node/
+[guide-get-started]: /guides/getting-started/
+[guide-create-coin]: /guides/create-coin/
+[guide-starting-seed-node]: /guides/starting-seed-node/
 
 
 

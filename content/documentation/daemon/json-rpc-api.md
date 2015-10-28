@@ -99,7 +99,8 @@ Input:
      {
         "jsonrpc": "2.0",
         "id" : "test",
-        "method": "getblockcount"
+        "method": "getblockcount",
+        "params": {}
      }
 
 Output: 
