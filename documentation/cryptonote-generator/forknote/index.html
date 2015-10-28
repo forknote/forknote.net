@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Guides | Forknote</title>
+  <title>Forknote overview | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
 </div><!-- #header-wrapper -->
 
 
-  <div class="sub-nav docs-guides">
+  <div class="sub-nav docs-documentation">
     <h2><a href="/documentation/">Documentation</a></h2>
 
     <ul>
@@ -64,24 +64,53 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="development-guides">Development Guides</h1>
+<h1 id="cryptonote-generator-forknote">Cryptonote generator: Forknote</h1>
 
-<p>This section of the documentation is intended to get you up-and-running with
-real-world Forknote-based cryptocurrency. We’ll cover everything you need to know, from
-configuration, to creating premined coins, to running seed nodes.</p>
+<ul id="markdown-toc">
+  <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it works</a></li>
+</ul>
+
+<p>Forknote adds the <a href="/documentation/cryptonote-generator/#core-parameters">parameters of Cryptonote generator</a> to the daemon, simplewallet and payment gateway. It allows easy creation of private chains.</p>
+
+<h2 id="how-it-works">How it works</h2>
+
+<p><img src="/images/documentation/script-generated-multiplied.png" alt="Forknote diagram"></p>
 
 
     </div>
 
     <div id="js-sidebar" class="sidebar-shell">
     
-            <div class="sidebar-module">
+            <div class="js-toggle-list sidebar-module expandable">
         <ul>
-          <li><h3><a href="/guides/">Overview</a></h3></li>
-          <li><h3><a href="/guides/getting-started/">Getting started</a></h3></li>
-          <li><h3><a href="/guides/create-coin/">Create coin</a></h3></li>
-          <li><h3><a href="/guides/starting-seed-node/">Starting seed node</a></h3></li>
-          <li><h3><a href="/guides/troubleshooting/">Troubleshooting</a></h3></li>
+          <li><h3><a href="/documentation/">Overview</a></h3></li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/daemon/" title="forknote daemon configuration and commands">Daemon</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/daemon/html-rpc-api/">HTTP RPC API</a></li>
+              <li><a href="/documentation/daemon/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/simplewallet/" title="forknote simplewallet configuration and commands">Simplewallet</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/simplewallet/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/payment-gateway/">Payment gateway</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/payment-gateway/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/cryptonote-generator/">Cryptonote generator</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/cryptonote-generator/extensions/">Extensions</a></li>
+              <li><a href="/documentation/cryptonote-generator/forknote/">Forknote</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
 

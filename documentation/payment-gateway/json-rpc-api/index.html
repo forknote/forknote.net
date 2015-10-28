@@ -21,6 +21,7 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-883823-25', 'auto');
+    ga('require', 'linkid');
     ga('send', 'pageview');
 
   </script>
@@ -84,7 +85,7 @@
 
 <p>On this page you will find description of every method in Forknote RPC Wallet API. Forknote RPC Wallet is a HTTP server which provides JSON 2.0 RPC interface for Forknote payment operations and address management. Each method has its own page that can be found by clicking on this method.</p>
 
-<p>More on how to start and operate Forknote RPC Wallet can be found here: <a href="/documentation/payment_gateway/">Forknote RPC Wallet</a></p>
+<p>More on how to start and operate Forknote RPC Wallet can be found here: <a href="/documentation/payment-gateway/">Forknote RPC Wallet</a></p>
 
 <p>To make a JSON PRC request to your Forknote RPC Wallet you should use POST request that looks like this:</p>
 
@@ -95,7 +96,7 @@
 
 <ul>
   <li>&lt;service address&gt; is an IP of Forknote RPC Wallet, if RPC Wallet is located on local machine it is either 127.0.0.1 or localhost</li>
-  <li>&lt;service port&gt; is Forknote RPC Wallet port, by default it is binded to 8070 port, but it can be manually binded to any port you want, read more about this <a href="/documentation/payment_gateway/#configure-forknote-rpc-wallet">here</a>.</li>
+  <li>&lt;service port&gt; is Forknote RPC Wallet port, by default it is binded to 8070 port, but it can be manually binded to any port you want, read more about this <a href="/documentation/payment-gateway/#configure-forknote-rpc-wallet">here</a>.</li>
 </ul>
 
 <h2 id="sendtransaction">send_transaction</h2>
@@ -1179,6 +1180,14 @@
             <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/payment-gateway/">Payment gateway</a></h3>
             <ul class="js-guides">
               <li><a href="/documentation/payment-gateway/json-rpc-api/">JSON RPC API</a></li>
+            </ul>
+          </li>
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/cryptonote-generator/">Cryptonote generator</a></h3>
+            <ul class="js-guides">
+              <li><a href="/documentation/cryptonote-generator/extensions/">Extensions</a></li>
+              <li><a href="/documentation/cryptonote-generator/forknote/">Forknote</a></li>
             </ul>
           </li>
         </ul>

@@ -3,13 +3,39 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://bezkaries.com/</id>
   <title>Forknote: Blog</title>
-  <updated>2015-10-11T21:00:00Z</updated>
+  <updated>2015-10-27T22:00:00Z</updated>
   <link rel="alternate" href="http://bezkaries.com/" />
   <link rel="self" href="http://bezkaries.com/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
+  <entry>
+    <id>tag:bezkaries.com,2015-10-28:/blog/2015-10-28-cryptonote-generator-documentation/</id>
+    <title type="html">Cryptonote generator documentation added</title>
+    <published>2015-10-27T22:00:00Z</published>
+    <updated>2015-10-27T22:00:00Z</updated>
+    <author>
+      <name>pmitchev</name>
+      <uri>http://forknote.net/blog/</uri>
+    </author>
+    <link rel="alternate" href="http://bezkaries.com/blog/2015-10-28-cryptonote-generator-documentation/" />
+    <content type="html">
+&lt;p&gt;&lt;a href="/documentation/cryptonote-generator/"&gt;Documentation&lt;/a&gt; for the &lt;a href="https://github.com/forknote/cryptonote-generator"&gt;Cryptonote generator&lt;/a&gt; was added. With the generator you can generate a separate source of any Forknote coins. This ability is valuable if you need an actual source or you want to extend the functionality of a coin.&lt;/p&gt;
+
+&lt;p&gt;The way to extend the functionality of a Forknote coin is through &lt;a href="/documentation/cryptonote-generator/extensions/"&gt;extensions&lt;/a&gt;. This ensures that the development of your coin constantly matches that of Bytecoin.&lt;/p&gt;
+
+&lt;p&gt;What the actual positives of using the generator instead of merging?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In most of the cases it will save you the actual merging process&lt;/li&gt;
+  &lt;li&gt;It will save you the merge conflicts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The downside is writing extensions is slower than writing just a C code. But since the extensions are pure json, the process CAN be reduced to just writing a C code.&lt;/p&gt;
+
+</content>
+  </entry>
   <entry>
     <id>tag:bezkaries.com,2015-10-12:/blog/2015-10-12-documentation-added-to-forknote/</id>
     <title type="html">Documentation added to Forknote</title>
@@ -32,9 +58,9 @@
 &lt;p&gt;Guides for the most common questions were created:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href="/guide/getting-started/"&gt;Getting started&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/guide/create-coin/"&gt;Create coin&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/guide/starting-seed-node/"&gt;Starting seed node&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/guides/getting-started/"&gt;Getting started&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/guides/create-coin/"&gt;Create coin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/guides/starting-seed-node/"&gt;Starting seed node&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>

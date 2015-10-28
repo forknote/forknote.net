@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Daemon HTTP RPC API | Forknote</title>
+  <title>Cryptonote generator extensions | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -64,94 +64,171 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="daemon-http-rpc-api">Daemon HTTP RPC API</h1>
+<h1 id="cryptonote-generator-extensions">Cryptonote generator extensions</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#meta-data" id="markdown-toc-meta-data">Meta data</a></li>
+  <li><a href="#file" id="markdown-toc-file">File</a></li>
+  <li><a href="#changes" id="markdown-toc-changes">Changes</a></li>
+  <li><a href="#example" id="markdown-toc-example">Example</a></li>
+  <li><a href="#adding-extension-to-your-configuration" id="markdown-toc-adding-extension-to-your-configuration">Adding extension to your configuration</a></li>
+</ul>
+
+<p>Extensions are the way to add functionality to the Forknote. Your extensions must be located in the <em>extensions</em> folder.</p>
+
+<p><em>Notice: If you make big changes in the way your coin functions, it may no longer be compatible with Forknote</em></p>
+
+<h2 id="meta-data">Meta data</h2>
 
 <table>
-  <thead>
-    <tr>
-      <th>URL</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Arg 1</th>
-      <th>Arg 2</th>
-      <th>Return value</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
-      <td>/getheight</td>
-      <td>Returns current chain height</td>
-      <td>JSON</td>
-      <td>-</td>
-      <td>-</td>
-      <td>[int] height</td>
+      <td>Key</td>
+      <td>Description</td>
     </tr>
     <tr>
-      <td>/getknownblockids</td>
-      <td>Returns list of known block ids</td>
-      <td>JSON</td>
-      <td>-</td>
-      <td>-</td>
-      <td>[list] main chain block ids <br> [list] alternative chains block ids <br> [list] invalid block ids</td>
+      <td><a href="#file">file</a></td>
+      <td>Filename of the extension. Use relative name</td>
     </tr>
     <tr>
-      <td>/start_mine</td>
-      <td>Starts mining threads</td>
-      <td>JSON</td>
-      <td>[string] wallet address</td>
-      <td>[int] number of threads</td>
-      <td>[string] status</td>
+      <td>description</td>
+      <td>Short description of the functionality of the extension</td>
     </tr>
     <tr>
-      <td>/stop_mine</td>
-      <td>Stops mining threads</td>
-      <td>JSON</td>
-      <td>-</td>
-      <td>-</td>
-      <td>[string] status</td>
+      <td>required</td>
+      <td>Array of required extensions.</td>
     </tr>
     <tr>
-      <td>/gettransactions</td>
-      <td>Returns transactions as serialized blobs</td>
-      <td>JSON</td>
-      <td>[list] tx ids</td>
-      <td>-</td>
-      <td>[list] transactions as hex <br> [list] missing tx ids <br> [string] status</td>
-    </tr>
-    <tr>
-      <td>/sendrawtransactions</td>
-      <td>Send transaction to the network</td>
-      <td>JSON</td>
-      <td>[string] serialized transaction in hex form</td>
-      <td>-</td>
-      <td>[string] status</td>
-    </tr>
-    <tr>
-      <td>/getblocks.bin</td>
-      <td>Returns blocks in binary form</td>
-      <td>BIN</td>
-      <td>[list] block ids</td>
-      <td>-</td>
-      <td>[list] blocks <br> [int] start height  <br> [int] current height <br> [string] status</td>
-    </tr>
-    <tr>
-      <td>/get_o_indexes.bin</td>
-      <td>Get global output indicies</td>
-      <td>BIN</td>
-      <td>[hash] transaction id</td>
-      <td>-</td>
-      <td>[vector] output indicies  <br> [string] status</td>
-    </tr>
-    <tr>
-      <td>/getrandom_outs.bin</td>
-      <td>Get random output indicies <br> for a given amount <br>  (purpose: for ring signatures)</td>
-      <td>BIN</td>
-      <td>[list] amounts</td>
-      <td>[int] count</td>
-      <td>[vector] <br> { [int] amount; [list] outs } <br>  output entries</td>
+      <td>files</td>
+      <td>Array of added or edited files.</td>
     </tr>
   </tbody>
 </table>
+
+<h2 id="file">File</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Key</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>path</td>
+      <td>Path of the file</td>
+    </tr>
+    <tr>
+      <td><a href="#changes">changes</a></td>
+      <td>Array of the changes made in the file. Optional</td>
+    </tr>
+    <tr>
+      <td>action</td>
+      <td>Use with value “add” to add a file. Optional</td>
+    </tr>
+    <tr>
+      <td>source</td>
+      <td>Path to file. Used only with “add” action</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="changes">Changes</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Key</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>action</td>
+      <td>Available options: replace, add_above, add_bellow, delete</td>
+    </tr>
+    <tr>
+      <td>marker</td>
+      <td>Place in the file where to perform the “action”</td>
+    </tr>
+    <tr>
+      <td>parameters</td>
+      <td>“text” - array of strings, used as new or added text. Use %s for variables<br>“var” - variable from the configuration file</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="example">Example</h2>
+
+<pre><code>{
+    "file":"multiply.json",
+    "description":"Adds core parameters as option for daemon, simplewallet and walletd",
+    "required":[ "core/bytecoin.json", "print-genesis-tx.json", "genesis-block-reward.json" ],
+    "files": [ 
+        {
+            "path":"/src/CryptoNoteConfig.h",
+            "changes": [
+                {
+                    "action":"add_above",
+                    "marker":"} // parameters",
+                    "parameters": {
+                        "text":[
+                            "const char     GENESIS_COINBASE_TX_HEX[]                     = \"%s\";"
+                        ],
+                        "var":"GENESIS_COINBASE_TX_HEX"
+                    }
+                }
+                {
+                    "action":"add_bellow",
+                    "marker":"size_t blockGrantedFullRewardZone()",
+                    "parameters": {
+                        "text":[
+                            "  size_t blockGrantedFullRewardZoneV1() const { return m_blockGrantedFullRewardZoneV1; }"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/src/CryptoNoteCore/Currency.cpp",
+            "changes": [
+                {
+                    "action":"replace",
+                    "marker":"CryptoNote::parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1;",
+                    "parameters": {
+                        "text":[
+                            "       m_blockGrantedFullRewardZoneV1;"
+                        ]
+                    }
+                }
+
+            ]
+        },
+        {
+            "path":"/README.md",
+            "action":"add",
+            "source":"/multiply/files/README.md"
+        }
+    ]
+}
+</code></pre>
+
+<h2 id="adding-extension-to-your-configuration">Adding extension to your configuration</h2>
+
+<p>Add the created extension in your Cryptonote generator’s configuration file to execute it</p>
+
+<pre><code>{
+    "base_coin": {
+        ...
+    },
+    "core": {
+        ...
+    },
+    "extensions": [
+        "core/bytecoin.json",
+        "print-genesis-tx.json",
+        "MY-EXTENSION.json"
+    ]
+}
+</code></pre>
+
 
     </div>
 
