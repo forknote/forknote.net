@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Cryptonote generator documentation added</title>
+  <title>Forknote Wallet 1.0.8.2 Release</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -63,16 +63,16 @@
 
   <div id="wrapper">
     <div class="content">
-        <div class="change" id="/blog/2015-10-28-cryptonote-generator-documentation/">
+        <div class="change" id="/blog/2015-11-25-forknote-1/">
         <h2 class="title">
-  <a href="/blog/2015-10-28-cryptonote-generator-documentation/">Cryptonote generator documentation added</a>
+  <a href="/blog/2015-11-25-forknote-1/">Forknote Wallet 1.0.8.2 Release</a>
 </h2>
 
 <div class="meta">
   <ul>
   <li class="published">
     <span class="fa fa-calendar"></span>
-    October 28, 2015
+    November 25, 2015
   </li>
   <li class="who_when">
     <img height="16" width="16" src="https://github.com/pmitchev.png" alt="Avatar for pmitchev"/>
@@ -83,25 +83,34 @@
 
 
         
-<p><a href="/documentation/cryptonote-generator/">Documentation</a> for the <a href="https://github.com/forknote/cryptonote-generator">Cryptonote generator</a> was added. With the generator you can generate a separate source of any Forknote coins. This ability is valuable if you need an actual source or you want to extend the functionality of a coin.</p>
-
-<p>The way to extend the functionality of a Forknote coin is through <a href="/documentation/cryptonote-generator/extensions/">extensions</a>. This ensures that the development of your coin constantly matches that of Bytecoin.</p>
-
-<p>What the actual positives of using the generator instead of merging?</p>
+<p>Forknote has been updated to version 1.0.8.2 featuring various RPC methods added to the daemon:</p>
 
 <ul>
-  <li>In most of the cases it will save you the actual merging process</li>
-  <li>It will save you the merge conflicts</li>
+  <li>
+    <p><strong><a href="/documentation/daemon/json-rpc-api/#fgetblockchainsettings">f_get_blockchain_settings</a></strong>
+ Returns the settings of the used configuration file.</p>
+  </li>
+  <li>
+    <p><strong><a href="/documentation/daemon/json-rpc-api/#fblockslistjson">f_blocks_list_json</a></strong>
+ Returns list of shortly described blocks.</p>
+  </li>
+  <li>
+    <p><strong><a href="/documentation/daemon/json-rpc-api/#fblockjson">f_block_json</a></strong>
+ Returns detailed description of a block.</p>
+  </li>
+  <li>
+    <p><strong><a href="/documentation/daemon/json-rpc-api/#ftransactionjson">f_transaction_json</a></strong>
+ Returns detailed description of a transaction.</p>
+  </li>
 </ul>
 
-<p>The downside is writing extensions is slower than writing just a C code. But since the extensions are pure json, the process CAN be reduced to just writing a C code.</p>
-
+<p>The new 1.0.8.2 version of Forknote is available in the <a href="/download/">downloads section</a>.</p>
 
         
 <div class="social-share">
-<div class="fb-like" data-href="http://forknote.net/blog/blog/2015-10-28-cryptonote-generator-documentation/" data-title="Cryptonote generator documentation added" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+<div class="fb-like" data-href="http://forknote.net/blog/blog/2015-11-25-forknote-1/" data-title="Forknote Wallet 1.0.8.2 Release" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://forknote.net/blog/2015-10-28-cryptonote-generator-documentation/" data-text="Cryptonote generator documentation added" data-hashtags="forknote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://forknote.net/blog/2015-11-25-forknote-1/" data-text="Forknote Wallet 1.0.8.2 Release" data-hashtags="forknote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 
 
