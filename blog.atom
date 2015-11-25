@@ -1,17 +1,17 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://bezkaries.com/</id>
+  <id>http://forknote.net/</id>
   <title>Forknote: Blog</title>
   <updated>2015-10-27T22:00:00Z</updated>
-  <link rel="alternate" href="http://bezkaries.com/" />
-  <link rel="self" href="http://bezkaries.com/blog.atom" />
+  <link rel="alternate" href="http://forknote.net/" />
+  <link rel="self" href="http://forknote.net/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
   <entry>
-    <id>tag:bezkaries.com,2015-10-28:/blog/2015-10-28-cryptonote-generator-documentation/</id>
+    <id>tag:forknote.net,2015-10-28:/blog/2015-10-28-cryptonote-generator-documentation/</id>
     <title type="html">Cryptonote generator documentation added</title>
     <published>2015-10-27T22:00:00Z</published>
     <updated>2015-10-27T22:00:00Z</updated>
@@ -19,7 +19,7 @@
       <name>pmitchev</name>
       <uri>http://forknote.net/blog/</uri>
     </author>
-    <link rel="alternate" href="http://bezkaries.com/blog/2015-10-28-cryptonote-generator-documentation/" />
+    <link rel="alternate" href="http://forknote.net/blog/2015-10-28-cryptonote-generator-documentation/" />
     <content type="html">
 &lt;p&gt;&lt;a href="/documentation/cryptonote-generator/"&gt;Documentation&lt;/a&gt; for the &lt;a href="https://github.com/forknote/cryptonote-generator"&gt;Cryptonote generator&lt;/a&gt; was added. With the generator you can generate a separate source of any Forknote coins. This ability is valuable if you need an actual source or you want to extend the functionality of a coin.&lt;/p&gt;
 
@@ -37,7 +37,7 @@
 </content>
   </entry>
   <entry>
-    <id>tag:bezkaries.com,2015-10-12:/blog/2015-10-12-documentation-added-to-forknote/</id>
+    <id>tag:forknote.net,2015-10-12:/blog/2015-10-12-documentation-added-to-forknote/</id>
     <title type="html">Documentation added to Forknote</title>
     <published>2015-10-11T21:00:00Z</published>
     <updated>2015-10-11T21:00:00Z</updated>
@@ -45,7 +45,7 @@
       <name>pmitchev</name>
       <uri>http://forknote.net/blog/</uri>
     </author>
-    <link rel="alternate" href="http://bezkaries.com/blog/2015-10-12-documentation-added-to-forknote/" />
+    <link rel="alternate" href="http://forknote.net/blog/2015-10-12-documentation-added-to-forknote/" />
     <content type="html">
 &lt;p&gt;Documentation was added for:&lt;/p&gt;
 

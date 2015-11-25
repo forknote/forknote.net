@@ -28,15 +28,15 @@
 </head>
 
 
-<body class="api ">
+<body class="api developers">
   <div id="header-wrapper">
   <div id="header">
     <div>
       <a class="logo" href="/">Forknote</a>
       <ul class="nav">
         <li><a href="/download/" class="nav-download">Download</a></li>
-        <li><a href="/coins/" class="nav-coins">Coins</a></li>
-        <li><a href="/developers/" class="nav-developers">Developers</a></li>
+        <li><a href="/create/" class="nav-create">Create</a></li>
+        <li><a href="/documentation/" class="nav-developers">Documents</a></li>
         <li><a href="/blog/" class="nav-blog">Blog</a></li>
         <li><a href="/contact/" class="nav-contact">Support</a></li>
         <li id="search-container">
@@ -94,7 +94,7 @@
     </tr>
     <tr>
       <td>CHECKPOINTS</td>
-      <td>Checkpoints. See the example for the format</td>
+      <td>Array of checkpoints. See the example for the format</td>
     </tr>
     <tr>
       <td>GENESIS_COINBASE_TX_HEX</td>
@@ -106,7 +106,7 @@
     </tr>
     <tr>
       <td>MONEY_SUPPLY</td>
-      <td>Total amount of coins to be emitted.</td>
+      <td>Total amount of atomic units to be emitted.</td>
     </tr>
     <tr>
       <td>EMISSION_SPEED_FACTOR</td>
@@ -117,12 +117,16 @@
       <td>Difficulty target is an ideal time period between blocks. Measured in seconds.</td>
     </tr>
     <tr>
+      <td>GENESIS_BLOCK_REWARD</td>
+      <td>Premine amount. Measured in atomic units.</td>
+    </tr>
+    <tr>
       <td>CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE</td>
       <td>The maximum size of a block not resulting into penelty.</td>
     </tr>
     <tr>
       <td>CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1</td>
-      <td>The maximum size of a block not resulting into penelty. Used only by old (v1) coins</td>
+      <td>The maximum size of a block not resulting into penelty. Used only by old (v1) blockchains</td>
     </tr>
     <tr>
       <td>CRYPTONOTE_DISPLAY_DECIMAL_POINT</td>
@@ -142,11 +146,11 @@
     </tr>
     <tr>
       <td>MAX_BLOCK_SIZE_INITIAL</td>
-      <td>The size of the initial block. Used to correct error in v1 coins</td>
+      <td>The size of the initial block. Used to correct error in v1 blockchains</td>
     </tr>
     <tr>
       <td>EXPECTED_NUMBER_OF_BLOCKS_PER_DAY</td>
-      <td>Expected number of blocks per day. Used to correct error in v1 coins</td>
+      <td>Expected number of blocks per day. Used to correct error in v1 blockchains</td>
     </tr>
     <tr>
       <td>UPGRADE_HEIGHT</td>
@@ -184,7 +188,7 @@
         "DIFFICULTY_TARGET": 120,
         "CRYPTONOTE_DISPLAY_DECIMAL_POINT": 12,
         "MONEY_SUPPLY": "18446744073709551615",
-        "PREMINED_PERCENT": 0,
+        "GENESIS_BLOCK_REWARD": 0,
         "DEFAULT_DUST_THRESHOLD": 1000000,
         "MINIMUM_FEE": 1000000,
         "CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW": 10,
@@ -192,10 +196,9 @@
         "CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX": 86,
         "P2P_DEFAULT_PORT": 28134,
         "RPC_DEFAULT_PORT": 28135,
-        "BYTECOIN_NETWORK": "0x46, 0x5f, 0x4a, 0x0c, 0xdc, 0x15, 0xf2, 0xdb, 0x49, 0xc3, 0x6c, 0xb1, 0x42, 0xdf, 0xbf, 0x8b",
+        "BYTECOIN_NETWORK": "3354bb33-28e2-66d3-7d92-9267413bede6",
         "CRYPTONOTE_NAME": "newcoin",
-        "DAEMON_NAME": "newcoind",
-        "CHECKPOINTS": "{28000, \"70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8\"}, {40000, \"c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038\"}",
+        "CHECKPOINTS": ["28000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8", "40000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038"],
         "GENESIS_COINBASE_TX_HEX":"010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a"
     },
     "extensions": [

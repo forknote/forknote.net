@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Guides | Forknote</title>
+  <title>Getting Started | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -28,15 +28,15 @@
 </head>
 
 
-<body class="api ">
+<body class="api developers">
   <div id="header-wrapper">
   <div id="header">
     <div>
       <a class="logo" href="/">Forknote</a>
       <ul class="nav">
         <li><a href="/download/" class="nav-download">Download</a></li>
-        <li><a href="/coins/" class="nav-coins">Coins</a></li>
-        <li><a href="/developers/" class="nav-developers">Developers</a></li>
+        <li><a href="/create/" class="nav-create">Create</a></li>
+        <li><a href="/documentation/" class="nav-developers">Documents</a></li>
         <li><a href="/blog/" class="nav-blog">Blog</a></li>
         <li><a href="/contact/" class="nav-contact">Support</a></li>
         <li id="search-container">
@@ -64,11 +64,68 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="development-guides">Development Guides</h1>
+<h1 id="getting-started">Getting Started</h1>
 
-<p>This section of the documentation is intended to get you up-and-running with
-real-world Forknote-based cryptocurrency. We’ll cover everything you need to know, from
-configuration, to creating premined coins, to running seed nodes.</p>
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#connecting-the-daemon-to-a-blockchain" id="markdown-toc-connecting-the-daemon-to-a-blockchain">Connecting the daemon to a blockchain</a></li>
+  <li><a href="#starting-simplewallet" id="markdown-toc-starting-simplewallet">Starting simplewallet</a></li>
+</ul>
+
+<p>Let’s walk through core Forknote concepts as we tackle a simple use case.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Forknote uses configuration files to describe the properties of a Cryptonote blockchain. To get started you must <a href="/download/">download</a> the latest version of Forknote.</p>
+
+<h2 id="connecting-the-daemon-to-a-blockchain">Connecting the daemon to a blockchain</h2>
+
+<p>To connect to the daemon to existing blockchain, just start <code>forknoted</code> with the corresponding configuration file.</p>
+
+<pre class="terminal">
+$ ./forknoted --config-file configs/imaginary_blockchain.conf
+</pre>
+
+<p>New blockchains are created by creating new configuration files. Configuration files are created with our <a href="/create/">blockchain creation form</a>.
+You can find more about the available configuration options in our <a href="/documentation/daemon/#configuration-options">documentation</a>.</p>
+
+<h3 id="examples">Examples</h3>
+
+<p>Dashcoin is the preconfigured blockchain in Forknote. To connect the daemon to the Dashcoin just start <code>forknoted</code>:</p>
+
+<pre class="terminal">
+$ ./forknoted
+</pre>
+
+<p>To connect to the Bytecoin blockchain, start <code>forknoted</code> with its corresponding configuration file:</p>
+
+<pre class="terminal">
+$ ./forknoted --config-file configs/bytecoin.conf
+</pre>
+
+<h2 id="starting-simplewallet">Starting simplewallet</h2>
+
+<p>Simplewallet uses the same configuration file as the daemon.</p>
+
+<p>To start simplewallet:</p>
+
+<pre class="terminal">
+$ ./simplewallet --config-file configs/imaginary_blockchain.conf
+</pre>
+
+<h3 id="examples-1">Examples</h3>
+
+<p>Starting <code>simplewallet</code> for the Dashcoin blockchain:</p>
+
+<pre class="terminal">
+$ ./simplewallet
+</pre>
+
+<p>Starting <code>simplewallet</code> for the Bytecoin blockchain:</p>
+
+<pre class="terminal">
+$ ./simplewallet --config-file configs/bytecoin.conf
+</pre>
 
 
     </div>
@@ -77,9 +134,8 @@ configuration, to creating premined coins, to running seed nodes.</p>
     
             <div class="sidebar-module">
         <ul>
-          <li><h3><a href="/guides/">Overview</a></h3></li>
-          <li><h3><a href="/guides/getting-started/">Getting started</a></h3></li>
-          <li><h3><a href="/guides/create-coin/">Create coin</a></h3></li>
+          <li><h3><a href="/guides/">Getting started</a></h3></li>
+          <li><h3><a href="/guides/setup-private-blockchain/">Setup new blockchain</a></h3></li>
           <li><h3><a href="/guides/starting-seed-node/">Starting seed node</a></h3></li>
           <li><h3><a href="/guides/troubleshooting/">Troubleshooting</a></h3></li>
         </ul>

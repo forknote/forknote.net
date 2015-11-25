@@ -28,15 +28,15 @@
 </head>
 
 
-<body class="api ">
+<body class="api developers">
   <div id="header-wrapper">
   <div id="header">
     <div>
       <a class="logo" href="/">Forknote</a>
       <ul class="nav">
         <li><a href="/download/" class="nav-download">Download</a></li>
-        <li><a href="/coins/" class="nav-coins">Coins</a></li>
-        <li><a href="/developers/" class="nav-developers">Developers</a></li>
+        <li><a href="/create/" class="nav-create">Create</a></li>
+        <li><a href="/documentation/" class="nav-developers">Documents</a></li>
         <li><a href="/blog/" class="nav-blog">Blog</a></li>
         <li><a href="/contact/" class="nav-contact">Support</a></li>
         <li id="search-container">
@@ -81,6 +81,8 @@
                                         Specify data directory
   --config-file arg (=./configs/-.conf) Specify configuration file
   --command arg                         Specify command
+  --generate-new-wallet arg (=/home/USER/forknote/my.wallet)
+                                        Generate new wallet and save it to &lt;arg&gt;
 </code></pre>
 
 <h2 id="wallet-options">Wallet options</h2>
@@ -91,7 +93,6 @@
       <th>Option</th>
       <th>Description</th>
       <th>Config Example</th>
-      <th>Console Example</th>
     </tr>
   </thead>
   <tbody>
@@ -99,175 +100,161 @@
       <td>wallet-file</td>
       <td>Use wallet &lt;arg&gt;</td>
       <td>wallet-file = /home/USERNAME/<br>forknote-linux/dashcoin.wallet</td>
-      <td>–wallet-file /home/USERNAME/<br>forknote-linux/dashcoin.wallet</td>
-    </tr>
-    <tr>
-      <td>generate-new-wallet</td>
-      <td>Generate new wallet and save it to &lt;arg&gt;</td>
-      <td> </td>
-      <td>–generate-new-wallet /home/USERNAME/<br>forknote-linux/dashcoin.wallet</td>
     </tr>
     <tr>
       <td>password</td>
       <td>Wallet password</td>
       <td>password = PASSWORD</td>
-      <td>–password PASSWORD</td>
     </tr>
     <tr>
       <td>daemon-address</td>
       <td>Use daemon instance at &lt;host&gt;:&lt;port&gt;</td>
       <td>daemon-address = 127.0.0.1:29081</td>
-      <td>–daemon-address 127.0.0.1:29081</td>
     </tr>
     <tr>
       <td>daemon-host</td>
       <td>Use daemon instance at host &lt;arg&gt; instead of localhost</td>
       <td>daemon-host = 127.0.0.1</td>
-      <td>–daemon-host 127.0.0.1</td>
     </tr>
     <tr>
       <td>daemon-port</td>
       <td>Use daemon instance at port &lt;arg&gt; instead of 8081</td>
       <td>daemon-port = 29081</td>
-      <td>–daemon-port 29081</td>
     </tr>
     <tr>
       <td>set_log</td>
       <td>Level of logging. Default is 1.</td>
       <td>set_log = 4</td>
-      <td>–set_log 4</td>
     </tr>
     <tr>
-      <td>testnet</td>
-      <td>Used to deploy test nets. The daemon must be launched with –testnet flag</td>
-      <td> </td>
-      <td>–testnet</td>
+      <td>P2P_STAT_TRUSTED_PUB_KEY</td>
+      <td>P2P stat trusted pub key</td>
+      <td>P2P_STAT_TRUSTED_PUB_KEY = 4d..eb</td>
     </tr>
     <tr>
-      <td>wallet-rpc-bind-ip</td>
-      <td>Specify ip to bind rpc server</td>
-      <td>wallet-rpc-bind-ip = 127.0.0.1</td>
-      <td>–wallet-rpc-bind-ip 127.0.0.1</td>
+      <td>BYTECOIN_NETWORK</td>
+      <td>Used for network packages in order not to mix two different cryptocoin networks</td>
+      <td>BYTECOIN_NETWORK = 11100111-1100-0101-1011-001210110110</td>
     </tr>
     <tr>
-      <td>wallet-rpc-bind-port</td>
-      <td>Starts wallet as rpc server for wallet operations, sets bind port for server</td>
-      <td>wallet-rpc-bind-port = 29082</td>
-      <td>–wallet-rpc-bind-port 29082</td>
-    </tr>
-    <tr>
-      <td>GENESIS_COINBASE<br>_TX_HEX</td>
+      <td>GENESIS_COINBASE_TX_HEX</td>
       <td>The hex of the transaction in the genesis block</td>
-      <td>GENESIS_COINBASE<br>_TX_HEX = 01..4a</td>
-      <td>–GENESIS_COINBASE<br>_TX_HEX 01..4a</td>
+      <td>GENESIS_COINBASE_TX_HEX = 01..4a</td>
     </tr>
     <tr>
-      <td>CRYPTONOTE_<br>PUBLIC_ADDRESS_<br>BASE58_PREFIX</td>
+      <td>CRYPTONOTE_PUBLIC_ADDRESS_<br>BASE58_PREFIX</td>
       <td>Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator</td>
-      <td>CRYPTONOTE_<br>PUBLIC_ADDRESS_<br>BASE58_PREFIX = 86</td>
-      <td>–CRYPTONOTE_<br>PUBLIC_ADDRESS_<br>BASE58_PREFIX 86</td>
+      <td>CRYPTONOTE_PUBLIC_ADDRESS_<br>BASE58_PREFIX = 86</td>
     </tr>
     <tr>
       <td>MONEY_SUPPLY</td>
       <td>Total amount of coins to be emitted.</td>
       <td>MONEY_SUPPLY = 18446744073709551615</td>
-      <td>–MONEY_SUPPLY 18446744073709551615</td>
     </tr>
     <tr>
-      <td>EMISSION_<br>SPEED_FACTOR</td>
+      <td>EMISSION_SPEED_FACTOR</td>
       <td>Constant defines emission curve slope. This parameter is required to calulate block reward.</td>
-      <td>EMISSION_<br>SPEED_FACTOR = 18</td>
-      <td>–EMISSION_<br>SPEED_FACTOR 18</td>
+      <td>EMISSION_SPEED_FACTOR = 18</td>
     </tr>
     <tr>
       <td>DIFFICULTY_TARGET</td>
       <td>Difficulty target is an ideal time period between blocks. Measured in seconds.</td>
       <td>DIFFICULTY_TARGET = 120</td>
-      <td>–DIFFICULTY_TARGET 120</td>
     </tr>
     <tr>
-      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE</td>
+      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE</td>
       <td>The maximum size of a block not resulting into penelty.</td>
-      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE = 20000</td>
-      <td>–CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE 20000</td>
+      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE = 20000</td>
     </tr>
     <tr>
-      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE_V1</td>
+      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1</td>
       <td>The maximum size of a block not resulting into penelty. Used only by old (v1) coins</td>
-      <td>CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE_V1 = 10000</td>
-      <td>–CRYPTONOTE_BLOCK<br>_GRANTED_FULL<br>_REWARD_ZONE_V1 10000</td>
+      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1 = 10000</td>
     </tr>
     <tr>
       <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT</td>
       <td>1 coin = 10^(this value) atomic units</td>
       <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT = 8</td>
-      <td>–CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT 8</td>
     </tr>
     <tr>
       <td>MINIMUM_FEE</td>
       <td>Transactions with less than this fee wouldn’t be accepted by daemons</td>
       <td>MINIMUM_FEE = 1000000</td>
-      <td>–MINIMUM_FEE 1000000</td>
     </tr>
     <tr>
-      <td>DEFAULT_<br>DUST_THRESHOLD</td>
+      <td>DEFAULT_DUST_THRESHOLD</td>
       <td>The amount bellow this value will be considered as dust</td>
-      <td>DEFAULT_<br>DUST_THRESHOLD = 1000000</td>
-      <td>–DEFAULT_<br>DUST_THRESHOLD 1000000</td>
+      <td>DEFAULT_DUST_THRESHOLD = 1000000</td>
     </tr>
     <tr>
-      <td>CRYPTONOTE_<br>MINED_MONEY_<br>UNLOCK_WINDOW</td>
+      <td>CRYPTONOTE_MINED_MONEY_<br>UNLOCK_WINDOW</td>
       <td>Number of blocks to unlock miner transactions</td>
-      <td>CRYPTONOTE_<br>MINED_MONEY_<br>UNLOCK_WINDOW = 10</td>
-      <td>–CRYPTONOTE_<br>MINED_MONEY_<br>UNLOCK_WINDOW 10</td>
+      <td>CRYPTONOTE_MINED_MONEY_<br>UNLOCK_WINDOW = 10</td>
     </tr>
     <tr>
-      <td>MAX_BLOCK_<br>SIZE_INITIAL</td>
+      <td>MAX_BLOCK_SIZE_INITIAL</td>
       <td>The size of the initial block. Used to correct error in v1 coins</td>
-      <td>MAX_BLOCK_<br>SIZE_INITIAL = 20480</td>
-      <td>–MAX_BLOCK_<br>SIZE_INITIAL 20480</td>
+      <td>MAX_BLOCK_SIZE_INITIAL = 20480</td>
     </tr>
     <tr>
       <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY</td>
       <td>Expected number of blocks per day. Used to correct error in v1 coins</td>
       <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY = 720</td>
-      <td>–EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY 720</td>
     </tr>
     <tr>
       <td>UPGRADE_HEIGHT</td>
       <td>Block hight to move to blocks with major version 2. Use ‘1’ for new blockchains</td>
       <td>UPGRADE_HEIGHT = 1</td>
-      <td>–UPGRADE_HEIGHT 1</td>
     </tr>
     <tr>
       <td>DIFFICULTY_CUT</td>
       <td>Timestamps to cut after sorting</td>
       <td>DIFFICULTY_CUT = 60</td>
-      <td>–DIFFICULTY_CUT 60</td>
     </tr>
     <tr>
       <td>DIFFICULTY_LAG</td>
       <td>Lag of calculating the difficulty in terms of blocks</td>
       <td>DIFFICULTY_LAG = 15</td>
-      <td>–DIFFICULTY_LAG 15</td>
     </tr>
     <tr>
-      <td>MAX_TRANSACTION<br>_SIZE_LIMIT</td>
+      <td>CRYPTONOTE_NAME</td>
+      <td>Cryptonote name. Used for storage directory</td>
+      <td>CRYPTONOTE_NAME = dashcoin</td>
+    </tr>
+    <tr>
+      <td>CHECKPOINT</td>
+      <td>Checkpoints. Format: HEIGHT:HASH</td>
+      <td>CHECKPOINT = 10:70d..f8</td>
+    </tr>
+    <tr>
+      <td>GENESIS_BLOCK_REWARD</td>
+      <td>Amount of premined coins. In atomic units</td>
+      <td>GENESIS_BLOCK_REWARD = 1844674407370955161</td>
+    </tr>
+    <tr>
+      <td>wallet-rpc-bind-ip</td>
+      <td>Specify ip to bind rpc server</td>
+      <td>wallet-rpc-bind-ip = 127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>wallet-rpc-bind-port</td>
+      <td>Starts wallet as rpc server for wallet operations, sets bind port for server</td>
+      <td>wallet-rpc-bind-port = 29082</td>
+    </tr>
+    <tr>
+      <td>MAX_TRANSACTION_SIZE_LIMIT</td>
       <td>Maximum size of the transactions sent through simplewallet</td>
       <td>MAX_TRANSACTION<br>_SIZE_LIMIT = 20000</td>
-      <td>–MAX_TRANSACTION<br>_SIZE_LIMIT 20000</td>
     </tr>
     <tr>
       <td>DEFAULT_FEE</td>
       <td>Default fee of the transactions sent through simplewallet</td>
       <td>DEFAULT_FEE = 1000000000</td>
-      <td>–DEFAULT_FEE 1000000000</td>
     </tr>
     <tr>
       <td>SYNC_FROM_ZERO</td>
       <td>Sync from block 0. Use for premine wallet or brainwallet</td>
       <td>SYNC_FROM_ZERO</td>
-      <td>–SYNC_FROM_ZERO</td>
     </tr>
   </tbody>
 </table>
@@ -287,7 +274,7 @@ EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
 MONEY_SUPPLY=18446744073709551615
-PREMINED_PERCENT=0
+GENESIS_BLOCK_REWARD=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
@@ -313,11 +300,7 @@ wallet-rpc-bind-port=17102
     <tr>
       <th>Command</th>
       <th>Description</th>
-      <th>Arg 1</th>
-      <th>Arg 2</th>
-      <th>Arg 3</th>
-      <th>Arg 4</th>
-      <th>Arg 5</th>
+      <th>Args</th>
     </tr>
   </thead>
   <tbody>
@@ -325,118 +308,66 @@ wallet-rpc-bind-port=17102
       <td>address</td>
       <td>Show current wallet public address</td>
       <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>balance</td>
       <td>Show current wallet balance</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
       <td>-</td>
     </tr>
     <tr>
       <td>bc_height</td>
       <td>Show blockchain height</td>
       <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>help</td>
       <td>Print help on wallet commands</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
       <td>-</td>
     </tr>
     <tr>
       <td>incoming_transfers</td>
       <td>Show incoming transfers</td>
       <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>list_transfers</td>
       <td>Show all known transfers</td>
       <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>payments</td>
       <td>Show payments with the corresponding payment_id’s. You may indicate more than one payment_id.</td>
-      <td>[string] payment_id</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
+      <td>[string] payment_id</td>
     </tr>
     <tr>
       <td>reset</td>
       <td>Discard cache data and start synchronizing from scratch</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
       <td>-</td>
     </tr>
     <tr>
       <td>save</td>
       <td>Save wallet synchronized data</td>
       <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>set_log</td>
       <td>Change current log detailization level</td>
       <td>[uint] log level (0 - 4)</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>start_mining</td>
       <td>Start mining in daemon</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
       <td>-</td>
     </tr>
     <tr>
       <td>stop_mining</td>
       <td>Stop mining in daemon</td>
       <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
     </tr>
     <tr>
       <td>transfer</td>
       <td>Transfer amount to address with mixin_count (number of transactions yours is indistinguishable from)</td>
-      <td>[uint] mixin_count</td>
-      <td>[string] address</td>
-      <td>[double] amount</td>
-      <td>[string] -p payment_id</td>
-      <td>[double] -f fee</td>
+      <td>[uint] mixin_count <br> [string] address <br> [double] amount <br> [string] -p payment_id <br> [double] -f fee</td>
     </tr>
   </tbody>
 </table>

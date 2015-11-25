@@ -1,11 +1,11 @@
 
     <div class="content coin-form">
 
-      <h1 id="create-config-file" class="page-header">Create configuration file</h1>
+      <h1 id="create-config-file" class="page-header">Create Cryptonote blockchain</h1>
       <form role="form" name="coinForm">
           <div class="form-group" show-errors>
             <label class="control-label"
-            for="coin.core.CRYPTONOTE_NAME">Coin name</label>
+            for="coin.core.CRYPTONOTE_NAME">Blockchain name</label>
             <input class="form-control" name="core_CRYPTONOTE_NAME" type="text" ng-model="coin.core.CRYPTONOTE_NAME" ng-change="cryptonoteNameChanged()"
             required
             id="coin.core.CRYPTONOTE_NAME"
@@ -56,16 +56,16 @@
 
           <div class="form-group" show-errors>
             <label class="control-label"
-            for="coin.core.PREMINED_PERCENT">Percent of premined coins</label>
+            for="PREMINED_PERCENT">Percent of premined coins</label>
             <div class="input-group">
-              <input class="form-control" name="core_PREMINED_PERCENT" type="number" pattern="\d+" ng-model="coin.core.PREMINED_PERCENT" required
-              id="coin.core.PREMINED_PERCENT"
+              <input class="form-control" name="PREMINED_PERCENT" type="number" pattern="\d+" ng-model="PREMINED_PERCENT" required
+              id="PREMINED_PERCENT"
               ng-change="supplyParameterChanged()"
               min="0"
               max="100" aria-describedby="premine-addon" />
               <span class="input-group-addon" id="premine-addon">{{coinPremineHumanReadable | number:0}} coins</span>
-              <p class="help-block error-color" ng-if="coinForm.core_PREMINED_PERCENT.$error.min">Min: 1</p>
-              <p class="help-block error-color" ng-if="coinForm.core_PREMINED_PERCENT.$error.max">Max: 100</p>
+              <p class="help-block error-color" ng-if="coinForm.PREMINED_PERCENT.$error.min">Min: 1</p>
+              <p class="help-block error-color" ng-if="coinForm.PREMINED_PERCENT.$error.max">Max: 100</p>
             </div>
           </div>
 
@@ -135,7 +135,7 @@
 
         <h2>Guides</h2>
         <ul class="headlines sidebar-module">
-          <li><a href="/guides/create-coin/"><i class="fa fa-lightbulb-o  fa-fw"></i>&nbsp; Create coin</a></li>
+          <li><a href="/guides/setup-private-blockchain/"><i class="fa fa-lightbulb-o  fa-fw"></i>&nbsp; Setup new blockchain</a></li>
           <li><a href="/guides/starting-seed-node/"><i class="fa fa-lightbulb-o  fa-fw"></i>&nbsp; Start seed node</a></li>
           <li><a href="/guides/troubleshooting/"><i class="fa fa-info  fa-fw"></i>&nbsp; Troubleshooting</a></li>
         </ul>

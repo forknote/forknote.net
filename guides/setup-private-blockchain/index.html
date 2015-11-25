@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Create Cryptonote blockchain guide | Forknote</title>
+  <title>Setup Cryptonote blockchain guide | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -64,7 +64,7 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="create-new-blockchain">Create new blockchain</h1>
+<h1 id="setup-new-cryptonote-blockchain">Setup new Cryptonote blockchain</h1>
 
 <ul id="markdown-toc">
   <li><a href="#creating-configuration-file" id="markdown-toc-creating-configuration-file">Creating configuration file</a></li>
@@ -73,7 +73,7 @@
   <li><a href="#adding-seed-nodes" id="markdown-toc-adding-seed-nodes">Adding seed nodes</a></li>
 </ul>
 
-<p>Let’s walk through the process of creating a configuration file for your coin.</p>
+<p>Let’s walk through the process of creating a configuration file for a new private blockchain.</p>
 
 <h2 id="creating-configuration-file">Creating configuration file</h2>
 
@@ -85,7 +85,7 @@
 
 <h3 id="example-on-linuxmac">Example on Linux/Mac:</h3>
 
-<pre class="terminal">$ cat &gt;testcoin.conf 
+<pre class="terminal">$ cat &gt;imaginary_blockchain.conf 
 
 EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
@@ -100,7 +100,7 @@ CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
 p2p-bind-port=13539
 rpc-bind-port=13540
 BYTECOIN_NETWORK=e3df4e17-934c-9768-d63d-37df3503e80b
-CRYPTONOTE_NAME=testcoin
+CRYPTONOTE_NAME=imaginary_blockchain
 UPGRADE_HEIGHT=1
 </pre>
 
@@ -110,7 +110,7 @@ UPGRADE_HEIGHT=1
 
 <p><em>This step is only required if your coin has premine</em></p>
 
-<pre class="terminal">$ ./simplewallet --config-file configs/testcoin.conf --generate-new-wallet MY.wallet --password PASSWORD
+<pre class="terminal">$ ./simplewallet --config-file configs/imaginary_blockchain.conf --generate-new-wallet MY.wallet --password PASSWORD
 
 config path exist
 forknote wallet v1.0.8.1.614()
@@ -127,7 +127,7 @@ view key: 18367126f3948849c1754d14e53702c046751ed7a108290f16bbfd5b3a71180e
 
 <h3 id="for-coins-without-premine">For coins without premine</h3>
 
-<pre class="terminal">$ ./forknoted --config-file configs/testcoin.conf --print-genesis-tx
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx
 
 config path exist
 Modify this line into your coin configuration file as is: 
@@ -137,7 +137,7 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1
 
 <h3 id="for-coins-with-premine">For coins with premine</h3>
 
-<pre class="terminal">$ ./forknoted --config-file configs/testcoin.conf --print-genesis-tx \
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx \
  --genesis-block-reward-address FXhKiPxMdJ6LL1iqkEDWbk1BiiQ7SzHY1b3L9KqqPmP95e9toTXKvQSVGePtjfoDUhMPqSEKFhzymA84o6fGPhQiUYP92rT \
  --genesis-block-reward-address FPMfUYtRHcZJdL2nLDH7zi2bZUMzgdMPm8kHibeV4qLh8pfsvZsBF6eiHH8T2QkdZm4viA2F9S4YvUk2PXodvxRPDYVvXyR
 
@@ -159,7 +159,7 @@ GENESIS_COINBASE_TX_HEX=010a01ff0002cc99b3e6cc99b3e60c024fe47e814d9f44c83184334f
 
 <p>You must use the <code>SYNC_FROM_ZERO</code> option of simplewallet to see the premined coins.</p>
 
-<pre class="terminal">$ ./simplewallet --config-file configs/testcoin.conf --SYNC_FROM_ZERO
+<pre class="terminal">$ ./simplewallet --config-file configs/imaginary_blockchain.conf --SYNC_FROM_ZERO
 </pre>
 
 <h2 id="adding-seed-nodes">Adding seed nodes</h2>
@@ -185,9 +185,8 @@ You can use our <a href="/guides/starting-seed-node/">guide about seed node crea
     
             <div class="sidebar-module">
         <ul>
-          <li><h3><a href="/guides/">Overview</a></h3></li>
-          <li><h3><a href="/guides/getting-started/">Getting started</a></h3></li>
-          <li><h3><a href="/guides/create-coin/">Setup new blockchain</a></h3></li>
+          <li><h3><a href="/guides/">Getting started</a></h3></li>
+          <li><h3><a href="/guides/setup-private-blockchain/">Setup new blockchain</a></h3></li>
           <li><h3><a href="/guides/starting-seed-node/">Starting seed node</a></h3></li>
           <li><h3><a href="/guides/troubleshooting/">Troubleshooting</a></h3></li>
         </ul>

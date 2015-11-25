@@ -28,15 +28,15 @@
 </head>
 
 
-<body class="api ">
+<body class="api developers">
   <div id="header-wrapper">
   <div id="header">
     <div>
       <a class="logo" href="/">Forknote</a>
       <ul class="nav">
         <li><a href="/download/" class="nav-download">Download</a></li>
-        <li><a href="/coins/" class="nav-coins">Coins</a></li>
-        <li><a href="/developers/" class="nav-developers">Developers</a></li>
+        <li><a href="/create/" class="nav-create">Create</a></li>
+        <li><a href="/documentation/" class="nav-developers">Documents</a></li>
         <li><a href="/blog/" class="nav-blog">Blog</a></li>
         <li><a href="/contact/" class="nav-contact">Support</a></li>
         <li id="search-container">
@@ -68,8 +68,7 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#starting-the-daemon-for-preconfigured-networks" id="markdown-toc-starting-the-daemon-for-preconfigured-networks">Starting the daemon for preconfigured networks</a></li>
-  <li><a href="#starting-the-daemon-for-custom-networks" id="markdown-toc-starting-the-daemon-for-custom-networks">Starting the daemon for custom networks</a></li>
+  <li><a href="#connecting-the-daemon-to-a-blockchain" id="markdown-toc-connecting-the-daemon-to-a-blockchain">Connecting the daemon to a blockchain</a></li>
   <li><a href="#starting-simplewallet" id="markdown-toc-starting-simplewallet">Starting simplewallet</a></li>
 </ul>
 
@@ -77,52 +76,32 @@
 
 <h2 id="overview">Overview</h2>
 
-<p>Forknote uses configuration files to describe the properties of a Cryptonote network. To get started you must <a href="/download/">download</a> the latest version of Forknote.</p>
+<p>Forknote uses configuration files to describe the properties of a Cryptonote blockchain. To get started you must <a href="/download/">download</a> the latest version of Forknote.</p>
 
-<h2 id="starting-the-daemon-for-preconfigured-networks">Starting the daemon for preconfigured networks</h2>
+<h2 id="connecting-the-daemon-to-a-blockchain">Connecting the daemon to a blockchain</h2>
 
-<p>Forknote comes preconfigured with 2 networks - Dashcoin and <a href="https://bytecoin.org/">Bytecoin</a>.</p>
+<p>To connect to the daemon to existing blockchain, just start <code>forknoted</code> with the corresponding configuration file.</p>
 
-<h3 id="connecting-to-dashcoin">Connecting to Dashcoin</h3>
+<pre class="terminal">
+$ ./forknoted --config-file configs/imaginary_blockchain.conf
+</pre>
 
-<p>To connect to Dashcoin open up a command prompt and enter the
-following command (without the <code>$</code>):</p>
+<p>New blockchains are created by creating new configuration files. Configuration files are created with our <a href="/create/">blockchain creation form</a>.
+You can find more about the available configuration options in our <a href="/documentation/daemon/#configuration-options">documentation</a>.</p>
+
+<h3 id="examples">Examples</h3>
+
+<p>Dashcoin is the preconfigured blockchain in Forknote. To connect the daemon to the Dashcoin just start <code>forknoted</code>:</p>
 
 <pre class="terminal">
 $ ./forknoted
-
-config path exist
-12:34:56.789012 INFO forknote v1.0.8.608()
 </pre>
 
-<p>By default, Forknote will load the Dashcoin configuration file (<code>configs/-.conf</code>), if no configuration file is passed as option.</p>
-
-<h3 id="connecting-to-bytecoin">Connecting to Bytecoin</h3>
-
-<p>To connect to Dashcoin open up a command prompt and enter the
-following command (without the <code>$</code>):</p>
+<p>To connect to the Bytecoin blockchain, start <code>forknoted</code> with its corresponding configuration file:</p>
 
 <pre class="terminal">
 $ ./forknoted --config-file configs/bytecoin.conf
-
-config path exist
-12:34:56.789012 INFO forknote v1.0.8.608()
 </pre>
-
-<h2 id="starting-the-daemon-for-custom-networks">Starting the daemon for custom networks</h2>
-
-<p>To connect to custom networks, you must save the configuraton file in the <code>configs</code> subfolder of Forknote.</p>
-
-<p>Next, let’s start the daemon itself:</p>
-
-<pre class="terminal">
-$ ./forknoted --config-file configs/CUSTOM_NETWORK.conf
-
-config path exist
-12:34:56.789012 INFO forknote v1.0.8.608()
-</pre>
-
-<p>Please note you have to change <code>CUSTOM_NETWORK</code> with appropriate file name.</p>
 
 <h2 id="starting-simplewallet">Starting simplewallet</h2>
 
@@ -131,21 +110,22 @@ config path exist
 <p>To start simplewallet:</p>
 
 <pre class="terminal">
-$ ./simplewallet --config-file configs/CUSTOM_NETWORK.conf
-
-config path exist
-forknote wallet v1.0.8.608()
-Nor 'generate-new-wallet' neither 'wallet-file' argument was specified.
-What do you want to do?
-[O]pen existing wallet, [G]enerate new wallet file or [E]xit.
+$ ./simplewallet --config-file configs/imaginary_blockchain.conf
 </pre>
 
-<p>Press <code>g</code> to create new wallet and type your wallet’s name and password.</p>
+<h3 id="examples-1">Examples</h3>
 
-<p>A good practice for naming your wallet is to add <code>NETWORK.</code> prefix to your name.<br>
-For example, for Dashcoin wallet use the <code>dashcoin.</code> prefix - <code>dashcoin.example_wallet</code></p>
+<p>Starting <code>simplewallet</code> for the Dashcoin blockchain:</p>
 
-<p>Don’t forget to backup your wallet.</p>
+<pre class="terminal">
+$ ./simplewallet
+</pre>
+
+<p>Starting <code>simplewallet</code> for the Bytecoin blockchain:</p>
+
+<pre class="terminal">
+$ ./simplewallet --config-file configs/bytecoin.conf
+</pre>
 
 
     </div>
@@ -156,7 +136,7 @@ For example, for Dashcoin wallet use the <code>dashcoin.</code> prefix - <code>d
         <ul>
           <li><h3><a href="/guides/">Overview</a></h3></li>
           <li><h3><a href="/guides/getting-started/">Getting started</a></h3></li>
-          <li><h3><a href="/guides/create-coin/">Create coin</a></h3></li>
+          <li><h3><a href="/guides/create-coin/">Setup new blockchain</a></h3></li>
           <li><h3><a href="/guides/starting-seed-node/">Starting seed node</a></h3></li>
           <li><h3><a href="/guides/troubleshooting/">Troubleshooting</a></h3></li>
         </ul>
