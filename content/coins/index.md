@@ -1,5 +1,5 @@
 ---
-title: Existing coins | Forknote
+title: Existing blockchains | Forknote
 layout: overview
 body_class: coins
 ---
@@ -9,7 +9,7 @@ body_class: coins
 <div class="full-width dev-program-callout">
   <div class="wrapper">
     <h2>Join the Forknote Community.</h2>
-    <p>The easiest way to create Cryptonote coins. <a href="/developers/">Learn more</a>.</p>
+    <p>The easiest way to create Cryptonote blockchains. <a href="/create/">Create now</a>.</p>
   </div>
 </div>
 
@@ -18,7 +18,7 @@ body_class: coins
     <li class="highlight-module">
       <a href="" data-toggle="modal" data-target="#bytecoin_modal"><span class="mega-octicon"><img src="/images/coins/bytecoin@2x.png" width="70" height="70" /></span></a>
       <h2><a href="" data-toggle="modal" data-target="#bytecoin_modal">Bytecoin</a></h2>
-      <p>The seed coin of Forknote. All Forknote-based coins have the same core features as Bytecoin.</p>
+      <p>The seed coin of Forknote. All Forknote-based blockchains have the same core features as Bytecoin.</p>
     </li>
     <li class="highlight-module">
       <a href="" data-toggle="modal" data-target="#dashcoin_modal"><span class="mega-octicon"><img src="/images/coins/dashcoin@2x.png" width="70" height="70" /></span></a>
@@ -41,8 +41,8 @@ body_class: coins
     </li>
     <li class="highlight-module">
       <a href="/contact/"><span class="mega-octicon octicon-question"></span></a>
-      <h2><a href="/contact/">Add Your Coin</a></h2>
-      <p>Contact us to get your Forknote coin added to this list.</p>
+      <h2><a href="/contact/">Add Your Blockchain</a></h2>
+      <p>Contact us to get your Forknote blockchain added to this list.</p>
     </li>
     <li class="highlight-module">
       <span class="mega-octicon">&nbsp;</span>
@@ -65,11 +65,11 @@ body_class: coins
 
   <div class="program-info-column">
     <span class="mega-octicon octicon-git-branch-create"></span>
-    <h2>Want to create your own cryptocurrency?</h2>
-    <p>Visit the developer section or go streight to the documentation:</p>
+    <h2>Want to create a private blockchain?</h2>
+    <p>Fast start with our blockchain creation form or go streight to the documentation:</p>
     <ul>
-      <li><a href="/developers/">Intro for developers</a></li>
-      <li><a href="/documentation/">Documentation</a></li>
+      <li><a href="/create/">Create blockchain</a> with a simple form</li>
+      <li><a href="/documentation/">Documentation</a> and <a href="/guides/" title="cryptonote tutorials">guides</a> for developers</li>
     </ul>
   </div>
 </div>

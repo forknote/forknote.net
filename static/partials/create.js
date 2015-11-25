@@ -16,8 +16,9 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
     var str_supply = $scope.MONEY_SUPPLY.toString();
     $scope.coin.core.MONEY_SUPPLY = str_supply;
     $scope.coinAmountHumanReadable = str_supply.substring(0, str_supply.length - $scope.coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT) + " coins";
-    $scope.coin.core.PREMINED_PERCENT = 0;
-    var str_premine = ( parseInt($scope.MONEY_SUPPLY * $scope.coin.core.PREMINED_PERCENT / 100) ).toString();
+    $scope.PREMINED_PERCENT = 0;
+    $scope.coin.core.GENESIS_BLOCK_REWARD = '0';
+    var str_premine = $scope.coin.core.GENESIS_BLOCK_REWARD;
     $scope.coinPremineHumanReadable = str_premine.substring(0, str_premine.length - $scope.coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT) + " coins";
     $scope.coin.core.DEFAULT_DUST_THRESHOLD = 1000000;
     $scope.coin.core.MINIMUM_FEE = 1000000;
@@ -68,7 +69,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
       timeout4 = $timeout($scope.emmissionChange, 0);
     });
     var timeout5;
-      $scope.$watch('coin.core.PREMINED_PERCENT', function() {
+      $scope.$watch('PREMINED_PERCENT', function() {
         if (timeout5) {
         $timeout.cancel(timeout5);
       }
@@ -256,7 +257,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
             var difficultyTarget = +$scope.coin.core.DIFFICULTY_TARGET;
             var moneySupply = +$scope.coin.core.MONEY_SUPPLY;
             var emissionSpeedFactor = +$scope.coin.core.EMISSION_SPEED_FACTOR;
-            var preminePercent = +$scope.coin.core.PREMINED_PERCENT;
+            var preminePercent = +$scope.PREMINED_PERCENT;
             var cryptonoteDisplayDecimalPoint = +$scope.coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT;
             if (isNaN(emissionSpeedFactor)) {
                 emissionSpeedFactor = 0;
@@ -345,9 +346,13 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
         $scope.coin.core.MONEY_SUPPLY = str;
         $scope.coinAmountHumanReadable = str.substring(0, str.length - $scope.coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT);
 
-        var str_premine = ( parseInt($scope.MONEY_SUPPLY * $scope.coin.core.PREMINED_PERCENT / 100) ).toString();
-        $scope.coinPremineHumanReadable = str_premine.substring(0, str_premine.length - $scope.coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT);
-    }  
+        if ($scope.PREMINED_PERCENT == 100) {
+            $scope.coin.core.GENESIS_BLOCK_REWARD = $scope.MONEY_SUPPLY.toString();
+        } else {
+            $scope.coin.core.GENESIS_BLOCK_REWARD = ( parseInt($scope.MONEY_SUPPLY * $scope.PREMINED_PERCENT / 100) ).toString();
+        }
+        $scope.coinPremineHumanReadable = $scope.coin.core.GENESIS_BLOCK_REWARD.substring(0, $scope.coin.core.GENESIS_BLOCK_REWARD.length - $scope.coin.core.CRYPTONOTE_DISPLAY_DECIMAL_POINT);
+    }
 
 // Populate CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX
     $scope.addressPrefixChanged = function () {
@@ -393,7 +398,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
                 MoneySupply : $scope.coin.core.MONEY_SUPPLY,
                 EmissionSpeedFactor : $scope.coin.core.EMISSION_SPEED_FACTOR,
                 DifficultyTarget : $scope.coin.core.DIFFICULTY_TARGET,
-                PercentPreminedCoins : $scope.coin.core.PREMINED_PERCENT
+                GenesisBlockReward : $scope.coin.core.GENESIS_BLOCK_REWARD
         };
         var res = $http.post('http://api.forknote.net:8080/genesis_tx/', dataObj);
         res.success(function(data, status, headers, config) {
@@ -450,8 +455,8 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
             if (i != 15)
                 network_identifier += ', ';
         }
-        $scope.coin.core.BYTECOIN_NETWORK = network_identifier;
         $scope.deamon_network_identifier = deamon_network_identifier;
+        $scope.coin.core.BYTECOIN_NETWORK = deamon_network_identifier;
     }
 
 // Modals

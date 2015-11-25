@@ -1,7 +1,7 @@
 ---
-title: Create Cryptonote coin | Forknote
+title: Create Cryptonote private blockchain | Forknote
 layout: overview
-body_class: developers
+body_class: create
 ---
 
 <div id="wrapper" ng-app="create-coin">

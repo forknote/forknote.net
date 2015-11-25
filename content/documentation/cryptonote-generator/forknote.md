@@ -11,7 +11,7 @@ sidebar_nav: sidebar-documentation
 * TOC
 {:toc}
 
-Forknote adds the [parameters of Cryptonote generator][Cryptonote_generator_core_parameters_documentation] to the daemon, simplewallet and payment gateway. It allows easy creation of private chains.
+Forknote adds the [parameters of Cryptonote generator][Cryptonote_generator_core_parameters_documentation] to the daemon, simplewallet and payment gateway. It allows easy creation of private blockchains.
 
 
 ## How it works

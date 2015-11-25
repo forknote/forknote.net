@@ -1,21 +1,21 @@
 ---
-title: Create Cryptonote coin guide | Forknote
+title: Setup Cryptonote blockchain guide | Forknote
 layout: documentation
 body_class: developers
 subnav_class: docs-guides
 sidebar_nav: sidebar-giudes
 ---
 
-# Create coin
+# Setup new Cryptonote blockchain
 
 * TOC
 {:toc}
 
 
-Let's walk through the process of creating a configuration file for your coin.
+Let's walk through the process of creating a configuration file for a new private blockchain.
 
 
-## Creating config file
+## Creating configuration file
 
 Create the configuration file of your coin by using our [configuration form][create].
 
@@ -25,13 +25,13 @@ Save the resulted configuration in the `configs` folder of Forknote.
 
 ###Example on Linux/Mac:
 
-<pre class="terminal">$ cat >testcoin.conf 
+<pre class="terminal">$ cat >imaginary_blockchain.conf 
 
 EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
 MONEY_SUPPLY=18446744073709551615
-PREMINED_PERCENT=0
+GENESIS_BLOCK_REWARD=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
@@ -40,7 +40,7 @@ CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
 p2p-bind-port=13539
 rpc-bind-port=13540
 BYTECOIN_NETWORK=e3df4e17-934c-9768-d63d-37df3503e80b
-CRYPTONOTE_NAME=testcoin
+CRYPTONOTE_NAME=imaginary_blockchain
 UPGRADE_HEIGHT=1
 </pre>
 
@@ -52,7 +52,7 @@ If you want to learn more you can checkout the [supported parameters][supported-
 
 *This step is only required if your coin has premine*
 
-<pre class="terminal">$ ./simplewallet --config-file configs/testcoin.conf --generate-new-wallet MY.wallet --password PASSWORD
+<pre class="terminal">$ ./simplewallet --config-file configs/imaginary_blockchain.conf --generate-new-wallet MY.wallet --password PASSWORD
 
 config path exist
 forknote wallet v1.0.8.1.614()
@@ -70,7 +70,7 @@ view key: 18367126f3948849c1754d14e53702c046751ed7a108290f16bbfd5b3a71180e
 
 ### For coins without premine
 
-<pre class="terminal">$ ./forknoted --config-file configs/testcoin.conf --print-genesis-tx
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx
 
 config path exist
 Modify this line into your coin configuration file as is: 
@@ -80,7 +80,7 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1
 
 ###For coins with premine
 
-<pre class="terminal">$ ./forknoted --config-file configs/testcoin.conf --print-genesis-tx \
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx \
  --genesis-block-reward-address FXhKiPxMdJ6LL1iqkEDWbk1BiiQ7SzHY1b3L9KqqPmP95e9toTXKvQSVGePtjfoDUhMPqSEKFhzymA84o6fGPhQiUYP92rT \
  --genesis-block-reward-address FPMfUYtRHcZJdL2nLDH7zi2bZUMzgdMPm8kHibeV4qLh8pfsvZsBF6eiHH8T2QkdZm4viA2F9S4YvUk2PXodvxRPDYVvXyR
 
@@ -102,7 +102,7 @@ Alternatively, you can add it into the [configuration form][create] and save the
 
 You must use the `SYNC_FROM_ZERO` option of simplewallet to see the premined coins.
 
-<pre class="terminal">$ ./simplewallet --config-file configs/testcoin.conf --SYNC_FROM_ZERO
+<pre class="terminal">$ ./simplewallet --config-file configs/imaginary_blockchain.conf --SYNC_FROM_ZERO
 </pre>
 
 

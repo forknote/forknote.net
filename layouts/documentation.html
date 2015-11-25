@@ -1,6 +1,6 @@
 <%= render 'head' %>
 
-<body class="api <%= ENV['DEV_MODE'] ? 'dev-mode' : '' %>">
+<body class="api <%= @item[:body_class] %>">
   <%= render 'header' %>
 
   <div class="sub-nav <%= @item[:subnav_class] %>">

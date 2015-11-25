@@ -26,48 +26,49 @@ To get help on available options run:
 
 Please note, Forknote RPC Wallet config file may consist only of these options:
 
-Option | Description | Config&nbsp;Example | Console&nbsp;Example
------------|-----------|-----------|-----------|
-bind-address | Which address to bind Forknote RPC Wallet to. Default value is 0.0.0.0 | bind-address = 127.0.0.1 | --bind-address 127.0.0.1
-bind-port | Which port to bind Forknote RPC Wallet to. Default value is 8070 | bind-port = 8071 | --bind-port 8071
-daemon-address | Forknote daemon (forknoted) address for remote daemon connection infrastructure | daemon-address = 127.0.0.1 | --daemon-address 127.0.0.1
-daemon-port | Forknote daemon (forknoted) port for remote daemon connection infrastructure. Default Forknote daemon ports are 8080 and 8081 | daemon-port = 8080 | --daemon-port 8080
-wallet-file | Mandatory'''. Your wallet's file name | wallet-file = mywallet | --wallet-file mywallet
-wallet-password | Mandatory. Your wallet's password | wallet-password = mypassword | --wallet-password mypassword
-generate-wallet | Generate new wallet |  | --generate-wallet
-log-file | A name of log file that you want to use for logging. Default is walletd.log | log-file = mylog.log | --log-file mylog.log
-server-root | Working directory that you wish to use for Forknote RPC Wallet. Default is current working directory. | server-root = /home/Downloads/RPCWallet | --server-root /home/Downloads/RPCWallet
-log-level | Level of logging. Default is 1. | log-level = 2 | --log-level 2
-testnet | Allows you to run Forknote RPC Wallet in testnet. | testnet = no | --testnet no
-local | Option that allows you to start Forknote RPC Wallet as an in-process node | local | --local
-p2p-bind-ip | Interface for p2p network protocol | p2p-bind-ip = 0.0.0.0 | --p2p-bind-ip 0.0.0.0
-p2p-bind-port | Port for p2p network protocol | p2p-bind-port = 29080 | --p2p-bind-port 29080
-p2p-external-port | External port for p2p network protocol (if port forwarding used with NAT) | p2p-external-port = 443 | --p2p-external-port 443
-allow-local-ip | Allow local ip add to peer list, mostly in debug purposes | | --allow-local-ip
-add-peer | Manually add peer to local peerlist | add-peer = 127.0.0.1 | --add-peer 127.0.0.1 
-add-priority-node | Specify list of peers to connect to and attempt to keep the connection open | add-priority-node = 127.0.0.1 | --add-priority-node 127.0.0.1 
-add-exclusive-node | Specify list of peers to connect to only. If this option is given the options add-priority-node and seed-node are ignored | add-exclusive-node = 127.0.0.1 | --add-exclusive-node 127.0.0.1 
-seed-node | Connect to a node to retrieve peer addresses, and disconnect | seed-node = 127.0.0.1 | --seed-node 127.0.0.1 
-hide-my-port | Do not announce yourself as peerlist candidate | hide-my-port | --hide-my-port
-P2P_STAT_TRUSTED<br/>_PUB_KEY | P2P stat trusted pub key | P2P_STAT_TRUSTED<br/>_PUB_KEY = 4d..eb | --P2P_STAT_TRUSTED<br/>_PUB_KEY 4d..eb
-BYTECOIN_NETWORK | Used for network packages in order not to mix two different cryptocoin networks | BYTECOIN_NETWORK = 11100111-1100-0101-1011-001210110110 | --BYTECOIN_NETWORK 11100111-1100-0101-1011-001210110110
-GENESIS_COINBASE<br/>_TX_HEX | The hex of the transaction in the genesis block | GENESIS_COINBASE<br/>_TX_HEX = 01..4a | --GENESIS_COINBASE<br/>_TX_HEX 01..4a
-CRYPTONOTE_<br/>PUBLIC_ADDRESS_<br/>BASE58_PREFIX | Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator | CRYPTONOTE_<br/>PUBLIC_ADDRESS_<br/>BASE58_PREFIX = 86 | --CRYPTONOTE_<br/>PUBLIC_ADDRESS_<br/>BASE58_PREFIX 86
-MONEY_SUPPLY | Total amount of coins to be emitted. | MONEY_SUPPLY = 18446744073709551615 | --MONEY_SUPPLY 18446744073709551615
-EMISSION_<br/>SPEED_FACTOR | Constant defines emission curve slope. This parameter is required to calulate block reward. | EMISSION_<br/>SPEED_FACTOR = 18 | --EMISSION_<br/>SPEED_FACTOR 18
-DIFFICULTY_TARGET | Difficulty target is an ideal time period between blocks. Measured in seconds. | DIFFICULTY_TARGET = 120 | --DIFFICULTY_TARGET 120
-CRYPTONOTE_BLOCK<br/>_GRANTED_FULL<br/>_REWARD_ZONE | The maximum size of a block not resulting into penelty. | CRYPTONOTE_BLOCK<br/>_GRANTED_FULL<br/>_REWARD_ZONE = 20000 | --CRYPTONOTE_BLOCK<br/>_GRANTED_FULL<br/>_REWARD_ZONE 20000
-CRYPTONOTE_BLOCK<br/>_GRANTED_FULL<br/>_REWARD_ZONE_V1 | The maximum size of a block not resulting into penelty. Used only by old (v1) coins | CRYPTONOTE_BLOCK<br/>_GRANTED_FULL<br/>_REWARD_ZONE_V1 = 10000 | --CRYPTONOTE_BLOCK<br/>_GRANTED_FULL<br/>_REWARD_ZONE_V1 10000
-CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT | 1 coin = 10^(this value) atomic units | CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT = 8 | --CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT 8
-MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons | MINIMUM_FEE = 1000000 | --MINIMUM_FEE 1000000
-DEFAULT_<br/>DUST_THRESHOLD | The amount bellow this value will be considered as dust | DEFAULT_<br/>DUST_THRESHOLD = 1000000 | --DEFAULT_<br/>DUST_THRESHOLD 1000000
-CRYPTONOTE_<br/>MINED_MONEY_<br/>UNLOCK_WINDOW | Number of blocks to unlock miner transactions | CRYPTONOTE_<br/>MINED_MONEY_<br/>UNLOCK_WINDOW = 10 | --CRYPTONOTE_<br/>MINED_MONEY_<br/>UNLOCK_WINDOW 10
-MAX_BLOCK_<br/>SIZE_INITIAL | The size of the initial block. Used to correct error in v1 coins | MAX_BLOCK_<br/>SIZE_INITIAL = 20480 | --MAX_BLOCK_<br/>SIZE_INITIAL 20480
-EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 coins | EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY = 720 | --EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY 720
-UPGRADE_HEIGHT | Block hight to move to blocks with major version 2. Use '1' for new blockchains | UPGRADE_HEIGHT = 1 | --UPGRADE_HEIGHT 1
-DIFFICULTY_CUT | Timestamps to cut after sorting | DIFFICULTY_CUT = 60 | --DIFFICULTY_CUT 60
-DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks | DIFFICULTY_LAG = 15 | --DIFFICULTY_LAG 15
-MAX_TRANSACTION<br/>_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet | MAX_TRANSACTION<br/>_SIZE_LIMIT = 20000 | --MAX_TRANSACTION<br/>_SIZE_LIMIT 20000
+Option | Description | Config&nbsp;Example
+-----------|-----------|-----------|
+bind-address | Which address to bind Forknote RPC Wallet to. Default value is 0.0.0.0 | bind-address = 127.0.0.1
+bind-port | Which port to bind Forknote RPC Wallet to. Default value is 8070 | bind-port = 8071
+daemon-address | Forknote daemon (forknoted) address for remote daemon connection infrastructure | daemon-address = 127.0.0.1
+daemon-port | Forknote daemon (forknoted) port for remote daemon connection infrastructure. Default Forknote daemon ports are 8080 and 8081 | daemon-port = 8080
+wallet-file | Mandatory'''. Your wallet's file name | wallet-file = mywallet
+wallet-password | Mandatory. Your wallet's password | wallet-password = mypassword
+log-file | A name of log file that you want to use for logging. Default is walletd.log | log-file = mylog.log
+server-root | Working directory that you wish to use for Forknote RPC Wallet. Default is current working directory. | server-root = /home/Downloads/RPCWallet
+log-level | Level of logging. Default is 1. | log-level = 2
+testnet | Allows you to run Forknote RPC Wallet in testnet. | testnet = no
+local | Option that allows you to start Forknote RPC Wallet as an in-process node | local
+p2p-bind-ip | Interface for p2p network protocol | p2p-bind-ip = 0.0.0.0
+p2p-bind-port | Port for p2p network protocol | p2p-bind-port = 29080
+p2p-external-port | External port for p2p network protocol (if port forwarding used with NAT) | p2p-external-port = 443
+add-peer | Manually add peer to local peerlist | add-peer = 127.0.0.1
+add-priority-node | Specify list of peers to connect to and attempt to keep the connection open | add-priority-node = 127.0.0.1
+add-exclusive-node | Specify list of peers to connect to only. If this option is given the options add-priority-node and seed-node are ignored | add-exclusive-node = 127.0.0.1
+seed-node | Connect to a node to retrieve peer addresses, and disconnect | seed-node = 127.0.0.1
+hide-my-port | Do not announce yourself as peerlist candidate | hide-my-port
+P2P_STAT_TRUSTED_PUB_KEY | P2P stat trusted pub key | P2P_STAT_TRUSTED_PUB_KEY = 4d..eb
+BYTECOIN_NETWORK | Used for network packages in order not to mix two different cryptocoin networks | BYTECOIN_NETWORK = 11100111-1100-0101-1011-001210110110
+GENESIS_COINBASE_TX_HEX | The hex of the transaction in the genesis block | GENESIS_COINBASE_TX_HEX = 01..4a
+CRYPTONOTE_PUBLIC_ADDRESS_<br/>BASE58_PREFIX | Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator | CRYPTONOTE_PUBLIC_ADDRESS_<br/>BASE58_PREFIX = 86
+MONEY_SUPPLY | Total amount of coins to be emitted. | MONEY_SUPPLY = 18446744073709551615
+EMISSION_SPEED_FACTOR | Constant defines emission curve slope. This parameter is required to calulate block reward. | EMISSION_SPEED_FACTOR = 18
+DIFFICULTY_TARGET | Difficulty target is an ideal time period between blocks. Measured in seconds. | DIFFICULTY_TARGET = 120
+CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE | The maximum size of a block not resulting into penelty. | CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE = 20000
+CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE_V1 | The maximum size of a block not resulting into penelty. Used only by old (v1) coins | CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE_V1 = 10000
+CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT | 1 coin = 10^(this value) atomic units | CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT = 8
+MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons | MINIMUM_FEE = 1000000
+DEFAULT_DUST_THRESHOLD | The amount bellow this value will be considered as dust | DEFAULT_DUST_THRESHOLD = 1000000
+CRYPTONOTE_MINED_MONEY_<br/>UNLOCK_WINDOW | Number of blocks to unlock miner transactions | CRYPTONOTE_MINED_MONEY_<br/>UNLOCK_WINDOW = 10
+MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 coins | MAX_BLOCK_SIZE_INITIAL = 20480
+EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 coins | EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY = 720
+UPGRADE_HEIGHT | Block hight to move to blocks with major version 2. Use '1' for new blockchains | UPGRADE_HEIGHT = 1
+DIFFICULTY_CUT | Timestamps to cut after sorting | DIFFICULTY_CUT = 60
+DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks | DIFFICULTY_LAG = 15
+CRYPTONOTE_NAME | Cryptonote name. Used for storage directory | CRYPTONOTE_NAME = dashcoin
+CHECKPOINT | Checkpoints. Format: HEIGHT:HASH | CHECKPOINT = 10:70d..f8
+GENESIS_BLOCK_REWARD | Amount of premined coins. In atomic units | GENESIS_BLOCK_REWARD = 1844674407370955161
+MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet | MAX_TRANSACTION_SIZE_LIMIT = 20000
 
 
 ##Example of a config file
@@ -82,7 +83,7 @@ EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
 MONEY_SUPPLY=18446744073709551615
-PREMINED_PERCENT=0
+GENESIS_BLOCK_REWARD=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
