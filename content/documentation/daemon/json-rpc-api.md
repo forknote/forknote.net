@@ -746,10 +746,10 @@ Output:
                 "P2P_DEFAULT_PORT": 7610,
                 "RPC_DEFAULT_PORT": 7611,
                 "SEED_NODES": [
-                    "108.61.188.93:7610",
-                    "128.199.146.243:29080"
+                    "108.61.188.13:7610",
+                    "128.199.146.23:29080"
                 ],
-                "UPGRADE_HEIGHT": 91452
+                "UPGRADE_HEIGHT": 1
             },
             "extensions": [
                 "core/bytecoin.json",
@@ -840,11 +840,11 @@ Output:
         "jsonrpc": "2.0",
         "result": {
             "block": {
-                "alreadyGeneratedCoins": -4907142100217515000,
+                "alreadyGeneratedCoins": 4907142100217515000,
                 "alreadyGeneratedTransactions": 672169,
                 "baseReward": 18719332960321,
                 "blockSize": 1515,
-                "depth": 308976312,
+                "depth": 15,
                 "difficulty": 308978448,
                 "hash": "74e21b7b7869465dd0bc0929a92df667d0fc88979999fe07ffa24ab925fad17d",
                 "height": 347655,
@@ -860,13 +860,13 @@ Output:
                 "totalFeeAmount": 1000000000,
                 "transactions": [
                     {
-                        "amount_out": 18720332960321,
+                        "amount_out": 60321,
                         "blockSize": 37383401493432,
                         "fee": 0,
                         "hash": "eba9c70143bf39a211a2ab2e0635d928455299da45f21cf8da31461ebc467a6a"
                     },
                     {
-                        "amount_out": 1999000464873,
+                        "amount_out": 100000000000,
                         "blockSize": 7672522688954774000,
                         "fee": 1000000000,
                         "hash": "b3aacbdc9cdb3dbd80731621d3dbbcaf9d6bdc7b731933c5cc92b5ff12777852"
@@ -976,7 +976,6 @@ Output:
                 "hash": "17246c6ee2e8c05f93dd29ee499f38e8ce4023ea693a3a9e39fb41f2877bbd3d",
                 "mixin": 4,
                 "paymentId": "",
-                "receiveTime": 140271204841312,
                 "size": 1227
             }
         }
