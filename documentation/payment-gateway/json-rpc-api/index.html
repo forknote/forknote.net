@@ -67,20 +67,24 @@
 <h1 id="payment-gateway-json-rpc-api">Payment gateway JSON RPC API</h1>
 
 <ul id="markdown-toc">
-  <li><a href="#sendtransaction" id="markdown-toc-sendtransaction">send_transaction</a></li>
-  <li><a href="#getaddress" id="markdown-toc-getaddress">get_address</a></li>
-  <li><a href="#createaddress" id="markdown-toc-createaddress">create_address</a></li>
-  <li><a href="#getaddresscount" id="markdown-toc-getaddresscount">get_address_count</a></li>
-  <li><a href="#deleteaddress" id="markdown-toc-deleteaddress">delete_address</a></li>
-  <li><a href="#getactualbalance" id="markdown-toc-getactualbalance">get_actual_balance</a></li>
-  <li><a href="#getpendingbalance" id="markdown-toc-getpendingbalance">get_pending_balance</a></li>
-  <li><a href="#gettransactionscount" id="markdown-toc-gettransactionscount">get_transactions_count</a></li>
-  <li><a href="#gettransferscount" id="markdown-toc-gettransferscount">get_transfers_count</a></li>
-  <li><a href="#gettransactionidbytransferid" id="markdown-toc-gettransactionidbytransferid">get_transaction_id_by_transfer_id</a></li>
-  <li><a href="#gettransaction" id="markdown-toc-gettransaction">get_transaction</a></li>
-  <li><a href="#gettransfer" id="markdown-toc-gettransfer">get_transfer</a></li>
-  <li><a href="#getincomingpayments" id="markdown-toc-getincomingpayments">get_incoming_payments</a></li>
-  <li><a href="#listtransactions" id="markdown-toc-listtransactions">list_transactions</a></li>
+  <li><a href="#reset" id="markdown-toc-reset">reset</a></li>
+  <li><a href="#getviewkey" id="markdown-toc-getviewkey">getViewKey</a></li>
+  <li><a href="#getspendkeys" id="markdown-toc-getspendkeys">getSpendKeys</a></li>
+  <li><a href="#getstatus" id="markdown-toc-getstatus">getStatus</a></li>
+  <li><a href="#getaddresses" id="markdown-toc-getaddresses">getAddresses</a></li>
+  <li><a href="#createaddress" id="markdown-toc-createaddress">createAddress</a></li>
+  <li><a href="#deleteaddress" id="markdown-toc-deleteaddress">deleteAddress</a></li>
+  <li><a href="#getbalance" id="markdown-toc-getbalance">getBalance</a></li>
+  <li><a href="#getblockhashes" id="markdown-toc-getblockhashes">getBlockHashes</a></li>
+  <li><a href="#gettransactionhashes" id="markdown-toc-gettransactionhashes">getTransactionHashes</a></li>
+  <li><a href="#gettransactions" id="markdown-toc-gettransactions">getTransactions</a></li>
+  <li><a href="#getunconfirmedtransactionhashes" id="markdown-toc-getunconfirmedtransactionhashes">getUnconfirmedTransactionHashes</a></li>
+  <li><a href="#gettransaction" id="markdown-toc-gettransaction">getTransaction</a></li>
+  <li><a href="#sendtransaction" id="markdown-toc-sendtransaction">sendTransaction</a></li>
+  <li><a href="#createdelayedtransaction" id="markdown-toc-createdelayedtransaction">createDelayedTransaction</a></li>
+  <li><a href="#getdelayedtransactionhashes" id="markdown-toc-getdelayedtransactionhashes">getDelayedTransactionHashes</a></li>
+  <li><a href="#deletedelayedtransaction" id="markdown-toc-deletedelayedtransaction">deleteDelayedTransaction</a></li>
+  <li><a href="#senddelayedtransaction" id="markdown-toc-senddelayedtransaction">sendDelayedTransaction</a></li>
 </ul>
 
 <p>On this page you will find description of every method in Forknote RPC Wallet API. Forknote RPC Wallet is a HTTP server which provides JSON 2.0 RPC interface for Forknote payment operations and address management. Each method has its own page that can be found by clicking on this method.</p>
@@ -99,9 +103,11 @@
   <li>&lt;service port&gt; is Forknote RPC Wallet port, by default it is binded to 8070 port, but it can be manually binded to any port you want, read more about this <a href="/documentation/payment-gateway/#configure-forknote-rpc-wallet">here</a>.</li>
 </ul>
 
-<h2 id="sendtransaction">send_transaction</h2>
+<h1 id="forknote-rpc-wallet-api-methods">Forknote RPC Wallet API methods</h1>
 
-<p><strong>send_transaction()</strong> method allows you to send transaction to one or several addresses. Also, it allows you to use a payment_id for a transaction to a single address.</p>
+<h2 id="reset">reset</h2>
+
+<p><strong>reset()</strong> method allows you to re-sync your wallet.</p>
 
 <p>Input:</p>
 
@@ -117,43 +123,46 @@
   </thead>
   <tbody>
     <tr>
-      <td>payment_id</td>
+      <td>viewSecretKey</td>
       <td>No</td>
-      <td>64 symbol string consisting of A-Z and 0-9 characters. Will be depreciated soon. It used to serve as an identifier for each user of the service.</td>
+      <td>Private view key</td>
       <td>string</td>
-      <td>96A3..A5BB</td>
-    </tr>
-    <tr>
-      <td>fee</td>
-      <td>Yes</td>
-      <td>Transaction fee. Minimal fee in Bytecoin network is .01 BCN. This parameter should be specified in minimal available BCN units. For example, if your fee is .01 BCN, you should pass it as 1000000</td>
-      <td>uint64</td>
-      <td>1000000</td>
-    </tr>
-    <tr>
-      <td>unlock_time</td>
-      <td>No</td>
-      <td>Height of the block until which transaction is going to be locked for spending.</td>
-      <td>uint64</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>mixin</td>
-      <td>Yes</td>
-      <td>Privacy level (a discrete number from 1 to infinity). Level 6 and higher is recommended.</td>
-      <td>uint64</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>destinations</td>
-      <td>Yes</td>
-      <td>Array that contains addresses and amounts for the transaction: <br>* amount - uint64 - desired amount. Specify it in atomic units <br>* address - string - desired address <br>
-</td>
-      <td>array</td>
-      <td>“amount”: 10000000000, <br>“address”: “288Ck..Zv”</td>
+      <td>4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907</td>
     </tr>
   </tbody>
 </table>
+
+<p>No output in case of success.</p>
+
+<p><strong>Important:</strong> If the view_secret_key was not pointed out reset() methods resets the wallet and re-syncs it. If the view_secret_key argument was pointed out reset() method substitutes the existing wallet with a new one with a specified view_secret_key and creates an address for it.</p>
+
+<p>Input value example:</p>
+
+<pre><code>{  
+  'params':{  
+     'viewSecretKey':'4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'reset'
+}
+</code></pre>
+
+<p>Output value example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+  }
+}
+</code></pre>
+
+<h2 id="getviewkey">getViewKey</h2>
+
+<p><strong>getViewKey()</strong> method returns your view key.</p>
+
+<p>No input.</p>
 
 <p>Output:</p>
 
@@ -168,53 +177,39 @@
   </thead>
   <tbody>
     <tr>
-      <td>transaction_id</td>
-      <td>Identifier of the sent transaction. Identifier indicates a number of the transaction in your wallet.</td>
-      <td>uint64</td>
-      <td>25</td>
+      <td>viewSecretKey</td>
+      <td>Private view key</td>
+      <td>string</td>
+      <td>4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907</td>
     </tr>
   </tbody>
 </table>
 
 <p>Input Example:</p>
 
-<pre><code> {
-    "params": {
-        "payment_id": "96A3937D88E21009C7E3987EBC19000000E77FE29AEB080041B1FE9C0487A5BB", // optional
-        "fee": 1000000000, 
-        "unlock_time": 0, 
-        "mixin": 0, 
-        "destinations": [ 
-            {
-            "amount": 10000000000, 
-            "address": "28aYVwSsGMxCWJGCNe26GYPWVR2xLdGnSaHiv5WF8MSa4CGuWfnj8eY2CrSUqPRjaqbYVApwxPjwtbPpA3XKjCZSUamsrZv"
-            },
-            {
-            "amount": 500000, 
-            "address": "2A8CkYbbEqSSeGPZPmfVvyUMR3PB1RxQ4XTGE2x7cFsUhxe4hwPzJJBd4TQ38Mc3R7hqRXuU13ABxUqLbtcoyvETNt7MqSw"
-            }
-        ]
-    }, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "send_transaction"
- }
+<pre><code>{  
+  'params':{  
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getViewKey'
+}
 </code></pre>
 
 <p>Return value example:</p>
 
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "transaction_id":470
-    }
- }
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'viewSecretKey':'4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907'
+  }
+}
 </code></pre>
 
-<h2 id="getaddress">get_address</h2>
+<h2 id="getspendkeys">getSpendKeys</h2>
 
-<p><strong>get_address()</strong> method returns an address that corresponds to the provided id. For example, you have 20 addresses in your wallet, you want to get a 15th address. All you have to do is point out “15” in the methods body. The first address created on wallet generation has id 0.</p>
+<p><strong>getSpendKeys()</strong> method returns your spend keys.</p>
 
 <p>Input:</p>
 
@@ -223,28 +218,6 @@
     <tr>
       <th>Argument</th>
       <th>Mandatory</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>index</td>
-      <td>No</td>
-      <td>ID of an address in a multi-address wallet. Please note, omitting the argument is similar to index=0 which will return the origin address.</td>
-      <td>uint64</td>
-      <td>20</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
       <th>Description</th>
       <th>Format</th>
       <th>Example</th>
@@ -253,41 +226,223 @@
   <tbody>
     <tr>
       <td>address</td>
-      <td>Corresponding address</td>
+      <td>Yes</td>
+      <td>Valid and existing in this container address</td>
       <td>string</td>
       <td>2A8CkYbbEqSSeGPZPmfVvyUM..UqLbtcoyvETNt7MqSw</td>
     </tr>
   </tbody>
 </table>
 
-<p>Input example:</p>
+<p>Output:</p>
 
-<pre><code> {
-    "jsonrpc": "2.0",
-    "id" : "test",
-    "method": "get_address",
-    "params": {
-        "index": 42
-    }
- }
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>spendSecretKey</td>
+      <td>Private spend key</td>
+      <td>string</td>
+      <td>4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907</td>
+    </tr>
+    <tr>
+      <td>spendPublicKey</td>
+      <td>Public spend key</td>
+      <td>string</td>
+      <td>4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input Example:</p>
+
+<pre><code>{  
+  'params':{  
+     'address':'22p4wUHAMndSscvtYErtqUaYrcUTvrZ9zhWwxc3JtkBHAnw4FJqenZyaePSApKWwJ5BjCJz1fKJoA6QHn5j6bVHg8A8dyhp'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getSpendKeys'
+}
 </code></pre>
 
-<p>Output value example:</p>
+<p>Return value example:</p>
 
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": { 
-        "address":"2A8CkYbbEqSSeGPZPmfVvyUMR3PB1RxQ4XTGE2x7cFsUhxe4hwPzJJBd4TQ38Mc3R7hqRXuU13ABxUqLbtcoyvETNt7MqSw"
-    }
- }
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'spendSecretKey':'4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907'
+     'spendPublicKey':'4a2583e42d010e8aabfed22743789569714196246bf01b5f2fec35af9232d907'
+  }
+}
 </code></pre>
 
-<h2 id="createaddress">create_address</h2>
+<h2 id="getstatus">getStatus</h2>
 
-<p><strong>create_address()</strong> method creates an additional address in your wallet.</p>
+<p><strong>getStatus()</strong> method returns information about the current RPC Wallet state: block_count, known_block_count, last_block_hash and peer_count.</p>
 
 <p>No input.</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>blockCount</td>
+      <td>Node’s known number of blocks</td>
+      <td>uint32</td>
+      <td>123456</td>
+    </tr>
+    <tr>
+      <td>knownBlockCount</td>
+      <td>Maximum known number of blocks of all seeds that are connected to the node</td>
+      <td>uint32</td>
+      <td>123123</td>
+    </tr>
+    <tr>
+      <td>lastBlockHash</td>
+      <td>Hash of the last known block</td>
+      <td>string</td>
+      <td>8a6f1cb7ed7a9db4751d7b283a0482baff20567173dbfae136c9bceb188e51c4</td>
+    </tr>
+    <tr>
+      <td>peerCount</td>
+      <td>Connected peers number</td>
+      <td>uint32</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getStatus'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'peerCount':2,
+     'blockCount':1,
+     'lastBlockHash':'8a6f1cb7ed7a9db4751d7b283a0482baff20567173dbfae136c9bceb188e51c4',
+     'knownBlockCount':0
+  }
+}
+</code></pre>
+
+<h2 id="getaddresses">getAddresses</h2>
+
+<p>getAddresses() method returns an array of your RPC Wallet’s addresses.</p>
+
+<p>No input.</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>addresses</td>
+      <td>Array of strings, where each strings is an address</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getAddresses'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'addresses':[  
+        '2785gGLpyMJhw4JFVVd4vMDeRMmvTNda9MMgQNBd8se2a1mNRcKYubnaCk5zubLSefZAAmjDk9Fyejb2hVDRZQ23MB2BgUW',
+        '2785gGLpyMJhw4JFVVd5kFDeRMmvTNda9CClNASd8se2a1mNRcKYubnaCk5zubLSefZAAmjDk9Fyejb2hVDRZQ23MB2BgUW'
+     ]
+  }
+}
+</code></pre>
+
+<h2 id="createaddress">createAddress</h2>
+
+<p><strong>createAddress()</strong> method creates an additional address in your wallet.</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>secretSpendKey</td>
+      <td>No</td>
+      <td>Private spend key. If secretSpendKey was specified, RPC Wallet creates spend address</td>
+      <td>string</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>publicSpendKey</td>
+      <td>No</td>
+      <td>Public spend key. If publicSpendKey was specified, RPC Wallet creates view address</td>
+      <td>string</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> If none of the above mentioned parameters were specified, RPC Wallet creates spend address with generated spend key.<br>
+<strong>Note:</strong> both above mentioned parameters can’t be present in a single request</p>
 
 <p>Output:</p>
 
@@ -332,55 +487,7 @@
  }
 </code></pre>
 
-<h2 id="getaddresscount">get_address_count</h2>
-
-<p><strong>get_address_count()</strong> method returns a number of addresses in your wallet.</p>
-
-<p>No input.</p>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>count</td>
-      <td>A number of addresses in your wallet</td>
-      <td>uint64</td>
-      <td>21</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Input example:</p>
-
-<pre><code> {
-    "params": {}, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_address_count"
- }
-</code></pre>
-
-<p>Output example:</p>
-
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "count":2
-    }
- }
-</code></pre>
-
-<h2 id="deleteaddress">delete_address</h2>
+<h2 id="deleteaddress">deleteAddress</h2>
 
 <p><strong>delete_address()</strong> method deletes a specified address.</p>
 
@@ -433,14 +540,10 @@
  }
 </code></pre>
 
-<h2 id="getactualbalance">get_actual_balance</h2>
+<h2 id="getbalance">getBalance</h2>
 
-<p><strong>get_actual_balance()</strong> method returns an actual balance. You can request both cumulative balance of all your addresses or a balance of a single address.</p>
-
-<ul>
-  <li>Actual Balance — your wallet’s balance that is available for spending immediately</li>
-  <li>Pending Balance — your wallet’s balance that is locked and can’t be spend. Usually funds are getting unlocked within 10 blocks (20 minutes) at most.</li>
-</ul>
+<p><strong>getBalance()</strong> method returns a balance for a specified address. <br>
+<strong>Please note:</strong> If address is not specified, returns a cumulative balance of all RPC Wallet’s addresses.</p>
 
 <p>Input:</p>
 
@@ -457,8 +560,8 @@
   <tbody>
     <tr>
       <td>address</td>
-      <td>Yes</td>
-      <td>Specify an address if you wish to see the balance of a particular address. Leave it blank if you want to see a cumulative balance of your wallet.</td>
+      <td>No</td>
+      <td>Valid and existing address in this particular wallet</td>
       <td>string</td>
       <td>2A8CkYbbEqSSeGPZPmf..tcoyvETNt7MqSw</td>
     </tr>
@@ -478,46 +581,47 @@
   </thead>
   <tbody>
     <tr>
-      <td>actual_balance</td>
-      <td>Cumulative balance or a balance of a single address in minimal BCN units.</td>
+      <td>availableBalance</td>
+      <td>Available balance of the specified address</td>
       <td>uint64</td>
-      <td>100000000</td>
+      <td>123123</td>
+    </tr>
+    <tr>
+      <td>lockedAmount</td>
+      <td>Locked amount of the specified address</td>
+      <td>uint64</td>
+      <td>123123</td>
     </tr>
   </tbody>
 </table>
 
 <p>Input example:</p>
 
-<pre><code> {
-    "params": 
-    { 
-        "address":"2A8CkYbbEqSSeGPZPmfVvyUMR3PB1RxQ4XTGE2x7cFsUhxe4hwPzJJBd4TQ38Mc3R7hqRXuU13ABxUqLbtcoyvETNt7MqSw" 
-    }, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_actual_balance"
- }
+<pre><code>{  
+  'params':{  
+     'address':'2785gGLpyMJhw4JFVVd4vMDeRMmvTNda9MMgQNBd8se2a1mNRcKYubnaCk5zubLSefZAAmjDk9Fyejb2hVDRZQ23MB2BgUW'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getBalance'
+}
 </code></pre>
 
 <p>Output example:</p>
 
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "actual_balance":32340960388304977
-    }
- }
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'lockedAmount':210,
+     'availableBalance':110
+  }
+}
 </code></pre>
 
-<h2 id="getpendingbalance">get_pending_balance</h2>
+<h2 id="getblockhashes">getBlockHashes</h2>
 
-<p><strong>get_pending_balance()</strong> method returns a pending balance. You can request both cumulative balance of all your addresses or a balance of a single address.</p>
-
-<ul>
-  <li>Actual Balance — your wallet’s balance that is available for spending immediately</li>
-  <li>Pending Balance — your wallet’s balance that is locked and can’t be spend. Usually funds are getting unlocked within 10 blocks (20 minutes) at most.</li>
-</ul>
+<p><strong>getBlockHashes()</strong> method returns an array of block hashes for a specified block range.</p>
 
 <p>Input:</p>
 
@@ -533,12 +637,462 @@
   </thead>
   <tbody>
     <tr>
-      <td>address</td>
+      <td>firstBlockIndex</td>
       <td>Yes</td>
-      <td>Specify an address if you wish to see pending balance of a particular address. Leave it blank if you want to see a cumulative balance.</td>
-      <td>string</td>
+      <td>Starting height</td>
+      <td>uint32</td>
+      <td>123123</td>
+    </tr>
+    <tr>
+      <td>blockCount</td>
+      <td>Yes</td>
+      <td>Number of blocks to process</td>
+      <td>uint32</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>blockHashes</td>
+      <td>Array of strings, where each element is a block hash</td>
+      <td>array</td>
+      <td>example</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+     'blockCount':11,
+     'firstBlockIndex':0
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getBlockHashes'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'blockHashes':[  
+        '8a6f1cb7ed7a9db4751d7b283a0482baff20567173dbfae136c9bceb188e51c4',
+        '657cd1c33df7f4250d581c97db665cb4a1856ebfadd6efabaeab745c2c76b1be',
+        '21047174f74576b6722e72646d7bd553e17d7c9f07fef05151bb1f9df7ed9dd8',
+        '504b9bfb2cd34531551cb2d68ea3e34e030d991164589ba7ed24e16fed3ea374',
+        'd9d36b5226d11b2cf60e3cf2038b21032c4ac753eabc32fbdd506158f95a69ca',
+        '171be105f8e39729838144c78ced336d0ebc29a4bd2c7a22901c0e8c0eaabb42',
+        '5f7933bd0257649a44e571d59a9f4083297acbdd338c1c0094a7226ade8d0f0f',
+        '967fd52a57e8193f56329bb37abdddce717098429f62c00776342c605a28e19b',
+        '6b1a21634a3d72821c43a244af16098eba7c0a59a2e409efa38bd420702f7594',
+        '7bb5ca944c5f916f80d50246f48789cc4605efd166efc2308553fe0d208fbe12',
+        '83dfef7c288121d87e60f52c74d3da6b422d4b8581ce732ef8b54273bd6c4f45'
+     ]
+  }
+}
+</code></pre>
+
+<h2 id="gettransactionhashes">getTransactionHashes</h2>
+
+<p><strong>getTransactionHashes()</strong> method returns an array of block and transaction hashes.<br>
+Transaction consists of transfers. Transfer is an amount-address pair. There could be several transfers in a single transaction.</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>addresses</td>
+      <td>No</td>
+      <td>Array of strings, where each string is an address</td>
+      <td>array</td>
       <td>2A8CkYbbEqSSeGPZPmf..tcoyvETNt7MqSw</td>
     </tr>
+    <tr>
+      <td>blockHash</td>
+      <td>Only one of these parameters (blockHash or firstBlockIndex) is allowed.</td>
+      <td>Hash of the starting block</td>
+      <td>string</td>
+      <td>f8f07ace392474bfbdc0fc30749a45f779a8aea10c489a103270f63ed88178ad</td>
+    </tr>
+    <tr>
+      <td>firstBlockIndex</td>
+      <td>Only one of these parameters (blockHash or firstBlockIndex) is allowed.</td>
+      <td>Starting height</td>
+      <td>uint32</td>
+      <td>123123</td>
+    </tr>
+    <tr>
+      <td>blockCount</td>
+      <td>Yes</td>
+      <td>Number of blocks to return transaction hashes from</td>
+      <td>uint32</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>paymentId</td>
+      <td>No</td>
+      <td>Valid payment_id</td>
+      <td>string</td>
+      <td>somePaymentId</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> if <strong>paymentId</strong> parameter is set, getTransactionHashes() method returns transaction hashes of transactions that contain specified payment_id. (in the set block range)<br>
+<strong>Note:</strong> if <strong>addresses</strong> parameter is set, getTransactionHashes() method returns transaction hashes of transactions that contain transfer from at least one of specified addresses.<br>
+<strong>Note:</strong> if both above mentioned parameters are set, getTransactionHashes() method returns transaction hashes of transactions that contain both specified payment_id and transfer from at least one of specified addresses.</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>items</td>
+      <td>Array that contains: <br> * blockHash - string - hash of the block which contains transaction hashes <br> * transactionHashes - array - array of strings, where each string is a transaction hash</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+     'blockCount':100,
+     'firstBlockIndex':0,
+     'addresses':[  
+        '2AFUzhkRatH2kQ19RaUNiE33mMQ3ejvJrGDhdDo77zn3RJQquQG7QBidoe7AD4EgBbChteaVesg3xcLVdq9EoCHH4NV9mxp'
+     ]
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getTransactionHashes'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'items':[  
+        {  
+           'transactionHashes':[  
+               957dcbf54f327846ea0c7a16b2ae8c24ba3fa8305cc3bbc6424e85e7d358b44b
+               25bb751814dd39bf46c972bd760e7516e34200f5e5dd02fda696671e11201f78
+           ],
+           'blockHash':'8a6f1cb7ed7a9db4751d7b283a0482baff20567173dbfae136c9bceb188e51c4'
+        }
+     ]
+  }
+}
+</code></pre>
+
+<h2 id="gettransactions">getTransactions</h2>
+
+<p><strong>getTransactions()</strong> method returns an array of block and transaction hashes.
+Transaction consists of transfers. Transfer is an amount-address pair. There could be several transfers in a single transaction.</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>addresses</td>
+      <td>No</td>
+      <td>Array of strings, where each string is an address</td>
+      <td>array</td>
+      <td>2A8CkYbbEqSSeGPZPmf..tcoyvETNt7MqSw</td>
+    </tr>
+    <tr>
+      <td>blockHash</td>
+      <td>Only one of these parameters (blockHash or firstBlockIndex) is allowed.</td>
+      <td>Hash of the starting block</td>
+      <td>string</td>
+      <td>f8f07ace392474bfbdc0fc30749a45f779a8aea10c489a103270f63ed88178ad</td>
+    </tr>
+    <tr>
+      <td>firstBlockIndex</td>
+      <td>Only one of these parameters (blockHash or firstBlockIndex) is allowed.</td>
+      <td>Starting height</td>
+      <td>uint32</td>
+      <td>123123</td>
+    </tr>
+    <tr>
+      <td>blockCount</td>
+      <td>Yes</td>
+      <td>Number of blocks to return transaction hashes from</td>
+      <td>uint32</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>paymentId</td>
+      <td>No</td>
+      <td>Valid payment_id</td>
+      <td>string</td>
+      <td>somePaymentId</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> if <strong>paymentId</strong> parameter is set, getTransactions() method returns transaction hashes of transactions that contain specified payment_id. (in the set block range)<br>
+<strong>Note:</strong> if <strong>addresses</strong> parameter is set, getTransactions() method returns transaction hashes of transactions that contain transfer from at least one of specified addresses.<br>
+<strong>Note:</strong> if both above mentioned parameters are set, getTransactions() method returns transaction hashes of transactions that contain both specified payment_id and transfer from at least one of specified addresses.</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>items</td>
+      <td>Array that contains:<br> * block_hash - string - hash of the block which contains a transaction<br> * transactions - array - contains<br>   * transactionHash - string - hash of the transaction<br>   * blockIndex - uint32 - number of the block that contains a transaction<br>   * timestamp - uint64 - timestamp of the transaction<br>   * isBase - boolean - shows if the transaction is a coinbase transaction or not<br>   * unlockTime - uint64 - height of the block when transaction is going to be available for spending<br>   * amount - int64 - amount of the transaction<br>   * fee - uint64- transaction fee<br>   * extra - string<br>   * paymentId - string - payment_id of the transaction (optional)<br>   * transfers - array - contains<br>     * address - string<br>     * amount - int64</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+     'blockCount':1000,
+     'firstBlockIndex':1,
+     'addresses':[  
+        '22p4wUHAMndSscvtYErtqUaYrcUTvrZ9zhWwxc3JtkBHAnw4FJqenZyaePSApKWwJ5BjCJz1fKJoA6QHn5j6bVHg8A8dyhp',
+        '261K6FuYL4vYvLFQx2ene92JNHip8YGyJGHCCNjPwoFE2RsRYwtzPC7aePSApKWwJ5BjCJz1fKJoA6QHn5j6bVHg8DRRpU1',
+        '2AVwwZ6Ju6gGeztrtHjsj42xWLavrXPN1PrpnNKGXCMcLACj2WhGqYwaePSApKWwJ5BjCJz1fKJoA6QHn5j6bVHg8A4Z9K8'
+     ],
+     paymentId:'somePaymentId'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getTransactions'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'items':[  
+        {  
+           'blockHash':'01bd06ca731914f27e143bbb902ce0bc05bff13d76faa027ea817e68f217488c',
+           'transactions':[  
+              {  
+                 'fee':-70368475742208,
+                 'extra':'0127cea59bfadc49aa02ed4a225936671e55607b5241621abca2a5e14405906dbb',
+                 'timestamp':1446029698,
+                 'blockIndex':1,
+                 'state':0,
+                 'transactionHash':'06ec210a8359f253f8b2160a0d6040cf89f2a05a553aaa577b7f508ee5d831f9',
+                 'amount':70368475742208,
+                 'unlockTime':11,
+                 'transfers':[  
+                    {  
+                       'amount':70368475742208,
+                       'type':0,
+                       'address':'22p4wUHAMndSscvtYErtqUaYrcUTvrZ9zhWwxc3JtkBHAnw4FJqenZyaePSApKWwJ5BjCJz1fKJoA6QHn5j6bVHg8A8dyhp'
+                    }
+                 ],
+                 'paymentId':,
+                 'isBase':True
+              }
+           ]
+        },
+        {  
+           'blockHash':'28aa7d32f4274f6387969d7671bd4db98fd871bf0dd510a1df5e2ef4b1d41a35',
+           'transactions':[  
+              {  
+                 'fee':-70368207307776,
+                 'extra':'01a8e6e408282b2ddf343e20d5e9aab283723ba10ab7ab7b3131f6981b02a84431',
+                 'timestamp':1446029698,
+                 'blockIndex':2,
+                 'state':0,
+                 'transactionHash':'922d00d2e6eaed63f62d8e3b968cb08b6ea5c555fe0e6af948ab06efe6eb213a',
+                 'amount':70368207307776,
+                 'unlockTime':12,
+                 'transfers':[  
+                    {  
+                       'amount':70368207307776,
+                       'type':0,
+                       'address':'22p4wUHAMndSscvtYErtqUaYrcUTvrZ9zhWwxc3JtkBHAnw4FJqenZyaePSApKWwJ5BjCJz1fKJoA6QHn5j6bVHg8A8dyhp'
+                    }
+                 ],
+                 'paymentId':,
+                 'isBase':True
+              }
+           ]
+        }
+     ]
+  }
+}
+</code></pre>
+
+<h2 id="getunconfirmedtransactionhashes">getUnconfirmedTransactionHashes</h2>
+
+<p><strong>getUnconfirmedTransactionHashes()</strong> method returns information about the current unconfirmed transaction pool or for a specified addresses.
+Transaction consists of transfers. Transfer is an amount-address pair. There could be several transfers in a single transaction.</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>addresses</td>
+      <td>No</td>
+      <td>Array of strings, where each string is a valid address</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> if <strong>addresses</strong> parameter is set, getUnconfirmedTransactionHashes() method returns transactions that contain transfer from at least one of specified addresses.</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>transactionHashes</td>
+      <td>Array of strings, where each element is a block hash</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+     'addresses':[  
+        '26hM1rZa9wWFHSUBbdrof3C5BZ37s1XiLcVnK3xMSrn1583SEBQ98MnTHvsVSkNFbFWgjhrhmdNzgJDy3JudNV9BFMs66ao',
+        '27am7ubgS834uVkpMgnqyKicxEJTLNJeL3QtC2zaJuHMbPyBkHcRBnQTHvsVSkNFbFWgjhrhmdNzgJDy3JudNV9BFLppiKL',
+        '21pbz9qMWKq6xvFAYe723V4adjEF4ZXNrcJHZ1JFB2geHVwDFuze8A4THvsVSkNFbFWgjhrhmdNzgJDy3JudNV9BFLL4WH8'
+     ]
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getUnconfirmedTransactionHashes'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'transactionHashes':[  
+        ...,
+        ...,
+        ...
+     ]
+  }
+}
+</code></pre>
+
+<h2 id="gettransaction">getTransaction</h2>
+
+<p><strong>getTransaction()</strong> method returns information about a particular transaction.
+Transaction consists of transfers. Transfer is an amount-address pair. There could be several transfers in a single transaction.</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>transactionHash</td>
+      <td>Yes</td>
+      <td>Hash of the requested transaction</td>
+      <td>string</td>
+      <td>example</td>
+    </tr>
   </tbody>
 </table>
 
@@ -555,41 +1109,363 @@
   </thead>
   <tbody>
     <tr>
-      <td>pending_balance</td>
-      <td>Cumulative balance or a balance of a single address in minimal BCN units.</td>
-      <td>uint64</td>
-      <td>100000000</td>
+      <td>transaction</td>
+      <td>Contains:<br>* transactionHash - string - hash of the transaction<br>* blockIndex - uint32 - number of the block that contains a transaction (optional)<br>* timestamp - uint64 - timestamp of the transaction (optional)<br>* isBase - boolean - shows if the transaction is a coinbase transaction or not<br>* unlockTime - uint64 - height of the block when transaction is going to be available for spending<br>* amount - int64 - amount of the transaction<br>* fee - uint64- transaction fee<br>* extra - string - ?<br>* paymentId - string - payment_id of the transaction (optional)<br>* transfers - array - contains<br>  * address - string<br>  * amount - int64</td>
+      <td>array</td>
+      <td>See below</td>
     </tr>
   </tbody>
 </table>
 
 <p>Input example:</p>
 
-<pre><code> {
-    "params": 
-        { 
-            "address":"2A8CkYbbEqSSeGPZPmfVvyUMR3PB1RxQ4XTGE2x7cFsUhxe4hwPzJJBd4TQ38Mc3R7hqRXuU13ABxUqLbtcoyvETNt7MqSw" 
-        },  
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_pending_balance"
- }
+<pre><code>{  
+  'params':{  
+     'transactionHash':'92423b0857d36bd172b3f2effbd47ea477bfe0618a50c29d475542c6d5d1b835'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'getTransaction'
+}
 </code></pre>
 
 <p>Output example:</p>
 
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": { 
-        "pending_balance": 10000
-    }
- }
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'transaction':{  
+        'fee':1000000,
+        'extra':'0130b4472974f2deb9fae7d8fd6602b26396379f3fa05cca2430e10e9e60179f42',
+        'timestamp':0,
+        'blockIndex':4294967295,
+        'state':0,
+        'transactionHash':'92423b0857d36bd172b3f2effbd47ea477bfe0618a50c29d475542c6d5d1b835',
+        'amount':-1703701,
+        'unlockTime':0,
+        'transfers':[  
+           {  
+              'amount':123456,
+              'type':0,
+              'address':'25AqTidmdu1awhLZPEUkumZEnM8Rt1fNsbpdRwEGNeLpDDfc1WW9RP6QsdENfxafTz4qE8vThbv413nXhs6WAzYeKBtgA98'
+           },
+           {  
+              'amount':234567,
+              'type':0,
+              'address':'278g3wNw5W48DeGbjwxkW3XauBip64uYKS9eFveUHBfdRAG3dYHPZvqXy5BWbfuKEtWZ86PJZdRacAgr1x3gtP5nLyGcVt8'
+           },
+           {  
+              'amount':345678,
+              'type':0,
+              'address':'2AtjUXGmhP6CmbRxCtBESR4MjSGiWCQUTPCdsDpw72Co2pwzZT7rjnaBNRCSFCEygjNo5oe8mHyXU4Eip8szu4ZnAFyPW1a'
+           }
+        ],
+        'paymentId':,
+        'isBase':False
+     }
+  }
+}
 </code></pre>
 
-<h2 id="gettransactionscount">get_transactions_count</h2>
+<h2 id="sendtransaction">sendTransaction</h2>
 
-<p><strong>get_transactions_count()</strong> method returns a cumulative number of transactions in your wallet.</p>
+<p><strong>send_transaction()</strong> method allows you to send transaction to one or several addresses. Also, it allows you to use a payment_id for a transaction to a single address.</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>addresses</td>
+      <td>No</td>
+      <td>Array of strings, where each string is an address to take the funds from</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+    <tr>
+      <td>transfers</td>
+      <td>Yes</td>
+      <td>Array that contains:<br>address - string<br>amount - int64</td>
+      <td>array</td>
+      <td>“amount”: 10000000000,<br>“address”: “28aYVwSsGMxCWJGCN..CZSUamsrZv”</td>
+    </tr>
+    <tr>
+      <td>fee</td>
+      <td>Yes</td>
+      <td>Transaction fee. Minimal fee in Bytecoin network is .01 BCN. This parameter should be specified in minimal available BCN units. For example, if your fee is .01 BCN, you should pass it as 1000000</td>
+      <td>uint64</td>
+      <td>1000000</td>
+    </tr>
+    <tr>
+      <td>unlockTime</td>
+      <td>No</td>
+      <td>Height of the block until which transaction is going to be locked for spending.</td>
+      <td>uint64</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>anonymity</td>
+      <td>Yes</td>
+      <td>Privacy level (a discrete number from 1 to infinity). Level 6 and higher is recommended.</td>
+      <td>uint64</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>extra</td>
+      <td>No</td>
+      <td>String of variable length. Can contain A-Z, 0-9 characters.</td>
+      <td>string</td>
+      <td>something123</td>
+    </tr>
+    <tr>
+      <td>payment_id</td>
+      <td>No</td>
+      <td>payment_id</td>
+      <td>string</td>
+      <td>somePaymentId</td>
+    </tr>
+    <tr>
+      <td>changeAddress</td>
+      <td>No</td>
+      <td>Valid and existing in this container address.</td>
+      <td>string</td>
+      <td>28aYVwSsGMxCWJGCN..CZSUamsrZv</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> if container contains only 1 address, <strong>changeAddress</strong> field can be left empty and the change is going to be sent to this address<br>
+<strong>Note:</strong> if <strong>addresses</strong> field contains only 1 address, <strong>changeAddress</strong> can be left empty and the change is going to be sent to this address<br>
+<strong>Note:</strong> in the rest of the cases, <strong>changeAddress</strong> field is mandatory and must contain an address.</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>transactionHash</td>
+      <td>Hash of the sent transaction.</td>
+      <td>string</td>
+      <td>93faedc8b8a80a084a02dfeffd163934746c2163f23a1b6022b32423ec9ae08f</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input Example:</p>
+
+<pre><code>{  
+  'params':{  
+     'anonymity':0,
+     'fee':1000000,
+     'unlockTime':0,
+     'paymentId':'somePaymentId',
+     'addresses':[  
+        '27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh',
+        '24JtjYsLdSJKNNDCPGdMco5NbMBLqVWZ5ZiW5vzjXQUrLpMs1MRnfTQ3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFXHARwn',
+        '21fYPCpaM3ochSSyLnhDAhgw1yV5WPb5c1BfyX5eidbMGyEPgnbSgJW3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX8VQMv'
+     ],
+     'transfers':[  
+        {  
+           'amount':123456,
+           'address':'27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh'
+        },
+        {  
+           'amount':234567,
+           'address':'278g3wNw5W48DeGbjwxkW3XauBip64uYKS9eFveUHBfdRAG3dYHPZvqXy5BWbfuKEtWZ86PJZdRacAgr1x3gtP5nLyGcVt8'
+        },
+        {  
+           'amount':345678,
+           'address':'2AtjUXGmhP6CmbRxCtBESR4MjSGiWCQUTPCdsDpw72Co2pwzZT7rjnaBNRCSFCEygjNo5oe8mHyXU4Eip8szu4ZnAFyPW1a'
+        }
+     ],
+     'changeAddress':'27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'sendTransaction'
+}
+</code></pre>
+
+<p>Return value example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'transactionHash':'93faedc8b8a80a084a02dfeffd163934746c2163f23a1b6022b32423ec9ae08f'
+  }
+}
+</code></pre>
+
+<h2 id="createdelayedtransaction">createDelayedTransaction</h2>
+
+<p><strong>createDelayedTransaction()</strong> method creates a delayed transaction. Such transactions are not sent into the network automatically and should be pushed using sendDelayedTransaction method</p>
+
+<p>Input:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>addresses</td>
+      <td>No</td>
+      <td>Array of strings, where each string is an address to take the funds from</td>
+      <td>array</td>
+      <td>See below</td>
+    </tr>
+    <tr>
+      <td>transfers</td>
+      <td>Yes</td>
+      <td>Array that contains:<br>address - string<br>amount - int64</td>
+      <td>array</td>
+      <td>“amount”: 10000000000,<br>“address”: “28aYVwSsGMxCWJGCN..CZSUamsrZv”</td>
+    </tr>
+    <tr>
+      <td>fee</td>
+      <td>Yes</td>
+      <td>Transaction fee. Minimal fee in Bytecoin network is .01 BCN. This parameter should be specified in minimal available BCN units. For example, if your fee is .01 BCN, you should pass it as 1000000</td>
+      <td>uint64</td>
+      <td>1000000</td>
+    </tr>
+    <tr>
+      <td>unlockTime</td>
+      <td>No</td>
+      <td>Height of the block until which transaction is going to be locked for spending.</td>
+      <td>uint64</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>anonymity</td>
+      <td>Yes</td>
+      <td>Privacy level (a discrete number from 1 to infinity). Level 6 and higher is recommended.</td>
+      <td>uint64</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>extra</td>
+      <td>No</td>
+      <td>String of variable length. Can contain A-Z, 0-9 characters.</td>
+      <td>string</td>
+      <td>something123</td>
+    </tr>
+    <tr>
+      <td>payment_id</td>
+      <td>No</td>
+      <td>payment_id</td>
+      <td>string</td>
+      <td>somePaymentId</td>
+    </tr>
+    <tr>
+      <td>changeAddress</td>
+      <td>No</td>
+      <td>Valid and existing in this container address.</td>
+      <td>string</td>
+      <td>28aYVwSsGMxCWJGCN..CZSUamsrZv</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> if container contains only 1 address, <strong>changeAddress</strong> field can be left empty and the change is going to be sent to this address<br>
+<strong>Note:</strong> if <strong>addresses</strong> field contains only 1 address, <strong>changeAddress</strong> can be left empty and the change is going to be sent to this address<br>
+<strong>Note:</strong> in the rest of the cases, <strong>changeAddress</strong> field is mandatory and must contain an address.<br>
+<strong>Note:</strong> outputs that were used for this transactions will be locked until the transaction is sent or cancelled</p>
+
+<p>Output:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>transactionHash</td>
+      <td>Hash of the sent transaction.</td>
+      <td>string</td>
+      <td>93faedc8b8a80a084a02dfeffd163934746c2163f23a1b6022b32423ec9ae08f</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Input Example:</p>
+
+<pre><code>{  
+  'params':{  
+     'anonymity':0,
+     'fee':1000000,
+     'unlockTime':0,
+     'paymentId':'somePaymentId',
+     'addresses':[  
+        '27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh',
+        '24JtjYsLdSJKNNDCPGdMco5NbMBLqVWZ5ZiW5vzjXQUrLpMs1MRnfTQ3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFXHARwn',
+        '21fYPCpaM3ochSSyLnhDAhgw1yV5WPb5c1BfyX5eidbMGyEPgnbSgJW3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX8VQMv'
+     ],
+     'transfers':[  
+        {  
+           'amount':123456,
+           'address':'27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh'
+        },
+        {  
+           'amount':234567,
+           'address':'278g3wNw5W48DeGbjwxkW3XauBip64uYKS9eFveUHBfdRAG3dYHPZvqXy5BWbfuKEtWZ86PJZdRacAgr1x3gtP5nLyGcVt8'
+        },
+        {  
+           'amount':345678,
+           'address':'2AtjUXGmhP6CmbRxCtBESR4MjSGiWCQUTPCdsDpw72Co2pwzZT7rjnaBNRCSFCEygjNo5oe8mHyXU4Eip8szu4ZnAFyPW1a'
+        }
+     ],
+     'changeAddress':'27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'createDelayedTransaction'
+}
+</code></pre>
+
+<p>Return value example:</p>
+
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+     'transactionHash':'93faedc8b8a80a084a02dfeffd163934746c2163f23a1b6022b32423ec9ae08f'
+  }
+}
+</code></pre>
+
+<h2 id="getdelayedtransactionhashes">getDelayedTransactionHashes</h2>
+
+<p><strong>getDelayedTransactionHashes()</strong> method returns hashes of delayed transactions.</p>
 
 <p>No input.</p>
 
@@ -606,382 +1482,8 @@
   </thead>
   <tbody>
     <tr>
-      <td>transactions_count</td>
-      <td>A number of transactions</td>
-      <td>uint64</td>
-      <td>21</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Input example:</p>
-
-<pre><code> {
-    "params": {},
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_transactions_count"
- }
-</code></pre>
-
-<p>Output example:</p>
-
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": { 
-        "transactions_count":471
-    }
- }
-</code></pre>
-
-<h2 id="gettransferscount">get_transfers_count</h2>
-
-<p><strong>get_transfers_count()</strong> method returns a cumulative number of transfers in your wallet.</p>
-
-<p>No input.</p>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>transfers_count</td>
-      <td>A number of transfers</td>
-      <td>uint64</td>
-      <td>21</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Input example:</p>
-
-<pre><code> {
-    "params": {}, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_transfers_count"
- }
-</code></pre>
-
-<p>Output example:</p>
-
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "transfers_count":2
-    }
- }
-</code></pre>
-
-<h2 id="gettransactionidbytransferid">get_transaction_id_by_transfer_id</h2>
-
-<p><strong>get_transaction_id_by_transfer_id()</strong> method returns and id of a transaction containing this particular transfer.</p>
-
-<p>Input:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Mandatory</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>transfer_id</td>
-      <td>Yes</td>
-      <td>Transfer identifier</td>
-      <td>uint64</td>
-      <td>20</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>transaction_id</td>
-      <td>Corresponding transaction id</td>
-      <td>uint64</td>
-      <td>21</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Input example:</p>
-
-<pre><code> {
-    "params": { 
-        "transfer_id": 0
-    }, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_transaction_id_by_transfer_id"
- }
-</code></pre>
-
-<p>Output example:</p>
-
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result":{
-        "transaction_id":469
-    }
- }
-</code></pre>
-
-<h2 id="gettransaction">get_transaction</h2>
-
-<p><strong>get_transaction()</strong> method returns information about a particular transaction.</p>
-
-<p>Transaction consists of transfers. Transfer is an amount-address pair. There could be several transfers in a single transaction.</p>
-
-<p>Input:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Mandatory</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>transaction_id</td>
-      <td>Yes</td>
-      <td>Requested transaction id</td>
-      <td>uint64</td>
-      <td>20</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>found</td>
-      <td>Is found or not</td>
-      <td>bool</td>
-      <td>True / False</td>
-    </tr>
-    <tr>
-      <td>transaction_info</td>
-      <td>Contains: <br> * 1. first_transfer_id - uint64 - identifier of the first transfer in this transaction. Numbering is relative to the number of transfers in your wallet<br> * 2. transfer_count - uint64 - a number of transfers in this transaction<br> * 3. total_amount - int64 - total transaction amount <br> * 4. fee - uint64 - transaction fee. <br> * 5. hash - string - transaction’s hash<br> * 6. block_height - uint64 - height of the block containing this transaction<br> * 7. timestamp - uint64 - time when transaction was included into the block<br> * 8. extra - string - string of a variable length containing A-Z, 0-9 characters <br> * 9. state - uint8 - state of the transaction, where 0 - sending successful, 1 - sending failed, 2 - sending cancelled by user and 3 - transaction has been created but not yet sent <br> * 10. transfers - array - contains 2 fields: <br> ** address - string <br> ** amount - int64<br>
-</td>
-      <td>object</td>
-      <td>See below</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Input example:</p>
-
-<pre><code> {
-    "params": {
-        "transaction_id": 1
-    }, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": 
-    "get_transaction"
- }
-</code></pre>
-
-<p>Output example:</p>
-
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "found":true,
-        "transaction_info": { 
-            "block_height":2,
-            "extra":"2jh1iak...123yh1g4g",
-            "fee":0,
-            "first_transfer_id":103,
-            "hash":"ab29aa2ce295146dc8a4ed72a559aa3a2b3d5d213e23734cd161b0159a044c39",
-            "timestamp":1409833412,
-            "total_amount":7036820,
-            "transfer_count":0,
-            "transfers": 
-            [
-                {
-                    "amount": 10000000000, 
-                    "address": "28aYVwSsGMxCWJGCNe26GYPWVR2xLdGnSaHiv5WF8MSa4CGuWfnj8eY2CrSUqPRjaqbYVApwxPjwtbPpA3XKjCZSUamsrZv"
-                },
-                {
-                    "amount": 500000, 
-                    "address": "2A8CkYbbEqSSeGPZPmfVvyUMR3PB1RxQ4XTGE2x7cFsUhxe4hwPzJJBd4TQ38Mc3R7hqRXuU13ABxUqLbtcoyvETNt7MqSw"
-                }   
-            ]
-        }
-    }
- }
-</code></pre>
-
-<h2 id="gettransfer">get_transfer</h2>
-
-<p><strong>get_transfer()</strong> method returns a transfer that corresponds to the requested identifier</p>
-
-<p>Transaction consists of transfers. Transfer is an amount-address pair. There could be several transfers in a single transaction.</p>
-
-<p>Input:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Mandatory</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>transfer_id</td>
-      <td>Yes</td>
-      <td>Requested transfer</td>
-      <td>uint64</td>
-      <td>20</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>found</td>
-      <td>Is found or not</td>
-      <td>bool</td>
-      <td>true / false</td>
-    </tr>
-    <tr>
-      <td>transfer_info</td>
-      <td>Returns transfer_info object containing: <br> * amount - uint64  <br> * address - string</td>
-      <td>object</td>
-      <td>See below</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Input example:</p>
-
-<pre><code> {
-    "params": {
-        "transfer_id": 0
-    }, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "get_transfer"
- }
-</code></pre>
-
-<p>Output example:</p>
-
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "found":true,
-        "transfer_info": {
-            "address":"2A8CkYbbEqSSeGPZPmfVvyUMR3PB1RxQ4XTGE2x7cFsUhxe4hwPzJJBd4TQ38Mc3R7hqRXuU13ABxUqLbtcoyvETNt7MqSw",
-            "amount":100000
-        }
-    }
- }
-</code></pre>
-
-<h2 id="getincomingpayments">get_incoming_payments</h2>
-
-<p><strong>get_incoming_payments()</strong> method returns payments with a requested payment_id. This method will be depreciated soon.</p>
-
-<p>Input:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Mandatory</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>payments</td>
-      <td>Yes</td>
-      <td>Contains strings of payment_id’s</td>
-      <td>array</td>
-      <td>96A3937D88E210..B1FE9C0487A5BB</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Output:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Argument</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>payments</td>
-      <td>Contains objects: <br> * id - string - in payment_id format<br> * payments - array, contains: <br> ** tx_hash - string - hash of the transaction <br> ** amount - uint64 - amount of the transaction <br> ** block_height - uint64 - the height of the block containing a transaction<br> ** unlock_time - uint64 - transaction unlock time<br>
-</td>
+      <td>transactionHashes</td>
+      <td>Array of strings, where each string is a transaction hash</td>
       <td>array</td>
       <td>See below</td>
     </tr>
@@ -990,61 +1492,32 @@
 
 <p>Input example:</p>
 
-<pre><code> {
-    "params": { 
-        "payments": ["96A3937D88E21009C7E3987EBC19000000E77FE29AEB080041B1FE9C0487A5BB"]
-    }, 
+<pre><code>{
     "jsonrpc": "2.0", 
     "id": "1", 
-    "method": "get_incoming_payments"
- }
+    "method": "getDelayedTransactionHashes"
+}
 </code></pre>
 
 <p>Output example:</p>
 
-<pre><code> {
-    "id":"1",
-    "jsonrpc":"2.0",
-    "result": {
-        "payments": [
-            {
-                "id":"96A3937D88E21009C7E3987EBC19000000E77FE29AEB080041B1FE9C0487A5BB",
-                "payments": 
-                [ 
-                    {
-                        "amount":10000000000, 
-                        "block_height":728, 
-                        "tx_hash":"7c4fb735fbea0e918d2fa9b5abacfd6c763994718f86dc3272c7631b812bc3ce", 
-                        "unlock_time":0
-                    },
-                    {
-                        "amount":10000000000, 
-                        "block_height":728, 
-                        "tx_hash":"b467df2607d4475ebd2e5d9f01f4ae54ba197449fb099fdd76668d138e6f2f55", 
-                        "unlock_time":0
-                    }, 
-                    {
-                        "amount":10000000000, 
-                        "block_height":728, 
-                        "tx_hash":"abfc13eaa21e9d3df3b03d410aece5de1d2abb6caa588faa15752d26d8101880", 
-                        "unlock_time":0
-                    }, 
-                    {
-                        "amount":10000000000, 
-                        "block_height":728, 
-                        "tx_hash":"fcd43f9f784552fbc88c9928fa85e440f952d684f5ce525b3d3c544d6636080d", 
-                        "unlock_time":0
-                    }
-                ]
-            }
-        ]
-    }
- }
+<pre><code>{  
+  'jsonrpc':'2.0',
+  'id':'test',
+  'result':{  
+           'transactionHashes':[  
+               957dcbf54f327846ea0c7a16b2ae8c24ba3fa8305cc3bbc6424e85e7d358b44b
+               25bb751814dd39bf46c972bd760e7516e34200f5e5dd02fda696671e11201f78
+           ],
+        }
+     ]
+  }
+}
 </code></pre>
 
-<h2 id="listtransactions">list_transactions</h2>
+<h2 id="deletedelayedtransaction">deleteDelayedTransaction</h2>
 
-<p><strong>list_transactions()</strong> method returns an array of transactions starting from a particular id.</p>
+<p><strong>deleteDelayedTransaction()</strong> method deletes a specified delayed transaction.</p>
 
 <p>Input:</p>
 
@@ -1060,28 +1533,51 @@
   </thead>
   <tbody>
     <tr>
-      <td>starting_transaction_id</td>
+      <td>transactionHash</td>
       <td>Yes</td>
-      <td>Identifier of a starting transaction</td>
-      <td>uint32</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <td>max_transaction_count</td>
-      <td>Yes</td>
-      <td>Maximum number of returned consecutive transactions</td>
-      <td>uint32</td>
-      <td>20</td>
+      <td>Valid, existing delayed transaction</td>
+      <td>string</td>
+      <td>c671d1005eaaf7c51b1e23eeec1c899e43fa7a332cdc2bcf1e45b908e23d8837</td>
     </tr>
   </tbody>
 </table>
 
 <p>Output:</p>
 
+<p>In case of success returns an empty JSON object.</p>
+
+<p>Input example:</p>
+
+<pre><code>{  
+  'params':{  
+     'transactionHash':'c671d1005eaaf7c51b1e23eeec1c899e43fa7a332cdc2bcf1e45b908e23d8837'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'deleteDelayedTransaction'
+}
+</code></pre>
+
+<p>Output example:</p>
+
+<pre><code>{
+    "id":"1",
+    "jsonrpc":"2.0",
+    "result": {}
+}
+</code></pre>
+
+<h2 id="senddelayedtransaction">sendDelayedTransaction</h2>
+
+<p><strong>sendDelayedTransaction()</strong> method sends a specified delayed transaction.</p>
+
+<p>Input:</p>
+
 <table>
   <thead>
     <tr>
       <th>Argument</th>
+      <th>Mandatory</th>
       <th>Description</th>
       <th>Format</th>
       <th>Example</th>
@@ -1089,70 +1585,38 @@
   </thead>
   <tbody>
     <tr>
-      <td>transactions</td>
-      <td>An array containing information about transactions:<br>Contains:<br> * block_height - uint64 - height of the block containing this transaction<br><br> * extra - string - string of a variable length containing A-Z, 0-9 characters<br> * fee - uint64 - transaction fee.<br> * first_transfer_id - uint64 - identifier of the first transfer in this transaction<br> * hash - string - transaction’s hash<br> * timestamp - uint64 - time when transaction was included into the block<br> * total_amount - int64 - total transaction amount<br> * transfer_count - uint64 - a number of transfers in this transaction<br> * state - uint8 - state of the transaction, where 0 - sending successful, 1 - sending failed, 2 - sending cancelled by user and 3 - transaction has been created but not yet sent<br> * transfers - array - contains 2 fields:<br> ** address - string<br> ** amount - int64<br>
-</td>
-      <td>object</td>
-      <td>See below.</td>
+      <td>transactionHash</td>
+      <td>Yes</td>
+      <td>Valid, existing delayed transaction</td>
+      <td>string</td>
+      <td>c671d1005eaaf7c51b1e23eeec1c899e43fa7a332cdc2bcf1e45b908e23d8837</td>
     </tr>
   </tbody>
 </table>
 
+<p>Output:</p>
+
+<p>In case of success returns an empty JSON object.</p>
+
 <p>Input example:</p>
 
-<pre><code> {
-    "params": {
-        "starting_transaction_id": 100,
-        "max_transaction_count": 50
-    }, 
-    "jsonrpc": "2.0", 
-    "id": "1", 
-    "method": "list_transactions"
- }
+<pre><code>{  
+  'params':{  
+     'transactionHash':'c671d1005eaaf7c51b1e23eeec1c899e43fa7a332cdc2bcf1e45b908e23d8837'
+  },
+  'jsonrpc':'2.0',
+  'id':'test',
+  'method':'sendDelayedTransaction'
+}
 </code></pre>
 
 <p>Output example:</p>
 
-<pre><code> {
+<pre><code>{
     "id":"1",
     "jsonrpc":"2.0",
-    "result": {
-        "transactions": [
-            { 
-                "block_height":2,
-                "extra":"01e3...70f3acfc4",
-                "fee":0,
-                "first_transfer_id":-1,
-                "hash":"fcd43f9f784552fbc88c9928fa85e440f952d684f5ce525b3d3c544d6636080d",
-                "timestamp":1409833412,
-                "total_amount":7036820,
-                "transfer_count":0
-                "transfers": [
-                    {
-                        "amount": 102002,
-                        "address": "28aYVwSsGMxCWJGCNe26GYPWVR2xLdGnSaHiv5WF8MSa4CGuWfnj8eY2CrSUqPRjaqbYVApwxPjwtbPpA3XKjCZSUamsrZv"
-                    }
-                ]
-            },
-            { 
-                "block_height":3,
-                "extra":"01e3...70f3acfc4",
-                "fee":0,
-                "first_transfer_id":-1,
-                "hash":"fcd43f9f784552fbc88c9928fa85e440f952d684f5ce525b3d3c544d6636080d",
-                "timestamp":1409833412,
-                "total_amount":7036820,
-                "transfer_count":0
-                "transfers": [
-                    {
-                        "amount": 102002,
-                        "address": "28aYVwSsGMxCWJGCNe26GYPWVR2xLdGnSaHiv5WF8MSa4CGuWfnj8eY2CrSUqPRjaqbYVApwxPjwtbPpA3XKjCZSUamsrZv"
-                    }
-                ]
-            }
-        ]
-    }
- }
+    "result": {}
+}
 </code></pre>
 
 

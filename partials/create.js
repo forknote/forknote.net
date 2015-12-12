@@ -515,7 +515,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
         }
         $scope.coin_daemon_config += "UPGRADE_HEIGHT=1" + "\n";
         if(!$scope.coin.core['SEED_NODES'].length) {
-            $scope.coin_daemon_config += "seed_nodes=127.0.0.1:" + $scope.coin.core['P2P_DEFAULT_PORT'];
+            $scope.coin_daemon_config += "seed-node=127.0.0.1:" + $scope.coin.core['P2P_DEFAULT_PORT'];
         }
     }
 
