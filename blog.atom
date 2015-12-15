@@ -3,13 +3,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://forknote.net/</id>
   <title>Forknote: Blog</title>
-  <updated>2015-11-24T22:00:00Z</updated>
+  <updated>2015-12-14T22:00:00Z</updated>
   <link rel="alternate" href="http://forknote.net/" />
   <link rel="self" href="http://forknote.net/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
+  <entry>
+    <id>tag:forknote.net,2015-12-15:/blog/2015-12-15-forknote-1/</id>
+    <title type="html">Forknote 1.0.9 Release</title>
+    <published>2015-12-14T22:00:00Z</published>
+    <updated>2015-12-14T22:00:00Z</updated>
+    <author>
+      <name>pmitchev</name>
+      <uri>http://forknote.net/blog/</uri>
+    </author>
+    <link rel="alternate" href="http://forknote.net/blog/2015-12-15-forknote-1/" />
+    <content type="html">
+&lt;p&gt;Forknote’s core has been updated to Bytecoin v1.0.9.&lt;/p&gt;
+
+&lt;p&gt;Bytecoin v1.0.9 introduces major changes in the RPC Wallet. We can highlight the following features among the new ones:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;An option for backup or transferring RPC Wallet keys to another server. Using the ‘getSpendKeys’ and ‘getViewKey’ functions, you can get every private key managed by the Wallet. Later you can save them in a secure storage or install on another server using the ‘reset’ and ‘createAddress’ functions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Delayed transactions. This tool allows you to validate transaction parameters, lock the outputs for a transaction, calculate a hash etc. before sending the transaction into the network. We have introduced the concept of delayed transactions in order to make sure that a transaction passes all checks before being sent.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The new API allows for operating with the blockchain directly. For instance, there are functions now that allow a developer to get the list of hashes of the last blocks or transactions. It is also possible to get data on certain Payment ID or certain address managed by RPC Wallet from a range of blocks.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bytecoin’s announcement: &lt;a href="https://bytecoin.org/news/bytecoin-1.0.9-release-introduces-rpc-wallet-updated-api/"&gt;https://bytecoin.org/news/bytecoin-1.0.9-release-introduces-rpc-wallet-updated-api/&lt;/a&gt;&lt;/p&gt;
+
+</content>
+  </entry>
   <entry>
     <id>tag:forknote.net,2015-11-25:/blog/2015-11-25-forknote-1/</id>
     <title type="html">Forknote Wallet 1.0.8.2 Release</title>

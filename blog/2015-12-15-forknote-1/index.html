@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Cryptonote generator documentation added</title>
+  <title>Forknote 1.0.9 Release</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -63,16 +63,16 @@
 
   <div id="wrapper">
     <div class="content">
-        <div class="change" id="/blog/2015-10-28-cryptonote-generator-documentation/">
+        <div class="change" id="/blog/2015-12-15-forknote-1/">
         <h2 class="title">
-  <a href="/blog/2015-10-28-cryptonote-generator-documentation/">Cryptonote generator documentation added</a>
+  <a href="/blog/2015-12-15-forknote-1/">Forknote 1.0.9 Release</a>
 </h2>
 
 <div class="meta">
   <ul>
   <li class="published">
     <span class="fa fa-calendar"></span>
-    October 28, 2015
+    December 15, 2015
   </li>
   <li class="who_when">
     <img height="16" width="16" src="https://github.com/pmitchev.png" alt="Avatar for pmitchev"/>
@@ -83,25 +83,30 @@
 
 
         
-<p><a href="/documentation/cryptonote-generator/">Documentation</a> for the <a href="https://github.com/forknote/cryptonote-generator">Cryptonote generator</a> was added. With the generator you can generate a separate source of any Forknote coins. This ability is valuable if you need an actual source or you want to extend the functionality of a coin.</p>
+<p>Forknote’s core has been updated to Bytecoin v1.0.9.</p>
 
-<p>The way to extend the functionality of a Forknote coin is through <a href="/documentation/cryptonote-generator/extensions/">extensions</a>. This ensures that the development of your coin constantly matches that of Bytecoin.</p>
-
-<p>What the actual positives of using the generator instead of merging?</p>
+<p>Bytecoin v1.0.9 introduces major changes in the RPC Wallet. We can highlight the following features among the new ones:</p>
 
 <ul>
-  <li>In most of the cases it will save you the actual merging process</li>
-  <li>It will save you the merge conflicts</li>
+  <li>
+    <p>An option for backup or transferring RPC Wallet keys to another server. Using the ‘getSpendKeys’ and ‘getViewKey’ functions, you can get every private key managed by the Wallet. Later you can save them in a secure storage or install on another server using the ‘reset’ and ‘createAddress’ functions.</p>
+  </li>
+  <li>
+    <p>Delayed transactions. This tool allows you to validate transaction parameters, lock the outputs for a transaction, calculate a hash etc. before sending the transaction into the network. We have introduced the concept of delayed transactions in order to make sure that a transaction passes all checks before being sent.</p>
+  </li>
+  <li>
+    <p>The new API allows for operating with the blockchain directly. For instance, there are functions now that allow a developer to get the list of hashes of the last blocks or transactions. It is also possible to get data on certain Payment ID or certain address managed by RPC Wallet from a range of blocks.</p>
+  </li>
 </ul>
 
-<p>The downside is writing extensions is slower than writing just a C code. But since the extensions are pure json, the process CAN be reduced to just writing a C code.</p>
+<p>Bytecoin’s announcement: <a href="https://bytecoin.org/news/bytecoin-1.0.9-release-introduces-rpc-wallet-updated-api/">https://bytecoin.org/news/bytecoin-1.0.9-release-introduces-rpc-wallet-updated-api/</a></p>
 
 
         
 <div class="social-share">
-<div class="fb-like" data-href="http://forknote.net/blog/blog/2015-10-28-cryptonote-generator-documentation/" data-title="Cryptonote generator documentation added" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+<div class="fb-like" data-href="http://forknote.net/blog/blog/2015-12-15-forknote-1/" data-title="Forknote 1.0.9 Release" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://forknote.net/blog/2015-10-28-cryptonote-generator-documentation/" data-text="Cryptonote generator documentation added" data-hashtags="forknote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://forknote.net/blog/2015-12-15-forknote-1/" data-text="Forknote 1.0.9 Release" data-hashtags="forknote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 
 
