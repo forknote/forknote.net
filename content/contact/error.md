@@ -1,8 +1,8 @@
 ---
-title: За контакти - грешка | BezKaries.com
+title: Contact us - error | Forknote.net
 layout: contact
 ---
 
-# Форма за контакт
+# Contact form
 
-Имаше проблем с изпращането на вашето запитване. Моля, изпратете ни email на адрес <a href="mailto:info@bezkaries.com">info@bezkaries.com</a>.
+There was a problem with your enquiry. Please send us an email to address <a href="mailto:support@forknote.net">support@forknote.net</a>.

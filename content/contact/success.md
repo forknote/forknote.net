@@ -1,8 +1,8 @@
 ---
-title: За контакти - успешно изпратено | BezKaries.com
+title: Contact us - success | Forknote.net
 layout: contact
 ---
 
-# Форма за контакт
+# Contact form
 
-Вашето запитване беше изпратено успешно!
+Your enquiry was successfully sent.

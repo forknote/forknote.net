@@ -1,8 +1,8 @@
 ---
-title: За контакти - невалидно поле | BezKaries.com
+title: Contact us - invalid field | Forknote.net
 layout: contact
 ---
 
-# Форма за контакт
+# Contact form
 
-Не сте попълнили задължително поле. Моля, върнете се и попълнете задължителните полета, преди да изпратите съобщението си.
+You did not filled a required field. Please, go back and fill all of the required fields, before you send your message.
