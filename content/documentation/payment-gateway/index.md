@@ -99,7 +99,7 @@ CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf03
 
 wallet-file = mywallet
 wallet-password = mypassword
-daemon-port = 17100
+daemon-port = 29830
 bind-port = 9090
 
 </pre>
