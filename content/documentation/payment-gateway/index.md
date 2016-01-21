@@ -32,8 +32,8 @@ bind-address | Which address to bind Forknote RPC Wallet to. Default value is 0.
 bind-port | Which port to bind Forknote RPC Wallet to. Default value is 8070 | bind-port = 8071
 daemon-address | Forknote daemon (forknoted) address for remote daemon connection infrastructure | daemon-address = 127.0.0.1
 daemon-port | Forknote daemon (forknoted) port for remote daemon connection infrastructure. Default Forknote daemon ports are 8080 and 8081 | daemon-port = 8080
-wallet-file | Mandatory'''. Your wallet's file name | wallet-file = mywallet
-wallet-password | Mandatory. Your wallet's password | wallet-password = mypassword
+container-file | Mandatory'''. Your container's file name | container-file = mycontainer
+container-password | Mandatory. Your container's password | container-password = mypassword
 log-file | A name of log file that you want to use for logging. Default is walletd.log | log-file = mylog.log
 server-root | Working directory that you wish to use for Forknote RPC Wallet. Default is current working directory. | server-root = /home/Downloads/RPCWallet
 log-level | Level of logging. Default is 1. | log-level = 2
@@ -75,9 +75,9 @@ MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simpl
 
 <pre class="terminal">$ cat ./notrealcoin.conf 
 
-seed-node=1.1.1.1:17100
-seed-node=2.2.2.2:17100
-seed-node=seed.notarealcoin.com:17100
+seed-node=1.1.1.1:29829
+seed-node=seed.notarealcoin.com:29829
+seed-node=2.2.2.2:29829
 GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
 EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
@@ -97,8 +97,8 @@ UPGRADE_HEIGHT=1
 CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
 CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
 
-wallet-file = mywallet
-wallet-password = mypassword
+container-file = mycontainer
+container-password = mypassword
 daemon-port = 29830
 bind-port = 9090
 
@@ -106,28 +106,28 @@ bind-port = 9090
 
 *Note: config file's path is relative to current working directory, not server root.*
 
-*Note: options "wallet-file" and "wallet-password" should ALWAYS be set (in either command line or config file mode).*
+*Note: options "container-file" and "container-password" should ALWAYS be set (in either command line or config file mode).*
 
-*Note: "wallet-file" and "log-file" options are relative to "server-root". "server-root" default is the current working directory.*
+*Note: "container-file" and "log-file" options are relative to "server-root". "server-root" default is the current working directory.*
 
 
 ##Generate a new wallet
 
-To start using RPC wallet you must first generate a wallet. Wallet file is the only file that stores all data required to run your service. It contains user addresses and private keys required to operate them. Make sure to backup this file regularly.
+To start using RPC wallet you must first generate a container. Container file is the only file that stores all data required to run your service. It contains user addresses and private keys required to operate them. Make sure to backup this file regularly.
 
 To generate a new wallet you should run the following command:
 
-     $ ./walletd --config /home/Downloads/myconfig.conf --generate-wallet
+     $ ./walletd --config /home/Downloads/myconfig.conf --generate-container
 
 where: 
 
-* **&lt;mywallet&gt;** is the wallet file name and a path to it (relative or absolute); path is optional in this argument, specifying only a wallet's name will result in new *.wallet file located in the same folder as RPC Wallet
+* **&lt;mycontainer&gt;** is the container file name and a path to it (relative or absolute); path is optional in this argument, specifying only a container's name will result in new file located in the same folder as RPC Wallet
 * **&lt;mypass&gt;** is a secret password for the new wallet file. Whichever you like;
-* **--generate-wallet** option tells RPC wallet to generate wallet file and exit.
+* **--generate-container** option tells RPC wallet to generate container file and exit.
 
-*Note: if **&lt;mywallet&gt;** exists Forknote RPC Wallet will show you the notification and will ask you to provide a different name.*
+*Note: if **&lt;mycontainer&gt;** exists Bytecoin RPC Wallet will show you the notification and will ask you to provide a different name.*
 
-If the operation was successful you will get a corresponding message with your new Forknote address. At the same time Forknote RPC Wallet will save your wallet with .wallet extension on the local disk (in the same folder where Forknote RPC Wallet is located) and shut down.
+If the operation was successful you will get a corresponding message with your new Bytecoin address. At the same time Bytecoin RPC Wallet will save your container on the local disk (in the same folder where Bytecoin RPC Wallet is located) and shut down
 
 
 ##Start Forknote RPC Wallet
