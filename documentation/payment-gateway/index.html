@@ -461,15 +461,7 @@ daemon-port=8080
 
 <h2 id="forknote-rpc-wallet-json-rpc-api">Forknote RPC Wallet JSON RPC API</h2>
 
-<p>Forknote RPC Wallet API allows you to create addresses for your users, accept and send transactions and much more. Here is an example of integration scheme:</p>
-
-<ol>
-  <li>Create a unique address for each user to identify his particular deposits with <strong>create_address()</strong> method.</li>
-  <li>When user is going to fund his account he will send you a transaction to this address. To know about new transactions run <strong>get_transaction_count()</strong> method (e.g., every 5 minutes). This method returns you a cumulative number of transactions; number of the transaction corresponds to its ID. This way you will be able to notice when number of your transactions have changed.</li>
-  <li>Run <strong>get_transaction()</strong> method to receive amounts and addresses of new incoming transactions.</li>
-  <li>Fund these amounts to the corresponding user accounts.</li>
-  <li>Withdraw with <strong>send_transaction()</strong> method that allows you to send transaction to one or several addresses.</li>
-</ol>
+<p>Forknote RPC Wallet API allows you to create addresses for your users, accept and send transactions and much more.</p>
 
 <p>Detailed description for every Forknote RPC Wallet API method can be found here: <a href="/documentation/payment-gateway/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a></p>
 
