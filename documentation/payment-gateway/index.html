@@ -121,14 +121,14 @@
       <td>daemon-port = 8080</td>
     </tr>
     <tr>
-      <td>wallet-file</td>
-      <td>Mandatory’’’. Your wallet’s file name</td>
-      <td>wallet-file = mywallet</td>
+      <td>container-file</td>
+      <td>Mandatory’’’. Your container’s file name</td>
+      <td>container-file = mycontainer</td>
     </tr>
     <tr>
-      <td>wallet-password</td>
-      <td>Mandatory. Your wallet’s password</td>
-      <td>wallet-password = mypassword</td>
+      <td>container-password</td>
+      <td>Mandatory. Your container’s password</td>
+      <td>container-password = mypassword</td>
     </tr>
     <tr>
       <td>log-file</td>
@@ -312,9 +312,9 @@
 
 <pre class="terminal">$ cat ./notrealcoin.conf 
 
-seed-node=1.1.1.1:17100
-seed-node=2.2.2.2:17100
-seed-node=seed.notarealcoin.com:17100
+seed-node=1.1.1.1:29829
+seed-node=seed.notarealcoin.com:29829
+seed-node=2.2.2.2:29829
 GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
 EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
@@ -334,8 +334,8 @@ UPGRADE_HEIGHT=1
 CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
 CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
 
-wallet-file = mywallet
-wallet-password = mypassword
+container-file = mycontainer
+container-password = mypassword
 daemon-port = 29830
 bind-port = 9090
 
@@ -343,33 +343,33 @@ bind-port = 9090
 
 <p><em>Note: config file’s path is relative to current working directory, not server root.</em></p>
 
-<p><em>Note: options “wallet-file” and “wallet-password” should ALWAYS be set (in either command line or config file mode).</em></p>
+<p><em>Note: options “container-file” and “container-password” should ALWAYS be set (in either command line or config file mode).</em></p>
 
-<p><em>Note: “wallet-file” and “log-file” options are relative to “server-root”. “server-root” default is the current working directory.</em></p>
+<p><em>Note: “container-file” and “log-file” options are relative to “server-root”. “server-root” default is the current working directory.</em></p>
 
 <h2 id="generate-a-new-wallet">Generate a new wallet</h2>
 
-<p>To start using RPC wallet you must first generate a wallet. Wallet file is the only file that stores all data required to run your service. It contains user addresses and private keys required to operate them. Make sure to backup this file regularly.</p>
+<p>To start using RPC wallet you must first generate a container. Container file is the only file that stores all data required to run your service. It contains user addresses and private keys required to operate them. Make sure to backup this file regularly.</p>
 
 <p>To generate a new wallet you should run the following command:</p>
 
-<pre><code> $ ./walletd --config /home/Downloads/myconfig.conf --generate-wallet
+<pre><code> $ ./walletd --config /home/Downloads/myconfig.conf --generate-container
 </code></pre>
 
 <p>where:</p>
 
 <ul>
   <li>
-<strong>&lt;mywallet&gt;</strong> is the wallet file name and a path to it (relative or absolute); path is optional in this argument, specifying only a wallet’s name will result in new *.wallet file located in the same folder as RPC Wallet</li>
+<strong>&lt;mycontainer&gt;</strong> is the container file name and a path to it (relative or absolute); path is optional in this argument, specifying only a container’s name will result in new file located in the same folder as RPC Wallet</li>
   <li>
 <strong>&lt;mypass&gt;</strong> is a secret password for the new wallet file. Whichever you like;</li>
   <li>
-<strong>–generate-wallet</strong> option tells RPC wallet to generate wallet file and exit.</li>
+<strong>–generate-container</strong> option tells RPC wallet to generate container file and exit.</li>
 </ul>
 
-<p><em>Note: if <strong>&lt;mywallet&gt;</strong> exists Forknote RPC Wallet will show you the notification and will ask you to provide a different name.</em></p>
+<p><em>Note: if <strong>&lt;mycontainer&gt;</strong> exists Bytecoin RPC Wallet will show you the notification and will ask you to provide a different name.</em></p>
 
-<p>If the operation was successful you will get a corresponding message with your new Forknote address. At the same time Forknote RPC Wallet will save your wallet with .wallet extension on the local disk (in the same folder where Forknote RPC Wallet is located) and shut down.</p>
+<p>If the operation was successful you will get a corresponding message with your new Bytecoin address. At the same time Bytecoin RPC Wallet will save your container on the local disk (in the same folder where Bytecoin RPC Wallet is located) and shut down</p>
 
 <h2 id="start-forknote-rpc-wallet">Start Forknote RPC Wallet</h2>
 
