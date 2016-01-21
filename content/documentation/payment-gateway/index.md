@@ -203,13 +203,7 @@ If you want to delete RPC wallet you have to unregister windows service first (i
 
 ##Forknote RPC Wallet JSON RPC API
 
-Forknote RPC Wallet API allows you to create addresses for your users, accept and send transactions and much more. Here is an example of integration scheme:
-
-1. Create a unique address for each user to identify his particular deposits with **create_address()** method. 
-2. When user is going to fund his account he will send you a transaction to this address. To know about new transactions run **get_transaction_count()** method (e.g., every 5 minutes). This method returns you a cumulative number of transactions; number of the transaction corresponds to its ID. This way you will be able to notice when number of your transactions have changed. 
-3. Run **get_transaction()** method to receive amounts and addresses of new incoming transactions. 
-4. Fund these amounts to the corresponding user accounts. 
-5. Withdraw with **send_transaction()** method that allows you to send transaction to one or several addresses. 
+Forknote RPC Wallet API allows you to create addresses for your users, accept and send transactions and much more.
 
 Detailed description for every Forknote RPC Wallet API method can be found here: [Forknote RPC Wallet JSON RPC API][Forknote_RPC_Wallet_JSON_RPC_API]
 
