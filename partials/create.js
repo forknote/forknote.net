@@ -298,6 +298,9 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
     $scope.coreChanged = function () {
         if ($scope.base_coin == "bytecoin") {
             $scope.coin.extensions = [ "core/bytecoin.json", "print-genesis-tx.json" ];
+            if ($scope.coin.core.GENESIS_BLOCK_REWARD != 0) 
+                $scope.coin.extensions.push("genesis-block-reward.json");
+
             $scope.coin.base_coin.name = "bytecoin";
             $scope.coin.base_coin.git = "https://github.com/amjuarez/bytecoin.git";
         }
