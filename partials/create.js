@@ -1,13 +1,14 @@
 'use strict';
 
 
-angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$timeout', function($scope, $http, $timeout, $document) {
+angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$filter', '$timeout', function($scope, $http, $filter, $timeout, $document) {
 
     $scope.coin = {};
     $scope.coin.base_coin = {};
     $scope.coin.core = {};
 
     $scope.base_coin = 'bytecoin';
+    $scope.coin.core.ADDRESSES = [];
     $scope.coin.core.SEED_NODES = [];
     $scope.MONEY_SUPPLY = new JSBigInt(2).pow(64).subtract(1);
     $scope.coin.core.EMISSION_SPEED_FACTOR = 18;
@@ -277,6 +278,10 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
                 cryptonoteDisplayDecimalPoint = 0;
             }
             var preminedAmount = moneySupply * preminePercent / 100;
+            if (preminePercent != 0) {
+                $scope.coin.extensions.push("genesis-block-reward.json");
+                $scope.coin.extensions = $filter('unique')($scope.coin.extensions);
+            }
             var days = 1100, // 3 years
                 k = 1 / Math.pow(2, emissionSpeedFactor);
 
@@ -298,13 +303,22 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
     $scope.coreChanged = function () {
         if ($scope.base_coin == "bytecoin") {
             $scope.coin.extensions = [ "core/bytecoin.json", "print-genesis-tx.json" ];
-            if ($scope.coin.core.GENESIS_BLOCK_REWARD != 0) 
-                $scope.coin.extensions.push("genesis-block-reward.json");
-
             $scope.coin.base_coin.name = "bytecoin";
             $scope.coin.base_coin.git = "https://github.com/amjuarez/bytecoin.git";
         }
     }
+
+
+// Addresses
+    $scope.addToAddresses = function () {
+        var newAddress = $scope.newAddress;
+        if (newAddress !== undefined)
+            $scope.coin.core.ADDRESSES.push(newAddress);
+    };
+
+    $scope.removeAddress = function(index) {
+        $scope.coin.core.ADDRESSES.splice(index, 1);
+    };
 
 // Seed nodes
     $scope.addToSeedNodes = function () {
@@ -384,34 +398,15 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
 
 // Generate genesis tx
 // TODO: DO IT
+/*
     $scope.genesis_tx = function () {
         cnUtil.configChanged($scope.coin);
 
         var emission_speed_factor_shift = new JSBigInt(2).pow($scope.coin.core.EMISSION_SPEED_FACTOR);
 
         var base_reward =  $scope.MONEY_SUPPLY.divide(emission_speed_factor_shift);
-
-        console.log(base_reward);
     }
-// Get genesis transaction hex
-    $scope.get_genesis_tx = function() {      
-        // Writing it to the server
-        //      
-        var dataObj = {
-                MoneySupply : $scope.coin.core.MONEY_SUPPLY,
-                EmissionSpeedFactor : $scope.coin.core.EMISSION_SPEED_FACTOR,
-                DifficultyTarget : $scope.coin.core.DIFFICULTY_TARGET,
-                GenesisBlockReward : $scope.coin.core.GENESIS_BLOCK_REWARD
-        };
-        var res = $http.post('http://api.forknote.net:8080/genesis_tx/', dataObj);
-        res.success(function(data, status, headers, config) {
-            alert( "success message: " + JSON.stringify({data: data}));
-        });
-        res.error(function(data, status, headers, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
-        }); 
-    };
-
+*/
 
 // Cryptonote_name changed
     $scope.cryptonoteNameChanged = function () {
@@ -466,16 +461,33 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
     $scope.show_config_modal = function () {
         $scope.$broadcast('show-errors-check-validity');
         if ($scope.coinForm.$valid) {
+            var addressPrefix = $scope.coin.core.CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX;
+            if ($scope.coin.core.ADDRESSES[0] !== undefined && $scope.coin.core.ADDRESSES[0] !== null && $scope.coin.core.ADDRESSES[0][0] == 'D')
+                addressPrefix = 72;
 
-        console.log("valid form");
-//            $scope.get_genesis_tx();
-            setTimeout(function(){$('#coin_daemon_config_modal').modal('show')}, 100);
-            $scope.create_daemon_config();
+            var dataObj = {
+                    MoneySupply : $scope.coin.core.MONEY_SUPPLY,
+                    EmissionSpeedFactor : $scope.coin.core.EMISSION_SPEED_FACTOR,
+                    DifficultyTarget : $scope.coin.core.DIFFICULTY_TARGET,
+                    GenesisBlockReward : $scope.coin.core.GENESIS_BLOCK_REWARD,
+                    AddressPrefix : addressPrefix,
+                    Addresses : $scope.coin.core.ADDRESSES
+            };
+            var res = $http.post('http://api.forknote.net:8080/genesis_tx/', dataObj);
+            res.success(function(data, status, headers, config) {
+                $scope.coin.core.GENESIS_COINBASE_TX_HEX = data;
+                setTimeout(function(){$('#coin_daemon_config_modal').modal('show')}, 100);
+                $scope.create_daemon_config();
+            });
+            res.error(function(data, status, headers, config) {
+                $scope.coin.core.GENESIS_COINBASE_TX_HEX = "invalid address";
+            });
         }
     }
 
     $scope.show_json_modal = function () {
         $scope.coin_json = (JSON.parse(JSON.stringify($scope.coin)));
+        delete $scope.coin_json.core.ADDRESSES;
         $scope.coin_json.core.CHECKPOINTS = "";
         $scope.coin_json_stringified = JSON.stringify($scope.coin_json, null, 4);
         $scope.$broadcast('show-errors-check-validity');
@@ -509,9 +521,15 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
                     $scope.coin_daemon_config += prop + "=" + $scope.deamon_network_identifier + "\n";
                 } else if (prop == "GENESIS_COINBASE_TX_HEX") {
                     $scope.coin_daemon_config += "GENESIS_COINBASE_TX_HEX=" + $scope.coin.core[prop] + "\n";
+                } else if (prop == "GENESIS_BLOCK_REWARD") {
+                    $scope.coin_daemon_config += "GENESIS_BLOCK_REWARD=" + $scope.coin.core[prop] + "\n";
+                    if ($scope.coin.core[prop] > 0)
+                        $scope.coin_daemon_config += "SYNC_FROM_ZERO=1\n";
                 } else if (prop == "DAEMON_NAME") {
                     // daemon_name is not needed
-                } else {
+                } else if (prop == "ADDRESSES") {
+                    // addresses is not needed
+                } else  {
                     $scope.coin_daemon_config += prop + "=" + $scope.coin.core[prop] + "\n";
                 }
             }
@@ -549,7 +567,6 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$tim
         $scope.randomizeNetworkIdentifier();
         $scope.coreChanged();
         $scope.supplyParameterChanged();
-        $scope.genesis_tx();
     }
 
     $timeout($scope.init);

@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Troutbleshooting | Forknote</title>
+  <title>Creating manually genesis coinbase transaction hex for Cryptonote coins | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -64,61 +64,39 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="troubleshooting">Troubleshooting</h1>
+<h1 id="creating-manually-genesis-coinbase-transaction-hex">Creating manually genesis coinbase transaction hex</h1>
 
 <ul id="markdown-toc">
-  <li><a href="#an-existing-connection-was-forcibly-closed-by-the-remote-host" id="markdown-toc-an-existing-connection-was-forcibly-closed-by-the-remote-host">An existing connection was forcibly closed by the remote host</a></li>
-  <li><a href="#coinbase-transaction-doesnt-use-full-amount-of-block-reward" id="markdown-toc-coinbase-transaction-doesnt-use-full-amount-of-block-reward">Coinbase transaction doesn’t use full amount of block reward</a></li>
+  <li><a href="#for-coins-without-premine" id="markdown-toc-for-coins-without-premine">For coins without premine</a></li>
+  <li><a href="#for-coins-with-premine" id="markdown-toc-for-coins-with-premine">For coins with premine</a></li>
 </ul>
 
-<p>A list of problems you may encounter on the way.</p>
+<p>Forknote give you the ability to create your own genesis coinbase transaction hex if you need.</p>
 
-<h2 id="an-existing-connection-was-forcibly-closed-by-the-remote-host">An existing connection was forcibly closed by the remote host</h2>
+<h2 id="for-coins-without-premine">For coins without premine</h2>
 
-<h3 id="symptom">Symptom</h3>
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx
 
-<p>Nobody can connect to the seed node. <code>forknoted</code> on the seed node prints the following <code>WARNING</code></p>
+config path exist
+Modify this line into your coin configuration file as is: 
+GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101fc680aba69fb5028ade093fb1186ca9de4e65a369ca13ae75fdeef9e952b9449
 
-<pre class="terminal">
-2015-Sep-22 22:51:12.627019 WARNING [node_server] [127.0.0.1:55741 INC] Exception in 
-connectionHandler: TcpConnection::read, WSAGetOverlappedResult failed, result=10054, 
-An existing connection was forcibly closed by the remote host.
 </pre>
 
-<h3 id="solution">Solution</h3>
+<h2 id="for-coins-with-premine">For coins with premine</h2>
 
-<ul>
-  <li>Add the P2P port in “Inbound Rules” in the Windows Firewall on the seed node</li>
-  <li>If you are behind NAT added <code>--p2p-external-port &lt;PORT&gt;</code> param to forknoted.</li>
-</ul>
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx \
+ --genesis-block-reward-address FXhKiPxMdJ6LL1iqkEDWbk1BiiQ7SzHY1b3L9KqqPmP95e9toTXKvQSVGePtjfoDUhMPqSEKFhzymA84o6fGPhQiUYP92rT \
+ --genesis-block-reward-address FPMfUYtRHcZJdL2nLDH7zi2bZUMzgdMPm8kHibeV4qLh8pfsvZsBF6eiHH8T2QkdZm4viA2F9S4YvUk2PXodvxRPDYVvXyR
 
-<h2 id="coinbase-transaction-doesnt-use-full-amount-of-block-reward">Coinbase transaction doesn’t use full amount of block reward</h2>
+config path exist
+outs: 922337203685477580
+outs: 922337203685477580
+Modify this line into your coin configuration file as is: 
+GENESIS_COINBASE_TX_HEX=010a01ff0002cc99b3e6cc99b3e60c024fe47e814d9f44c83184334fb3b5f9a4ab3ebb347050e3742729703086a5e130cc99b3e6cc99b3e60c021011cd9c37a669ea1e5a930cac793aa98431dfe77a9274385b4ed29e3e5e2ac021011afb48c42cbd0a72fc9d782580d6474cf68b5eaac224315447e9694809410930
 
-<h3 id="symptom-1">Symptom</h3>
-
-<p><code>forknoted</code> cannot start and prints the following <code>ERROR</code></p>
-
-<pre class="terminal">
-20:41:36.303639 ERROR Coinbase transaction doesn't use full amount of block reward: spent 70.368744177663, block reward is 1844674.407370955160
-20:41:36.303736 INFO Block &lt;5668876f735d91e7a4b7230dedddfeead0004e83a913eb1d8782101c5f8fc13a&gt; has invalid miner transaction
-20:41:36.303830 ERROR Failed to add genesis block to blockchain
-20:41:36.303898 ERROR Failed to initialize blockchain storage
-20:41:36.303960 ERROR Failed to initialize core
 </pre>
 
-<p>This error occurs when the loaded blockchain has different parameters than the configuration file.</p>
-
-<h3 id="solution-1">Solution</h3>
-
-<p>Delete the blockchain folder.</p>
-
-<p>On Windows delete this folder:</p>
-
-<pre class="terminal">C:\Users\%user_name%\AppData\Roaming\%yourcoin%\</pre>
-
-<p>On Linux/OSX:</p>
-
-<pre class="terminal">$ rm -rf ~/.YOURCOIN/</pre>
 
     </div>
 
