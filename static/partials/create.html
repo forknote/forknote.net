@@ -69,6 +69,28 @@
             </div>
           </div>
 
+          <div class="form-group" ng-show="PREMINED_PERCENT" show-errors>
+            <label class="control-label"
+            for="coin.core.ADDRESSES">Addresses for the premined coins</label>
+            <div class="input-group">
+              <input class="form-control" name="newAddress" type="text" ng-model="newAddress"
+              id="newAddress"
+              ng-minlength="95"
+              ng-maxlength="105"
+              placeholder="F3z2DDWygoZU4NniCNa4oMjjKi45dC2KHUWUyD1RZ1pfgnRgcHdfLVQgh5gmRv4jwEjCX5LoLERAf5PbjLS43Rkd8vFUM1d"/>
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="addToAddresses()">Add address</button>
+              </span>
+            </div>
+            <p class="help-block error-color" ng-if="coinForm.newAddress.$error.minlength">Min length: 95</p>
+            <p class="help-block error-color" ng-if="coinForm.newAddress.$error.maxlength">Max length: 105</p>
+            <ul class="list-group">
+              <li class="list-group-item text-smaller" ng-repeat="item in coin.core.ADDRESSES track by $index">{{item}} <a href="" ng-click="removeAddress($index)" class="remove">[remove]</a></li>
+            </ul>
+          </div>
+
+
+
           <div class="form-group" show-errors>
             <label class="control-label"
             for="coin.core.EMISSION_SPEED_FACTOR">Emission speed factor</label>

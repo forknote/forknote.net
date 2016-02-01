@@ -41,6 +41,7 @@ p2p-bind-port=13539
 rpc-bind-port=13540
 BYTECOIN_NETWORK=e3df4e17-934c-9768-d63d-37df3503e80b
 CRYPTONOTE_NAME=imaginary_blockchain
+GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101f2b92f2b27d8af7ac7e12f8e7972326d8fc8103d571b4d8e9d61bdfa178ea92a
 UPGRADE_HEIGHT=1
 </pre>
 
@@ -65,38 +66,6 @@ view key: 18367126f3948849c1754d14e53702c046751ed7a108290f16bbfd5b3a71180e
 
 **Caution: Don't forget to backup the wallets**
 
-
-## Genesis coinbase transaction creation
-
-### For coins without premine
-
-<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx
-
-config path exist
-Modify this line into your coin configuration file as is: 
-GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101fc680aba69fb5028ade093fb1186ca9de4e65a369ca13ae75fdeef9e952b9449
-
-</pre>
-
-###For coins with premine
-
-<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf --print-genesis-tx \
- --genesis-block-reward-address FXhKiPxMdJ6LL1iqkEDWbk1BiiQ7SzHY1b3L9KqqPmP95e9toTXKvQSVGePtjfoDUhMPqSEKFhzymA84o6fGPhQiUYP92rT \
- --genesis-block-reward-address FPMfUYtRHcZJdL2nLDH7zi2bZUMzgdMPm8kHibeV4qLh8pfsvZsBF6eiHH8T2QkdZm4viA2F9S4YvUk2PXodvxRPDYVvXyR
-
-config path exist
-outs: 922337203685477580
-outs: 922337203685477580
-Modify this line into your coin configuration file as is: 
-GENESIS_COINBASE_TX_HEX=010a01ff0002cc99b3e6cc99b3e60c024fe47e814d9f44c83184334fb3b5f9a4ab3ebb347050e3742729703086a5e130cc99b3e6cc99b3e60c021011cd9c37a669ea1e5a930cac793aa98431dfe77a9274385b4ed29e3e5e2ac021011afb48c42cbd0a72fc9d782580d6474cf68b5eaac224315447e9694809410930
-
-</pre>
-
-You have to add `GENESIS_COINBASE_TX_HEX` to your configuration file.
-
-Alternatively, you can add it into the [configuration form][create] and save the config file again.
-
-[![Create cryptonote coin form - genesis](/images/documentation/create-form-genesis.png)][create]
 
 ### Using simplewallet for wallets, containing premined coins:
 
