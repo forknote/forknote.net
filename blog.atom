@@ -3,13 +3,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://forknote.net/</id>
   <title>Forknote: Blog</title>
-  <updated>2015-12-14T22:00:00Z</updated>
+  <updated>2016-02-19T22:00:00Z</updated>
   <link rel="alternate" href="http://forknote.net/" />
   <link rel="self" href="http://forknote.net/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
+  <entry>
+    <id>tag:forknote.net,2016-02-20:/blog/2016-02-20-forknote-1/</id>
+    <title type="html">Forknote 1.0.9.1 Release</title>
+    <published>2016-02-19T22:00:00Z</published>
+    <updated>2016-02-19T22:00:00Z</updated>
+    <author>
+      <name>pmitchev</name>
+      <uri>http://forknote.net/blog/</uri>
+    </author>
+    <link rel="alternate" href="http://forknote.net/blog/2016-02-20-forknote-1/" />
+    <content type="html">
+&lt;p&gt;Forknote 1.0.9.1 was released.&lt;/p&gt;
+
+&lt;p&gt;Changes in this version:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Core changed to Bytecoin 1.0.9.1&lt;/li&gt;
+  &lt;li&gt;Various minor bug fixes&lt;/li&gt;
+  &lt;li&gt;Bug fixes affecting premined coins&lt;/li&gt;
+  &lt;li&gt;‘walletd –local’ now works&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry>
     <id>tag:forknote.net,2015-12-15:/blog/2015-12-15-forknote-1/</id>
     <title type="html">Forknote 1.0.9 Release</title>
