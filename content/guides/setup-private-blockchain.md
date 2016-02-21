@@ -15,11 +15,40 @@ sidebar_nav: sidebar-giudes
 Let's walk through the process of creating a configuration file for a new private blockchain.
 
 
+
+## Creating simplewallet addresses
+
+*This step is only required for blockchains has premined coins*
+
+<pre class="terminal">$ ./simplewallet --generate-new-wallet MY.wallet --password PASSWORD
+
+config path exist
+forknote wallet v1.0.9.1.662()
+Sync from timestamp: 1455950318
+Error: wallet failed to connect to daemon (http://localhost:29081).
+Generated new wallet: D9CTMkRfsJ594cuvX2pGXNWMFK5ARwxPN1x7bFC5wY5XTZxf12LjWUK5QkMVeSkD6gT532FepdaohRYkt99e9gdF6hyrUgx
+view key: f45a0505d89e4c3bbb91c3481861c12b2b0c6e43b9de23fa108a48a0db116901
+**********************************************************************
+Your wallet has been generated.
+Use "help" command to see the list of available commands.
+Always use "exit" command when closing simplewallet to save
+current session's state. Otherwise, you will possibly need to synchronize 
+your wallet again. Your wallet key is NOT under risk anyway.
+**********************************************************************
+</pre>
+
+At this line is your wallet address:
+```
+Generated new wallet: D9CTMkRfsJ594cuvX2pGXNWMFK5ARwxPN1x7bFC5wY5XTZxf12LjWUK5QkMVeSkD6gT532FepdaohRYkt99e9gdF6hyrUgx
+```
+
+**Caution: Don't forget to backup the wallets**<br />
+**Notice: You can also use walletd or another wallet to create an address**
+
+
 ## Creating configuration file
 
 Create the configuration file of your coin by using our [configuration form][create].
-
-[![Create cryptonote coin form](/images/documentation/create-form.png)][create]
 
 Save the resulted configuration in the `configs` folder of Forknote.
 
@@ -31,47 +60,28 @@ EMISSION_SPEED_FACTOR=18
 DIFFICULTY_TARGET=120
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
 MONEY_SUPPLY=18446744073709551615
-GENESIS_BLOCK_REWARD=0
+GENESIS_BLOCK_REWARD=1844674407370955300
+SYNC_FROM_ZERO=1
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
 CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=60000
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
-p2p-bind-port=13539
-rpc-bind-port=13540
-BYTECOIN_NETWORK=e3df4e17-934c-9768-d63d-37df3503e80b
+p2p-bind-port=6966
+rpc-bind-port=6967
+BYTECOIN_NETWORK=96a24a34-4585-25af-884d-6039b3ab7fd1
 CRYPTONOTE_NAME=imaginary_blockchain
-GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101f2b92f2b27d8af7ac7e12f8e7972326d8fc8103d571b4d8e9d61bdfa178ea92a
+GENESIS_COINBASE_TX_HEX=010a01ff0001a4b4e6cc99b3e6cc190285f558a81f548c1a7be29836e8f512cc33738d07326eeb22a6f4c5b5e1a3aa8e210187216740de551aedfd1b6d8ee7ce73e88a2cc22297d44b46dd4ee5ef6d864e5b
 UPGRADE_HEIGHT=1
+seed-node=127.0.0.1:6966
 </pre>
 
+**Notice: Be careful when you test different configurations with the same CRYPTONOTE_NAME. You may need to delete the blockchain folder to avoid conflict.**<br>
+Example OSX/Linux: ~/.imaginary_blockchain/ <br>
+Example Windows: C:\Users\%user_name%\AppData\Roaming\imaginary_blockchain\
 
-If you want to learn more you can checkout the [supported parameters][supported-parameters] of the configuration file.
-
-
-## Creating simplewallet addresses
-
-*This step is only required if your coin has premine*
-
-<pre class="terminal">$ ./simplewallet --config-file configs/imaginary_blockchain.conf --generate-new-wallet MY.wallet --password PASSWORD
-
-config path exist
-forknote wallet v1.0.8.1.614()
-Sync from timestamp: 1444336575
-Error: wallet failed to connect to daemon (http://localhost:13540).
-Generated new wallet: FXhKiPxMdJ6LL1iqkEDWbk1BiiQ7SzHY1b3L9KqqPmP95e9toTXKvQSVGePtjfoDUhMPqSEKFhzymA84o6fGPhQiUYP92rT
-view key: 18367126f3948849c1754d14e53702c046751ed7a108290f16bbfd5b3a71180e
-
-</pre>
-
-**Caution: Don't forget to backup the wallets**
-
-
-### Using simplewallet for wallets, containing premined coins:
-
-You must use the `SYNC_FROM_ZERO` option of simplewallet to see the premined coins.
-
-<pre class="terminal">$ ./simplewallet --config-file configs/imaginary_blockchain.conf --SYNC_FROM_ZERO
+Check is the configuration file working properly by:
+<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf
 </pre>
 
 
@@ -87,9 +97,7 @@ After you know the IP of the VPS, you have to add `seed-node` to your configurat
 <pre class="terminal">seed-node=1.1.1.1:40741
 </pre>
 
-Alternatively, you can add it into the [configuration form][create] and save the config file again.
-
-[![Create cryptonote coin form - seed](/images/documentation/create-form-seed.png)][create]
+**Notice: Don't forget to delete the line seed-node=127.0.0.1:xxxxx**
 
 
 [supported-parameters]: /documentation/daemon/#command-line-options-and-settings-options
