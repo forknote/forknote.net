@@ -93,11 +93,9 @@ body_class: coins
         </p>
 
         <h4>Pools</h4>
-        <p><a href="http://bcn.democats.org" target="_blank">Democats</a><br />
+        <p><a href="http://democats.org" target="_blank">Democats</a><br />
         <a href="https://minergate.com" target="_blank">Minergate</a><br />
         <a href="http://bytecoin.miner.center" target="_blank">Miner.center</a><br />
-        <a href="http://bcn.shscrypto.net" target="_blank">shscrypto.net</a><br />
-        <a href="http://cryptonight.net" target="_blank">cryptonight.net</a><br />
         <a href="http://cryptmonero.com/bytecoin/" target="_blank">cryptmonero.com</a><br />
         </p>
 
@@ -139,10 +137,8 @@ body_class: coins
         </p>
 
         <h4>Pools</h4>
-        <p><a href="http://dsh.democats.org" target="_blank">Democats</a><br />
+        <p><a href="http://democats.org" target="_blank">Democats</a><br />
         <a href="https://minergate.com" target="_blank">Minergate</a><br />
-        <a href="http://dsh.shscrypto.net" target="_blank">shscrypto.net</a><br />
-        <a href="http://dsh.cryptonight.net" target="_blank">cryptonight.net</a><br />
         </p>
 
         <h4>Community</h4>
@@ -174,7 +170,7 @@ body_class: coins
         <pre class="terminal">$ ./simplewallet --config-file configs/magnatoj.conf</pre>
 
         <h4>Pools</h4>
-        <p><a href="http://xmn.democats.org" target="_blank">Democats</a><br />
+        <p><a href="http://democats.org" target="_blank">Democats</a><br />
         </p>
 
         <h4>Community</h4>
@@ -199,7 +195,7 @@ body_class: coins
         <pre class="terminal">$ ./simplewallet --config-file configs/ethanolium.conf</pre>
 
         <h4>Pools</h4>
-        <p><a href="http://c2h5oh.democats.org" target="_blank">Democats</a><br />
+        <p><a href="http://democats.org" target="_blank">Democats</a><br />
         </p>
 
         <h4>Community</h4>
