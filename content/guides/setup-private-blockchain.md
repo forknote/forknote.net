@@ -76,13 +76,13 @@ UPGRADE_HEIGHT=1
 seed-node=127.0.0.1:6966
 </pre>
 
-**Notice: Be careful when you test different configurations with the same CRYPTONOTE_NAME. You may need to delete the blockchain folder to avoid conflict.**<br>
-Example OSX/Linux: ~/.imaginary_blockchain/ <br>
-Example Windows: C:\Users\%user_name%\AppData\Roaming\imaginary_blockchain\
-
 Check is the configuration file working properly by:
 <pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf
 </pre>
+
+**Notice: Be careful when you test different configurations with the same CRYPTONOTE_NAME. You may need to delete the blockchain folder to avoid conflict.**<br>
+Example OSX/Linux: ~/.imaginary_blockchain/ <br>
+Example Windows: C:\Users\%user_name%\AppData\Roaming\imaginary_blockchain\
 
 
 ## Adding seed nodes
