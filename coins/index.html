@@ -89,6 +89,11 @@
       <p></p>
     </li>
     <li class="highlight-module">
+      <a href="" data-toggle="modal" data-target="#bitaltcoin_modal"><span class="mega-octicon">B</span></a>
+      <h2><a href="" data-toggle="modal" data-target="#bitaltcoin_modal">Bitaltcoin</a></h2>
+      <p></p>
+    </li>
+    <li class="highlight-module">
       <a href="/contact/"><span class="mega-octicon octicon-question"></span></a>
       <h2><a href="/contact/">Add Your Blockchain</a></h2>
       <p>Contact us to get your Forknote blockchain added to this list.</p>
@@ -270,8 +275,42 @@
 <!-- /.modal-dialog -->
 </div>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Bitaltcoin modal -->
+<div id="bitaltcoin_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Download the configuration file and save it in the config folder:<br>
+        <a href="https://raw.githubusercontent.com/forknote/configs/master/bitaltcoin.conf" target="_blank">https://raw.githubusercontent.com/forknote/configs/master/bitaltcoin.conf</a></p>
 
+        <pre class="terminal">$ ./forknoted --config-file configs/bitaltcoin.conf</pre>
+        <pre class="terminal">$ ./simplewallet --config-file configs/bitaltcoin.conf</pre>
+
+        <h4>Pools</h4>
+        <p><a href="http://www.bitaltcoin.com/pool/" target="_blank">Official pool</a><br>
+        </p>
+<p><a href="http://democats.org" target="_blank">Democats</a><br>
+        </p>
+
+        <h4>Community</h4>
+        <p>
+          <a href="https://bitcointalk.org/index.php?topic=1383681.0" target="_blank">Bitcointalk</a><br>
+        </p>
+
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-grey" data-dismiss="modal"><span class="close reset-this">Close</span></button>
+      </div>
+    <!-- /.modal-content -->
+  <!-- /.modal-dialog -->
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</div>
+</div>
+</div>
+</div>
 
 
     <div id="footer" >
