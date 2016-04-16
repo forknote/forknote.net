@@ -24,7 +24,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
     $scope.coin.core.DEFAULT_DUST_THRESHOLD = 1000000;
     $scope.coin.core.MINIMUM_FEE = 1000000;
     $scope.coin.core.CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 10;
-    $scope.coin.core.CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE = 60000;
+    $scope.coin.core.CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE = 100000;
     $scope.coin.core.CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 86;
     $scope.address_prefix = 'F';
     $scope.ports_range_min = 1024;
@@ -534,7 +534,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
                 }
             }
         }
-        $scope.coin_daemon_config += "UPGRADE_HEIGHT=1" + "\n";
+        $scope.coin_daemon_config += "UPGRADE_HEIGHT_V2=1" + "\n";
         if(!$scope.coin.core['SEED_NODES'].length) {
             $scope.coin_daemon_config += "seed-node=127.0.0.1:" + $scope.coin.core['P2P_DEFAULT_PORT'];
         }
