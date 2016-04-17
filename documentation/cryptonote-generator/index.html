@@ -129,6 +129,10 @@
       <td>The maximum size of a block not resulting into penelty. Used only by old (v1) blockchains</td>
     </tr>
     <tr>
+      <td>CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2</td>
+      <td>The maximum size of a block not resulting into penelty. Used only by old (v2) blockchains</td>
+    </tr>
+    <tr>
       <td>CRYPTONOTE_DISPLAY_DECIMAL_POINT</td>
       <td>1 coin = 10^(this value) atomic units</td>
     </tr>
@@ -153,7 +157,7 @@
       <td>Expected number of blocks per day. Used to correct error in v1 blockchains</td>
     </tr>
     <tr>
-      <td>UPGRADE_HEIGHT</td>
+      <td>UPGRADE_HEIGHT_V2</td>
       <td>Block hight to move to blocks with major version 2. Use ‘1’ for new blockchains</td>
     </tr>
     <tr>
@@ -192,7 +196,7 @@
         "DEFAULT_DUST_THRESHOLD": 1000000,
         "MINIMUM_FEE": 1000000,
         "CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW": 10,
-        "CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE": 60000,
+        "CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE": 100000,
         "CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX": 86,
         "P2P_DEFAULT_PORT": 28134,
         "RPC_DEFAULT_PORT": 28135,

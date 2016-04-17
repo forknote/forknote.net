@@ -172,6 +172,11 @@
       <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1 = 10000</td>
     </tr>
     <tr>
+      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V2</td>
+      <td>The maximum size of a block not resulting into penelty. Used only by old (v2) coins</td>
+      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V2 = 10000</td>
+    </tr>
+    <tr>
       <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT</td>
       <td>1 coin = 10^(this value) atomic units</td>
       <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT = 8</td>
@@ -202,7 +207,7 @@
       <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY = 720</td>
     </tr>
     <tr>
-      <td>UPGRADE_HEIGHT</td>
+      <td>UPGRADE_HEIGHT_V2</td>
       <td>Block hight to move to blocks with major version 2. Use ‘1’ for new blockchains</td>
       <td>UPGRADE_HEIGHT = 1</td>
     </tr>
@@ -278,13 +283,13 @@ GENESIS_BLOCK_REWARD=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
-CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=60000
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=100000
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
 p2p-bind-port=29829
 rpc-bind-port=29830
 BYTECOIN_NETWORK=64954525-ff98-5ed4-0576-7c5a0b9c18cc
 CRYPTONOTE_NAME=test
-UPGRADE_HEIGHT=1
+UPGRADE_HEIGHT_V2=1
 CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
 CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
 
