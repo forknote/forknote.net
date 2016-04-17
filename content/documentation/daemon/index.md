@@ -57,13 +57,14 @@ EMISSION_SPEED_FACTOR | Constant defines emission curve slope. This parameter is
 DIFFICULTY_TARGET | Difficulty target is an ideal time period between blocks. Measured in seconds. | DIFFICULTY_TARGET = 120
 CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE | The maximum size of a block not resulting into penelty. | CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE = 20000
 CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE_V1 | The maximum size of a block not resulting into penelty. Used only by old (v1) coins | CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE_V1 = 10000
+CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE_V2 | The maximum size of a block not resulting into penelty. Used only by old (v2) coins | CRYPTONOTE_BLOCK_GRANTED_<br/>FULL_REWARD_ZONE_V2 = 10000
 CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT | 1 coin = 10^(this value) atomic units | CRYPTONOTE_DISPLAY<br/>_DECIMAL_POINT = 8
 MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons | MINIMUM_FEE = 1000000
 DEFAULT_DUST_THRESHOLD | The amount bellow this value will be considered as dust | DEFAULT_DUST_THRESHOLD = 1000000
 CRYPTONOTE_MINED_MONEY_<br/>UNLOCK_WINDOW | Number of blocks to unlock miner transactions | CRYPTONOTE_MINED_MONEY_<br/>UNLOCK_WINDOW = 10
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 coins | MAX_BLOCK_SIZE_INITIAL = 20480
 EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 coins | EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY = 720
-UPGRADE_HEIGHT | Block hight to move to blocks with major version 2. Use '1' for new blockchains | UPGRADE_HEIGHT = 1
+UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains | UPGRADE_HEIGHT = 1
 DIFFICULTY_CUT | Timestamps to cut after sorting | DIFFICULTY_CUT = 60
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks | DIFFICULTY_LAG = 15
 CRYPTONOTE_NAME | Cryptonote name. Used for storage directory | CRYPTONOTE_NAME = dashcoin
@@ -88,13 +89,13 @@ GENESIS_BLOCK_REWARD=0
 DEFAULT_DUST_THRESHOLD=1000000
 MINIMUM_FEE=1000000
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
-CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=60000
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=100000
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
 p2p-bind-port=29829
 rpc-bind-port=29830
 BYTECOIN_NETWORK=64954525-ff98-5ed4-0576-7c5a0b9c18cc
 CRYPTONOTE_NAME=test
-UPGRADE_HEIGHT=1
+UPGRADE_HEIGHT_V2=1
 CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
 CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
 

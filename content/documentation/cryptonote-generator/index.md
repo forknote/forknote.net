@@ -34,13 +34,14 @@ DIFFICULTY_TARGET | Difficulty target is an ideal time period between blocks. Me
 GENESIS_BLOCK_REWARD | Premine amount. Measured in atomic units.
 CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE | The maximum size of a block not resulting into penelty.
 CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 | The maximum size of a block not resulting into penelty. Used only by old (v1) blockchains
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 | The maximum size of a block not resulting into penelty. Used only by old (v2) blockchains
 CRYPTONOTE_DISPLAY_DECIMAL_POINT | 1 coin = 10^(this value) atomic units
 MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons
 DEFAULT_DUST_THRESHOLD | The amount bellow this value will be considered as dust
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW | Number of blocks to unlock miner transactions 
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 blockchains
 EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 blockchains
-UPGRADE_HEIGHT | Block hight to move to blocks with major version 2. Use '1' for new blockchains
+UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
 DIFFICULTY_CUT | Timestamps to cut after sorting
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
 MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet
@@ -64,7 +65,7 @@ DEFAULT_FEE | Default fee of the transactions sent through simplewallet
             "DEFAULT_DUST_THRESHOLD": 1000000,
             "MINIMUM_FEE": 1000000,
             "CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW": 10,
-            "CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE": 60000,
+            "CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE": 100000,
             "CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX": 86,
             "P2P_DEFAULT_PORT": 28134,
             "RPC_DEFAULT_PORT": 28135,

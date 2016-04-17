@@ -62,6 +62,34 @@ Output value example:
     }
 
 
+## save
+
+**save()** method allows you to save your wallet by request.
+
+No input.
+
+No output in case of success.
+
+Input value example:
+
+    {  
+      'params':{  
+      },
+      'jsonrpc':'2.0',
+      'id':'test',
+      'method':'save'
+    }
+
+Output value example:
+
+    {  
+      'jsonrpc':'2.0',
+      'id':'test',
+      'result':{  
+      }
+    }
+
+
 ## getViewKey
 
 **getViewKey()** method returns your view key.
@@ -906,6 +934,110 @@ Output example:
         "id":"1",
         "jsonrpc":"2.0",
         "result": {}
+    }
+
+
+## sendFusionTransaction
+
+**sendFusionTransaction()** method allows you to send a fusion transaction, by taking funds from selected addresses and transferring them to the destination address.
+
+If there aren't any outputs that can be optimized, **sendFusionTransaction()** will return an error. You can use **estimateFusion** to check the outputs, available for the optimization.
+
+Input:
+
+Argument | Mandatory | Description | Format | Example
+-----------|-----------|-----------|-----------|-----------|
+threshold | Yes | Value that determines which outputs will be optimized. Only the outputs, lesser than the threshold value, will be included into a fusion transaction. | uint64 | 1000000
+anonymity | Yes | Privacy level (a discrete number from 1 to infinity). Level 6 and higher is recommended. | uint64 | 6
+addresses | No | Array of strings, where each string is an address to take the funds from | array | See below
+destinationAddress | No | An address that the optimized funds will be sent to. Valid and existing in this container address. | string | 28aYVwSsGMxCWJGCN..CZSUamsrZv
+
+Note: if container contains only 1 address, **destinationAddress** field can be left empty and the funds are going to be sent to this address.
+
+Note: if **addresses** field contains only 1 address, **destinationAddress** can be left empty and the funds are going to be sent to this address.
+
+Note: in the rest of the cases, **destinationAddress** field is mandatory and must contain an address.
+
+Output:
+
+Argument | Description | Format | Example
+-----------|-----------|-----------|-----------|
+transactionHash | Hash of the sent transaction. | string | 93faedc8b8a80a084a02dfeffd163934746c2163f23a1b6022b32423ec9ae08f
+
+Input Example:
+
+    {  
+      'params':{  
+         'anonymity':6,
+         'threshold':1000000,
+         'addresses':[  
+            '27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh',
+            '24JtjYsLdSJKNNDCPGdMco5NbMBLqVWZ5ZiW5vzjXQUrLpMs1MRnfTQ3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFXHARwn',
+            '21fYPCpaM3ochSSyLnhDAhgw1yV5WPb5c1BfyX5eidbMGyEPgnbSgJW3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX8VQMv'
+         ],
+         'destinationAddress':'27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh'
+      },
+      'jsonrpc':'2.0',
+      'id':'test',
+      'method':'sendFusionTransaction'
+    }
+
+Return value example:
+
+    {  
+      'jsonrpc':'2.0',
+      'id':'test',
+      'result':{  
+         'transactionHash':'93faedc8b8a80a084a02dfeffd163934746c2163f23a1b6022b32423ec9ae08f'
+      }
+    }
+
+
+## estimateFusion
+
+**estimateFusion()** method counts the number of unspent outputs of the specified addresses and returns how many of those outputs can be optimized.
+
+This method is used to understand if a fusion transaction can be created. If **fusionReadyCount** returns a value = 0, then a fusion transaction cannot be created.
+
+Input:
+
+Argument | Mandatory | Description | Format | Example
+-----------|-----------|-----------|-----------|-----------|
+threshold | Yes | Value that determines which outputs will be optimized. Only the outputs, lesser than the threshold value, will be included into a fusion transaction. | uint64 | 1000000
+addresses | No | Array of strings, where each string is an address to take the funds from. | array | See below
+
+Output:
+
+Argument | Description | Format | Example
+-----------|-----------|-----------|-----------|
+totalOutputCount | Total number of unspent outputs of the specified addresses. | uint64 | 1000
+fusionReadyCount | Number of outputs that can be optimized. | uint64 | 50
+
+Input example:
+
+    {  
+      'params':{  
+         'threshold':1000000,
+         'addresses':[  
+            '27eJo2S9eVo5N2G9zyjkqNBZPR6d2qvVD122vQMGAhcrjZjLu8nsMqk3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX4qWNh',
+            '24JtjYsLdSJKNNDCPGdMco5NbMBLqVWZ5ZiW5vzjXQUrLpMs1MRnfTQ3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFXHARwn',
+            '21fYPCpaM3ochSSyLnhDAhgw1yV5WPb5c1BfyX5eidbMGyEPgnbSgJW3c4KQ9iMJ4AV4fpBMccmjfJ4cu7uprKLNFX8VQMv'
+         ]
+      },
+      'jsonrpc':'2.0',
+      'id':'test',
+      'method':'estimateFusion'
+    }
+
+Output example:
+
+    {
+      'jsonrpc':'2.0',
+      'id':'test',
+      'result':{  
+         'totalOutputCount':1000,
+         'fusionReadyCount':50
+      }
     }
 
 
