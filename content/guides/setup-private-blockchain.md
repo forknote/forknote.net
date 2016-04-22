@@ -20,7 +20,7 @@ Let's walk through the process of creating a configuration file for a new privat
 
 *This step is only required for blockchains has premined coins*
 
-<pre class="terminal">$ ./simplewallet --generate-new-wallet MY.wallet --password PASSWORD
+<pre class="terminal">$ ./simplewallet --config-file configs/dashcoin.conf --generate-new-wallet MY.wallet --password PASSWORD
 
 config path exist
 forknote wallet v1.0.9.1.662()

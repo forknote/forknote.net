@@ -30,10 +30,10 @@ You can find more about the available configuration options in our [documentatio
 
 ### Examples
 
-Dashcoin is the preconfigured blockchain in Forknote. To connect the daemon to the Dashcoin just start `forknoted`:
+To connect the daemon to the Dashcoin, start `forknoted` with its corresponding configuration file:
 
 <pre class="terminal">
-$ ./forknoted
+$ ./forknoted --config-file configs/dashcoin.conf
 </pre>
 
 To connect to the Bytecoin blockchain, start `forknoted` with its corresponding configuration file:
@@ -59,7 +59,7 @@ $ ./simplewallet --config-file configs/imaginary_blockchain.conf
 Starting `simplewallet` for the Dashcoin blockchain:
 
 <pre class="terminal">
-$ ./simplewallet
+$ ./simplewallet --config-file configs/dashcoin.conf
 </pre>
 
 Starting `simplewallet` for the Bytecoin blockchain:
