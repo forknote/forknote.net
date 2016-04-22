@@ -3,13 +3,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://forknote.net/</id>
   <title>Forknote: Blog</title>
-  <updated>2016-02-19T22:00:00Z</updated>
+  <updated>2016-04-21T21:00:00Z</updated>
   <link rel="alternate" href="http://forknote.net/" />
   <link rel="self" href="http://forknote.net/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
+  <entry>
+    <id>tag:forknote.net,2016-04-22:/blog/2016-04-22-forknote-1/</id>
+    <title type="html">Forknote 1.0.10.0.1 Release</title>
+    <published>2016-04-21T21:00:00Z</published>
+    <updated>2016-04-21T21:00:00Z</updated>
+    <author>
+      <name>pmitchev</name>
+      <uri>http://forknote.net/blog/</uri>
+    </author>
+    <link rel="alternate" href="http://forknote.net/blog/2016-04-22-forknote-1/" />
+    <content type="html">
+&lt;p&gt;Forknote 1.0.10.0.1 was released.&lt;/p&gt;
+
+&lt;p&gt;Since Bytecoin hardforks at this version, because of the new block size, all existing Forknote blockchains (Dashcoin, Magnatoj, Ethanolium, …) hardforked or will hardfork as well.
+We urge everyone to update since old wallets won’t be able to support new block sizes.&lt;/p&gt;
+
+&lt;p&gt;Changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Core changed to Bytecoin 1.0.10 (more info (https://bytecoin.org/news/bytecoin-1.0.10-new-block-size-rpc-wallet-fusion-transactions/))&lt;/li&gt;
+  &lt;li&gt;–config-file option of forknoted and simplewallet is now mandatory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Configuration variables changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;UPGRADE_HEIGHT changed to UPGRADE_HEIGHT_V2&lt;/li&gt;
+  &lt;li&gt;CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE changed to CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2&lt;/li&gt;
+  &lt;li&gt;New parameters added: CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE, UPGRADE_HEIGHT_V3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can download this release from here:
+https://github.com/forknote/forknote/releases/tag/1.0.10.0.1&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <id>tag:forknote.net,2016-02-20:/blog/2016-02-20-forknote-1/</id>
     <title type="html">Forknote 1.0.9.1 Release</title>
