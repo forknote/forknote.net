@@ -42,6 +42,7 @@ CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW | Number of blocks to unlock miner transact
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 blockchains
 EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 blockchains
 UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
+UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains
 DIFFICULTY_CUT | Timestamps to cut after sorting
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
 MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet
@@ -69,6 +70,8 @@ DEFAULT_FEE | Default fee of the transactions sent through simplewallet
             "CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX": 86,
             "P2P_DEFAULT_PORT": 28134,
             "RPC_DEFAULT_PORT": 28135,
+            "UPGRADE_HEIGHT_V2": 1,
+            "UPGRADE_HEIGHT_V3": 2,
             "BYTECOIN_NETWORK": "3354bb33-28e2-66d3-7d92-9267413bede6",
             "CRYPTONOTE_NAME": "newcoin",
             "CHECKPOINTS": ["28000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8", "40000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038"],

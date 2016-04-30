@@ -64,7 +64,8 @@ DEFAULT_DUST_THRESHOLD | The amount bellow this value will be considered as dust
 CRYPTONOTE_MINED_MONEY_<br/>UNLOCK_WINDOW | Number of blocks to unlock miner transactions | CRYPTONOTE_MINED_MONEY_<br/>UNLOCK_WINDOW = 10
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 coins | MAX_BLOCK_SIZE_INITIAL = 20480
 EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 coins | EXPECTED_NUMBER_<br/>OF_BLOCKS_PER_DAY = 720
-UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains | UPGRADE_HEIGHT = 1
+UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains | UPGRADE_HEIGHT_V2 = 1
+UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains | UPGRADE_HEIGHT_V3 = 2
 DIFFICULTY_CUT | Timestamps to cut after sorting | DIFFICULTY_CUT = 60
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks | DIFFICULTY_LAG = 15
 CRYPTONOTE_NAME | Cryptonote name. Used for storage directory | CRYPTONOTE_NAME = dashcoin
