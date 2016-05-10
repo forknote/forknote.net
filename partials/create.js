@@ -473,7 +473,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
                     AddressPrefix : addressPrefix,
                     Addresses : $scope.coin.core.ADDRESSES
             };
-            var res = $http.post('http://api.forknote.net:8080/genesis_tx/', dataObj);
+            var res = $http.post('http://api.forknote.net:8090/genesis_tx/', dataObj);
             res.success(function(data, status, headers, config) {
                 $scope.coin.core.GENESIS_COINBASE_TX_HEX = data;
                 setTimeout(function(){$('#coin_daemon_config_modal').modal('show')}, 100);
