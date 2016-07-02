@@ -84,7 +84,7 @@ UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' 
 
 ##Example of a config file
 
-<pre class="terminal">$ cat ./notrealcoin.conf 
+<pre class="terminal">$ cat ./fakecoin.conf 
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12

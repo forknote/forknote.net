@@ -47,7 +47,7 @@ See [Blockchain options][Blockchain_options]
 
 You can use the same configuration file as the daemon
 
-<pre class="terminal">
+<pre class="terminal">$ cat >fakecoin.conf 
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
