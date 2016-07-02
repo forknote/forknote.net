@@ -23,7 +23,7 @@
     <content type="html">
 &lt;p&gt;Forknote 1.0.11 was released.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Changes:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Changes:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Core changed to Bytecoin 1.0.11&lt;/li&gt;
@@ -33,7 +33,7 @@
 &lt;em&gt;enable-blockchain-indexes&lt;/em&gt; option added to the daemon&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;em&gt;Configuration variables changes:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Configuration variables changes:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -50,8 +50,7 @@
 &lt;p&gt;Currently, Forknote support those networks:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-&lt;a href="http://bikercoin.org"&gt;Bikercoin&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://bikercoin.org"&gt;Bikercoin&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://bytecoin.org"&gt;Bytecoin&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Crossnote (testnet) : more info to be released soon&lt;/li&gt;
   &lt;li&gt;&lt;a href="http://dashcoin.info"&gt;Dashcoin&lt;/a&gt;&lt;/li&gt;
