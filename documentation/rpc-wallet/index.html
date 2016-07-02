@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Payment gateway overview and configuration | Forknote</title>
+  <title>RPC Wallet overview and configuration | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -64,7 +64,7 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="payment-gateway-overview-and-configuration">Payment gateway overview and configuration</h1>
+<h1 id="rpc-wallet-overview-and-configuration">RPC Wallet overview and configuration</h1>
 
 <ul id="markdown-toc">
   <li><a href="#configure-forknote-rpc-wallet" id="markdown-toc-configure-forknote-rpc-wallet">Configure Forknote RPC Wallet</a></li>
@@ -75,7 +75,7 @@
   <li><a href="#forknote-rpc-wallet-json-rpc-api" id="markdown-toc-forknote-rpc-wallet-json-rpc-api">Forknote RPC Wallet JSON RPC API</a></li>
 </ul>
 
-<p>This wiki section describes Forknote integration process into your service with Forknote e-commerce solution called Forknote RPC Wallet. Forknote RPC Wallet is a HTTP server which provides JSON 2.0 RPC interface for Forknote payment operations and address management. Forknote RPC Wallet allows you to accept incoming payments, generate an address for each user via <a href="/documentation/payment-gateway/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a> and much more. <a href="/documentation/payment-gateway/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a> page contains detailed description of every method.</p>
+<p>This wiki section describes Forknote integration process into your service with Forknote e-commerce solution called Forknote RPC Wallet. Forknote RPC Wallet is a HTTP server which provides JSON 2.0 RPC interface for Forknote payment operations and address management. Forknote RPC Wallet allows you to accept incoming payments, generate an address for each user via <a href="/documentation/rpc-wallet/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a> and much more. <a href="/documentation/rpc-wallet/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a> page contains detailed description of every method.</p>
 
 <h2 id="configure-forknote-rpc-wallet">Configure Forknote RPC Wallet</h2>
 
@@ -96,257 +96,118 @@
     <tr>
       <th>Option</th>
       <th>Description</th>
-      <th>Config Example</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>bind-address</td>
       <td>Which address to bind Forknote RPC Wallet to. Default value is 0.0.0.0</td>
-      <td>bind-address = 127.0.0.1</td>
     </tr>
     <tr>
       <td>bind-port</td>
       <td>Which port to bind Forknote RPC Wallet to. Default value is 8070</td>
-      <td>bind-port = 8071</td>
     </tr>
     <tr>
       <td>daemon-address</td>
       <td>Forknote daemon (forknoted) address for remote daemon connection infrastructure</td>
-      <td>daemon-address = 127.0.0.1</td>
     </tr>
     <tr>
       <td>daemon-port</td>
       <td>Forknote daemon (forknoted) port for remote daemon connection infrastructure. Default Forknote daemon ports are 8080 and 8081</td>
-      <td>daemon-port = 8080</td>
     </tr>
     <tr>
       <td>container-file</td>
       <td>Mandatory’’’. Your container’s file name</td>
-      <td>container-file = mycontainer</td>
     </tr>
     <tr>
       <td>container-password</td>
       <td>Mandatory. Your container’s password</td>
-      <td>container-password = mypassword</td>
     </tr>
     <tr>
       <td>log-file</td>
       <td>A name of log file that you want to use for logging. Default is walletd.log</td>
-      <td>log-file = mylog.log</td>
     </tr>
     <tr>
       <td>server-root</td>
       <td>Working directory that you wish to use for Forknote RPC Wallet. Default is current working directory.</td>
-      <td>server-root = /home/Downloads/RPCWallet</td>
     </tr>
     <tr>
       <td>log-level</td>
       <td>Level of logging. Default is 1.</td>
-      <td>log-level = 2</td>
     </tr>
     <tr>
       <td>testnet</td>
       <td>Allows you to run Forknote RPC Wallet in testnet.</td>
-      <td>testnet = no</td>
     </tr>
     <tr>
       <td>local</td>
       <td>Option that allows you to start Forknote RPC Wallet as an in-process node</td>
-      <td>local</td>
     </tr>
     <tr>
       <td>p2p-bind-ip</td>
       <td>Interface for p2p network protocol</td>
-      <td>p2p-bind-ip = 0.0.0.0</td>
     </tr>
     <tr>
       <td>p2p-bind-port</td>
       <td>Port for p2p network protocol</td>
-      <td>p2p-bind-port = 29080</td>
     </tr>
     <tr>
       <td>p2p-external-port</td>
       <td>External port for p2p network protocol (if port forwarding used with NAT)</td>
-      <td>p2p-external-port = 443</td>
     </tr>
     <tr>
       <td>add-peer</td>
       <td>Manually add peer to local peerlist</td>
-      <td>add-peer = 127.0.0.1</td>
     </tr>
     <tr>
       <td>add-priority-node</td>
       <td>Specify list of peers to connect to and attempt to keep the connection open</td>
-      <td>add-priority-node = 127.0.0.1</td>
     </tr>
     <tr>
       <td>add-exclusive-node</td>
       <td>Specify list of peers to connect to only. If this option is given the options add-priority-node and seed-node are ignored</td>
-      <td>add-exclusive-node = 127.0.0.1</td>
     </tr>
     <tr>
       <td>seed-node</td>
       <td>Connect to a node to retrieve peer addresses, and disconnect</td>
-      <td>seed-node = 127.0.0.1</td>
     </tr>
     <tr>
       <td>hide-my-port</td>
       <td>Do not announce yourself as peerlist candidate</td>
-      <td>hide-my-port</td>
-    </tr>
-    <tr>
-      <td>P2P_STAT_TRUSTED_PUB_KEY</td>
-      <td>P2P stat trusted pub key</td>
-      <td>P2P_STAT_TRUSTED_PUB_KEY = 4d..eb</td>
-    </tr>
-    <tr>
-      <td>BYTECOIN_NETWORK</td>
-      <td>Used for network packages in order not to mix two different cryptocoin networks</td>
-      <td>BYTECOIN_NETWORK = 11100111-1100-0101-1011-001210110110</td>
-    </tr>
-    <tr>
-      <td>GENESIS_COINBASE_TX_HEX</td>
-      <td>The hex of the transaction in the genesis block</td>
-      <td>GENESIS_COINBASE_TX_HEX = 01..4a</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_PUBLIC_ADDRESS_<br>BASE58_PREFIX</td>
-      <td>Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator</td>
-      <td>CRYPTONOTE_PUBLIC_ADDRESS_<br>BASE58_PREFIX = 86</td>
-    </tr>
-    <tr>
-      <td>MONEY_SUPPLY</td>
-      <td>Total amount of coins to be emitted.</td>
-      <td>MONEY_SUPPLY = 18446744073709551615</td>
-    </tr>
-    <tr>
-      <td>EMISSION_SPEED_FACTOR</td>
-      <td>Constant defines emission curve slope. This parameter is required to calulate block reward.</td>
-      <td>EMISSION_SPEED_FACTOR = 18</td>
-    </tr>
-    <tr>
-      <td>DIFFICULTY_TARGET</td>
-      <td>Difficulty target is an ideal time period between blocks. Measured in seconds.</td>
-      <td>DIFFICULTY_TARGET = 120</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE</td>
-      <td>The maximum size of a block not resulting into penelty.</td>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE = 20000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1</td>
-      <td>The maximum size of a block not resulting into penelty. Used only by old (v1) coins</td>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1 = 10000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V2</td>
-      <td>The maximum size of a block not resulting into penelty. Used only by old (v2) coins</td>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V2 = 10000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT</td>
-      <td>1 coin = 10^(this value) atomic units</td>
-      <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT = 8</td>
-    </tr>
-    <tr>
-      <td>MINIMUM_FEE</td>
-      <td>Transactions with less than this fee wouldn’t be accepted by daemons</td>
-      <td>MINIMUM_FEE = 1000000</td>
-    </tr>
-    <tr>
-      <td>DEFAULT_DUST_THRESHOLD</td>
-      <td>The amount bellow this value will be considered as dust</td>
-      <td>DEFAULT_DUST_THRESHOLD = 1000000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_MINED_MONEY_<br>UNLOCK_WINDOW</td>
-      <td>Number of blocks to unlock miner transactions</td>
-      <td>CRYPTONOTE_MINED_MONEY_<br>UNLOCK_WINDOW = 10</td>
-    </tr>
-    <tr>
-      <td>MAX_BLOCK_SIZE_INITIAL</td>
-      <td>The size of the initial block. Used to correct error in v1 coins</td>
-      <td>MAX_BLOCK_SIZE_INITIAL = 20480</td>
-    </tr>
-    <tr>
-      <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY</td>
-      <td>Expected number of blocks per day. Used to correct error in v1 coins</td>
-      <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY = 720</td>
-    </tr>
-    <tr>
-      <td>UPGRADE_HEIGHT_V2</td>
-      <td>Block hight to move to blocks with major version 2. Use ‘1’ for new blockchains</td>
-      <td>UPGRADE_HEIGHT_V2 = 1</td>
-    </tr>
-    <tr>
-      <td>UPGRADE_HEIGHT_V3</td>
-      <td>Block hight to move to blocks with major version 3. Use ‘2’ for new blockchains</td>
-      <td>UPGRADE_HEIGHT_V3 = 2</td>
-    </tr>
-    <tr>
-      <td>DIFFICULTY_CUT</td>
-      <td>Timestamps to cut after sorting</td>
-      <td>DIFFICULTY_CUT = 60</td>
-    </tr>
-    <tr>
-      <td>DIFFICULTY_LAG</td>
-      <td>Lag of calculating the difficulty in terms of blocks</td>
-      <td>DIFFICULTY_LAG = 15</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_NAME</td>
-      <td>Cryptonote name. Used for storage directory</td>
-      <td>CRYPTONOTE_NAME = dashcoin</td>
-    </tr>
-    <tr>
-      <td>CHECKPOINT</td>
-      <td>Checkpoints. Format: HEIGHT:HASH</td>
-      <td>CHECKPOINT = 10:70d..f8</td>
-    </tr>
-    <tr>
-      <td>GENESIS_BLOCK_REWARD</td>
-      <td>Amount of premined coins. In atomic units</td>
-      <td>GENESIS_BLOCK_REWARD = 1844674407370955161</td>
     </tr>
     <tr>
       <td>MAX_TRANSACTION_SIZE_LIMIT</td>
       <td>Maximum size of the transactions sent through simplewallet</td>
-      <td>MAX_TRANSACTION_SIZE_LIMIT = 20000</td>
     </tr>
   </tbody>
 </table>
 
+<h3 id="blockchain-options">Blockchain options</h3>
+
+<p>See <a href="/documentation/daemon/#blockchain-options">Blockchain options</a></p>
+
 <h2 id="example-of-a-config-file">Example of a config file</h2>
 
-<pre class="terminal">$ cat ./notrealcoin.conf 
+<pre class="terminal">
 
-seed-node=1.1.1.1:29829
-seed-node=seed.notarealcoin.com:29829
-seed-node=2.2.2.2:29829
-GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
-EMISSION_SPEED_FACTOR=18
-DIFFICULTY_TARGET=120
+BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
-MONEY_SUPPLY=18446744073709551615
-GENESIS_BLOCK_REWARD=0
-DEFAULT_DUST_THRESHOLD=1000000
-MINIMUM_FEE=1000000
-CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
-CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=60000
-CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
-p2p-bind-port=29829
-rpc-bind-port=29830
-BYTECOIN_NETWORK=64954525-ff98-5ed4-0576-7c5a0b9c18cc
-CRYPTONOTE_NAME=test
+CRYPTONOTE_NAME=fakecoin
+CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=72
+GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
+P2P_STAT_TRUSTED_PUB_KEY=
+
 UPGRADE_HEIGHT_V2=1
-CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
-CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
+UPGRADE_HEIGHT_V3=2
+
+p2p-bind-port=8080
+rpc-bind-port=8081
+
+seed-node=127.0.0.1:8080
 
 container-file = mycontainer
 container-password = mypassword
-daemon-port = 29830
+daemon-port = 8081
 bind-port = 9090
 
 </pre>
@@ -473,7 +334,7 @@ daemon-port=8080
 
 <p>Forknote RPC Wallet API allows you to create addresses for your users, accept and send transactions and much more.</p>
 
-<p>Detailed description for every Forknote RPC Wallet API method can be found here: <a href="/documentation/payment-gateway/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a></p>
+<p>Detailed description for every Forknote RPC Wallet API method can be found here: <a href="/documentation/rpc-wallet/json-rpc-api/">Forknote RPC Wallet JSON RPC API</a></p>
 
 
     </div>
@@ -497,9 +358,9 @@ daemon-port=8080
             </ul>
           </li>
           <li class="js-topic">
-            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/payment-gateway/">Payment gateway</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/rpc-wallet/">RPC Wallet</a></h3>
             <ul class="js-guides">
-              <li><a href="/documentation/payment-gateway/json-rpc-api/">JSON RPC API</a></li>
+              <li><a href="/documentation/rpc-wallet/json-rpc-api/">JSON RPC API</a></li>
             </ul>
           </li>
 

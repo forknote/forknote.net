@@ -66,92 +66,10 @@
       
 <h1 id="daemon-http-rpc-api">Daemon HTTP RPC API</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>URL</th>
-      <th>Description</th>
-      <th>Format</th>
-      <th>Arg 1</th>
-      <th>Arg 2</th>
-      <th>Return value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>/getheight</td>
-      <td>Returns current chain height</td>
-      <td>JSON</td>
-      <td>-</td>
-      <td>-</td>
-      <td>[int] height</td>
-    </tr>
-    <tr>
-      <td>/getknownblockids</td>
-      <td>Returns list of known block ids</td>
-      <td>JSON</td>
-      <td>-</td>
-      <td>-</td>
-      <td>[list] main chain block ids <br> [list] alternative chains block ids <br> [list] invalid block ids</td>
-    </tr>
-    <tr>
-      <td>/start_mine</td>
-      <td>Starts mining threads</td>
-      <td>JSON</td>
-      <td>[string] wallet address</td>
-      <td>[int] number of threads</td>
-      <td>[string] status</td>
-    </tr>
-    <tr>
-      <td>/stop_mine</td>
-      <td>Stops mining threads</td>
-      <td>JSON</td>
-      <td>-</td>
-      <td>-</td>
-      <td>[string] status</td>
-    </tr>
-    <tr>
-      <td>/gettransactions</td>
-      <td>Returns transactions as serialized blobs</td>
-      <td>JSON</td>
-      <td>[list] tx ids</td>
-      <td>-</td>
-      <td>[list] transactions as hex <br> [list] missing tx ids <br> [string] status</td>
-    </tr>
-    <tr>
-      <td>/sendrawtransactions</td>
-      <td>Send transaction to the network</td>
-      <td>JSON</td>
-      <td>[string] serialized transaction in hex form</td>
-      <td>-</td>
-      <td>[string] status</td>
-    </tr>
-    <tr>
-      <td>/getblocks.bin</td>
-      <td>Returns blocks in binary form</td>
-      <td>BIN</td>
-      <td>[list] block ids</td>
-      <td>-</td>
-      <td>[list] blocks <br> [int] start height  <br> [int] current height <br> [string] status</td>
-    </tr>
-    <tr>
-      <td>/get_o_indexes.bin</td>
-      <td>Get global output indicies</td>
-      <td>BIN</td>
-      <td>[hash] transaction id</td>
-      <td>-</td>
-      <td>[vector] output indicies  <br> [string] status</td>
-    </tr>
-    <tr>
-      <td>/getrandom_outs.bin</td>
-      <td>Get random output indicies <br> for a given amount <br>  (purpose: for ring signatures)</td>
-      <td>BIN</td>
-      <td>[list] amounts</td>
-      <td>[int] count</td>
-      <td>[vector] <br> { [int] amount; [list] outs } <br>  output entries</td>
-    </tr>
-  </tbody>
-</table>
+<p>Forknote’s Daemon is using the same HTTP API as Bytecoin’s daemon. A list of the available methods and usage examples can be found at the Bytecoin Wiki:</p>
+
+<p><a href="https://wiki.bytecoin.org/wiki/Daemon_HTTP_RPC_API">Bytecoin Daemon HTTP RPC API</a></p>
+
 
     </div>
 
@@ -174,9 +92,9 @@
             </ul>
           </li>
           <li class="js-topic">
-            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/payment-gateway/">Payment gateway</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/rpc-wallet/">RPC Wallet</a></h3>
             <ul class="js-guides">
-              <li><a href="/documentation/payment-gateway/json-rpc-api/">JSON RPC API</a></li>
+              <li><a href="/documentation/rpc-wallet/json-rpc-api/">JSON RPC API</a></li>
             </ul>
           </li>
 

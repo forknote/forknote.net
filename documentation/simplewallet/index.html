@@ -92,215 +92,80 @@
     <tr>
       <th>Option</th>
       <th>Description</th>
-      <th>Config Example</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>wallet-file</td>
       <td>Use wallet &lt;arg&gt;</td>
-      <td>wallet-file = /home/USERNAME/<br>forknote-linux/dashcoin.wallet</td>
     </tr>
     <tr>
       <td>password</td>
       <td>Wallet password</td>
-      <td>password = PASSWORD</td>
     </tr>
     <tr>
       <td>daemon-address</td>
       <td>Use daemon instance at &lt;host&gt;:&lt;port&gt;</td>
-      <td>daemon-address = 127.0.0.1:29081</td>
     </tr>
     <tr>
       <td>daemon-host</td>
       <td>Use daemon instance at host &lt;arg&gt; instead of localhost</td>
-      <td>daemon-host = 127.0.0.1</td>
     </tr>
     <tr>
       <td>daemon-port</td>
       <td>Use daemon instance at port &lt;arg&gt; instead of 8081</td>
-      <td>daemon-port = 29081</td>
     </tr>
     <tr>
       <td>set_log</td>
       <td>Level of logging. Default is 1.</td>
-      <td>set_log = 4</td>
-    </tr>
-    <tr>
-      <td>P2P_STAT_TRUSTED_PUB_KEY</td>
-      <td>P2P stat trusted pub key</td>
-      <td>P2P_STAT_TRUSTED_PUB_KEY = 4d..eb</td>
-    </tr>
-    <tr>
-      <td>BYTECOIN_NETWORK</td>
-      <td>Used for network packages in order not to mix two different cryptocoin networks</td>
-      <td>BYTECOIN_NETWORK = 11100111-1100-0101-1011-001210110110</td>
-    </tr>
-    <tr>
-      <td>GENESIS_COINBASE_TX_HEX</td>
-      <td>The hex of the transaction in the genesis block</td>
-      <td>GENESIS_COINBASE_TX_HEX = 01..4a</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_PUBLIC_ADDRESS_<br>BASE58_PREFIX</td>
-      <td>Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator</td>
-      <td>CRYPTONOTE_PUBLIC_ADDRESS_<br>BASE58_PREFIX = 86</td>
-    </tr>
-    <tr>
-      <td>MONEY_SUPPLY</td>
-      <td>Total amount of coins to be emitted.</td>
-      <td>MONEY_SUPPLY = 18446744073709551615</td>
-    </tr>
-    <tr>
-      <td>EMISSION_SPEED_FACTOR</td>
-      <td>Constant defines emission curve slope. This parameter is required to calulate block reward.</td>
-      <td>EMISSION_SPEED_FACTOR = 18</td>
-    </tr>
-    <tr>
-      <td>DIFFICULTY_TARGET</td>
-      <td>Difficulty target is an ideal time period between blocks. Measured in seconds.</td>
-      <td>DIFFICULTY_TARGET = 120</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE</td>
-      <td>The maximum size of a block not resulting into penelty.</td>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE = 20000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1</td>
-      <td>The maximum size of a block not resulting into penelty. Used only by old (v1) coins</td>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V1 = 10000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V2</td>
-      <td>The maximum size of a block not resulting into penelty. Used only by old (v2) coins</td>
-      <td>CRYPTONOTE_BLOCK_GRANTED_<br>FULL_REWARD_ZONE_V2 = 10000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT</td>
-      <td>1 coin = 10^(this value) atomic units</td>
-      <td>CRYPTONOTE_DISPLAY<br>_DECIMAL_POINT = 8</td>
-    </tr>
-    <tr>
-      <td>MINIMUM_FEE</td>
-      <td>Transactions with less than this fee wouldn’t be accepted by daemons</td>
-      <td>MINIMUM_FEE = 1000000</td>
-    </tr>
-    <tr>
-      <td>DEFAULT_DUST_THRESHOLD</td>
-      <td>The amount bellow this value will be considered as dust</td>
-      <td>DEFAULT_DUST_THRESHOLD = 1000000</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_MINED_MONEY_<br>UNLOCK_WINDOW</td>
-      <td>Number of blocks to unlock miner transactions</td>
-      <td>CRYPTONOTE_MINED_MONEY_<br>UNLOCK_WINDOW = 10</td>
-    </tr>
-    <tr>
-      <td>MAX_BLOCK_SIZE_INITIAL</td>
-      <td>The size of the initial block. Used to correct error in v1 coins</td>
-      <td>MAX_BLOCK_SIZE_INITIAL = 20480</td>
-    </tr>
-    <tr>
-      <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY</td>
-      <td>Expected number of blocks per day. Used to correct error in v1 coins</td>
-      <td>EXPECTED_NUMBER_<br>OF_BLOCKS_PER_DAY = 720</td>
-    </tr>
-    <tr>
-      <td>UPGRADE_HEIGHT_V2</td>
-      <td>Block hight to move to blocks with major version 2. Use ‘1’ for new blockchains</td>
-      <td>UPGRADE_HEIGHT_V2 = 1</td>
-    </tr>
-    <tr>
-      <td>UPGRADE_HEIGHT_V3</td>
-      <td>Block hight to move to blocks with major version 3. Use ‘2’ for new blockchains</td>
-      <td>UPGRADE_HEIGHT_V3 = 2</td>
-    </tr>
-    <tr>
-      <td>DIFFICULTY_CUT</td>
-      <td>Timestamps to cut after sorting</td>
-      <td>DIFFICULTY_CUT = 60</td>
-    </tr>
-    <tr>
-      <td>DIFFICULTY_LAG</td>
-      <td>Lag of calculating the difficulty in terms of blocks</td>
-      <td>DIFFICULTY_LAG = 15</td>
-    </tr>
-    <tr>
-      <td>CRYPTONOTE_NAME</td>
-      <td>Cryptonote name. Used for storage directory</td>
-      <td>CRYPTONOTE_NAME = dashcoin</td>
-    </tr>
-    <tr>
-      <td>CHECKPOINT</td>
-      <td>Checkpoints. Format: HEIGHT:HASH</td>
-      <td>CHECKPOINT = 10:70d..f8</td>
-    </tr>
-    <tr>
-      <td>GENESIS_BLOCK_REWARD</td>
-      <td>Amount of premined coins. In atomic units</td>
-      <td>GENESIS_BLOCK_REWARD = 1844674407370955161</td>
-    </tr>
-    <tr>
-      <td>wallet-rpc-bind-ip</td>
-      <td>Specify ip to bind rpc server</td>
-      <td>wallet-rpc-bind-ip = 127.0.0.1</td>
     </tr>
     <tr>
       <td>wallet-rpc-bind-port</td>
       <td>Starts wallet as rpc server for wallet operations, sets bind port for server</td>
-      <td>wallet-rpc-bind-port = 29082</td>
     </tr>
     <tr>
       <td>MAX_TRANSACTION_SIZE_LIMIT</td>
       <td>Maximum size of the transactions sent through simplewallet</td>
-      <td>MAX_TRANSACTION<br>_SIZE_LIMIT = 20000</td>
     </tr>
     <tr>
       <td>DEFAULT_FEE</td>
       <td>Default fee of the transactions sent through simplewallet</td>
-      <td>DEFAULT_FEE = 1000000000</td>
     </tr>
     <tr>
       <td>SYNC_FROM_ZERO</td>
       <td>Sync from block 0. Use for premine wallet or brainwallet</td>
-      <td>SYNC_FROM_ZERO</td>
     </tr>
   </tbody>
 </table>
+
+<h3 id="blockchain-options">Blockchain options</h3>
+
+<p>See <a href="/documentation/daemon/#blockchain-options">Blockchain options</a></p>
 
 <h2 id="example-of-a-config-file">Example of a config file</h2>
 
 <p>You can use the same configuration file as the daemon</p>
 
-<pre class="terminal">$ cat ./notrealcoin.conf 
+<pre class="terminal">
 
-CRYPTONOTE_NAME=notrealcoin
-seed-node=1.1.1.1:17100
-seed-node=2.2.2.2:17100
-seed-node=seed.notarealcoin.com:17100
-GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
-EMISSION_SPEED_FACTOR=18
-DIFFICULTY_TARGET=120
+BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
-MONEY_SUPPLY=18446744073709551615
-GENESIS_BLOCK_REWARD=0
-DEFAULT_DUST_THRESHOLD=1000000
-MINIMUM_FEE=1000000
-CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW=10
-CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE=100000
-CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
-p2p-bind-port=29829
-rpc-bind-port=29830
-BYTECOIN_NETWORK=64954525-ff98-5ed4-0576-7c5a0b9c18cc
-CRYPTONOTE_NAME=test
-UPGRADE_HEIGHT_V2=1
-CHECKPOINT=10000:70d2531151529ac00bf875281e15f51324934bc85e5733dcd92e1ccb1a665ff8
-CHECKPOINT=20000:c181ec9223a91fef8658c7aa364c093c41c28d250870ca1ed829bf74f0abf038
+CRYPTONOTE_NAME=fakecoin
+CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=72
+GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
+P2P_STAT_TRUSTED_PUB_KEY=
 
-wallet-file=/home/USERNAME/forknote-linux/notrealwallet.wallet
+UPGRADE_HEIGHT_V2=1
+UPGRADE_HEIGHT_V3=2
+
+p2p-bind-port=8080
+rpc-bind-port=8081
+
+seed-node=127.0.0.1:8080
+
+wallet-file=/home/USERNAME/forknote-linux/fake_wallet.wallet
 password=FAKE_PASSWORD
-wallet-rpc-bind-port=17102
+wallet-rpc-bind-port=8082
 </pre>
 
 <h2 id="wallet-commands">Wallet commands</h2>
@@ -404,9 +269,9 @@ wallet-rpc-bind-port=17102
             </ul>
           </li>
           <li class="js-topic">
-            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/payment-gateway/">Payment gateway</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/documentation/rpc-wallet/">RPC Wallet</a></h3>
             <ul class="js-guides">
-              <li><a href="/documentation/payment-gateway/json-rpc-api/">JSON RPC API</a></li>
+              <li><a href="/documentation/rpc-wallet/json-rpc-api/">JSON RPC API</a></li>
             </ul>
           </li>
 

@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Cryptonote generator extensions | Forknote</title>
+  <title>RPC Wallet JSON API | Forknote</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -64,170 +64,11 @@
   <div id="wrapper">
     <div class="content">
       
-<h1 id="cryptonote-generator-extensions">Cryptonote generator extensions</h1>
+<h1 id="rpc-wallet-json-api">RPC Wallet JSON API</h1>
 
-<ul id="markdown-toc">
-  <li><a href="#meta-data" id="markdown-toc-meta-data">Meta data</a></li>
-  <li><a href="#file" id="markdown-toc-file">File</a></li>
-  <li><a href="#changes" id="markdown-toc-changes">Changes</a></li>
-  <li><a href="#example" id="markdown-toc-example">Example</a></li>
-  <li><a href="#adding-extension-to-your-configuration" id="markdown-toc-adding-extension-to-your-configuration">Adding extension to your configuration</a></li>
-</ul>
+<p>Forknote’s RPC Wallet is using the same JSON API as Bytecoin. A list of the available methods and usage examples can be found at the Bytecoin Wiki:</p>
 
-<p>Extensions are the way to add functionality to the Forknote. Your extensions must be located in the <em>extensions</em> folder.</p>
-
-<p><em>Notice: If you make big changes in the way your coin functions, it may no longer be compatible with Forknote</em></p>
-
-<h2 id="meta-data">Meta data</h2>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Key</td>
-      <td>Description</td>
-    </tr>
-    <tr>
-      <td><a href="#file">file</a></td>
-      <td>Filename of the extension. Use relative name</td>
-    </tr>
-    <tr>
-      <td>description</td>
-      <td>Short description of the functionality of the extension</td>
-    </tr>
-    <tr>
-      <td>required</td>
-      <td>Array of required extensions.</td>
-    </tr>
-    <tr>
-      <td>files</td>
-      <td>Array of added or edited files.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="file">File</h2>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Key</td>
-      <td>Description</td>
-    </tr>
-    <tr>
-      <td>path</td>
-      <td>Path of the file</td>
-    </tr>
-    <tr>
-      <td><a href="#changes">changes</a></td>
-      <td>Array of the changes made in the file. Optional</td>
-    </tr>
-    <tr>
-      <td>action</td>
-      <td>Use with value “add” to add a file. Optional</td>
-    </tr>
-    <tr>
-      <td>source</td>
-      <td>Path to file. Used only with “add” action</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="changes">Changes</h2>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Key</td>
-      <td>Description</td>
-    </tr>
-    <tr>
-      <td>action</td>
-      <td>Available options: replace, add_above, add_bellow, delete</td>
-    </tr>
-    <tr>
-      <td>marker</td>
-      <td>Place in the file where to perform the “action”</td>
-    </tr>
-    <tr>
-      <td>parameters</td>
-      <td>“text” - array of strings, used as new or added text. Use %s for variables<br>“var” - variable from the configuration file</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="example">Example</h2>
-
-<pre><code>{
-    "file":"multiply.json",
-    "description":"Adds core parameters as option for daemon, simplewallet and walletd",
-    "required":[ "core/bytecoin.json", "print-genesis-tx.json", "genesis-block-reward.json" ],
-    "files": [ 
-        {
-            "path":"/src/CryptoNoteConfig.h",
-            "changes": [
-                {
-                    "action":"add_above",
-                    "marker":"} // parameters",
-                    "parameters": {
-                        "text":[
-                            "const char     GENESIS_COINBASE_TX_HEX[]                     = \"%s\";"
-                        ],
-                        "var":"GENESIS_COINBASE_TX_HEX"
-                    }
-                }
-                {
-                    "action":"add_bellow",
-                    "marker":"size_t blockGrantedFullRewardZone()",
-                    "parameters": {
-                        "text":[
-                            "  size_t blockGrantedFullRewardZoneV1() const { return m_blockGrantedFullRewardZoneV1; }"
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "path":"/src/CryptoNoteCore/Currency.cpp",
-            "changes": [
-                {
-                    "action":"replace",
-                    "marker":"CryptoNote::parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1;",
-                    "parameters": {
-                        "text":[
-                            "       m_blockGrantedFullRewardZoneV1;"
-                        ]
-                    }
-                }
-
-            ]
-        },
-        {
-            "path":"/README.md",
-            "action":"add",
-            "source":"/multiply/files/README.md"
-        }
-    ]
-}
-</code></pre>
-
-<h2 id="adding-extension-to-your-configuration">Adding extension to your configuration</h2>
-
-<p>Add the created extension in your Cryptonote generator’s configuration file to execute it</p>
-
-<pre><code>{
-    "base_coin": {
-        ...
-    },
-    "core": {
-        ...
-    },
-    "extensions": [
-        "core/bytecoin.json",
-        "print-genesis-tx.json",
-        "MY-EXTENSION.json"
-    ]
-}
-</code></pre>
+<p><a href="https://wiki.bytecoin.org/wiki/Bytecoin_RPC_Wallet_JSON_RPC_API">Bytecoin RPC Wallet JSON RPC API</a></p>
 
 
     </div>
