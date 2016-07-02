@@ -111,11 +111,11 @@ Generated new wallet: D9CTMkRfsJ594cuvX2pGXNWMFK5ARwxPN1x7bFC5wY5XTZxf12LjWUK5Qk
 
 <h3 id="example-on-linuxmac">Example on Linux/Mac:</h3>
 
-<pre class="terminal">$ cat &gt;imaginary_blockchain.conf 
+<pre class="terminal">$ cat &gt;configs/fakecoin.conf 
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
-CRYPTONOTE_NAME=imaginary_blockchain
+CRYPTONOTE_NAME=fakecoin
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX=86
 GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1c0cbff8883f8024f5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a
 P2P_STAT_TRUSTED_PUB_KEY=
@@ -130,12 +130,12 @@ seed-node=127.0.0.1:8080
 </pre>
 
 <p>Check is the configuration file working properly by:</p>
-<pre class="terminal">$ ./forknoted --config-file configs/imaginary_blockchain.conf
+<pre class="terminal">$ ./forknoted --config-file configs/fakecoin.conf
 </pre>
 
 <p><strong>Notice: Be careful when you test different configurations with the same CRYPTONOTE_NAME. You may need to delete the blockchain folder to avoid conflict.</strong><br>
-Example OSX/Linux: ~/.imaginary_blockchain/ <br>
-Example Windows: C:\Users\%user_name%\AppData\Roaming\imaginary_blockchain\</p>
+Example OSX/Linux: ~/.fakecoin/ <br>
+Example Windows: C:\Users\%user_name%\AppData\Roaming\fakecoin\</p>
 
 <h2 id="adding-seed-nodes">Adding seed nodes</h2>
 
@@ -146,7 +146,7 @@ You can use our <a href="/guides/starting-seed-node/">guide about seed node crea
 
 <p>After you know the IP of the VPS, you have to add <code>seed-node</code> to your configuration file.</p>
 
-<pre class="terminal">seed-node=1.1.1.1:40741
+<pre class="terminal">seed-node=1.1.1.1:8080
 </pre>
 
 <p><strong>Notice: Don’t forget to delete the line seed-node=127.0.0.1:xxxxx</strong></p>

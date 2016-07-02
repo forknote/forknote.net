@@ -3,13 +3,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://forknote.net/</id>
   <title>Forknote: Blog</title>
-  <updated>2016-04-21T21:00:00Z</updated>
+  <updated>2016-07-01T21:00:00Z</updated>
   <link rel="alternate" href="http://forknote.net/" />
   <link rel="self" href="http://forknote.net/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
+  <entry>
+    <id>tag:forknote.net,2016-07-02:/blog/2016-07-02-forknote-1/</id>
+    <title type="html">Forknote 1.0.11 Release</title>
+    <published>2016-07-01T21:00:00Z</published>
+    <updated>2016-07-01T21:00:00Z</updated>
+    <author>
+      <name>pmitchev</name>
+      <uri>http://forknote.net/blog/</uri>
+    </author>
+    <link rel="alternate" href="http://forknote.net/blog/2016-07-02-forknote-1/" />
+    <content type="html">
+&lt;p&gt;Forknote 1.0.11 was released.&lt;/p&gt;
+
+&lt;p&gt;Changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Core changed to Bytecoin 1.0.11&lt;/li&gt;
+  &lt;li&gt;
+&lt;em&gt;enable-cors&lt;/em&gt; option added to the daemon&lt;/li&gt;
+  &lt;li&gt;
+&lt;em&gt;enable-blockchain-indexes&lt;/em&gt; option added to the daemon&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Configuration variables changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CRYPTONOTE_COIN_VERSION - enables the support for Cryptonote coin clones&lt;/li&gt;
+  &lt;li&gt;KILL_HEIGHT - use to define the maximum height of a blockchain&lt;/li&gt;
+  &lt;li&gt;MANDATORY_TRANSACTION - only blocks with more than 1 real transaction (excluding the base transaction) are valid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can download this release from here:
+https://github.com/forknote/forknote/releases/tag/1.0.11&lt;/p&gt;
+
+&lt;p&gt;Currently, Forknote support those networks:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[Bikercoin][http://bikercoin.org]&lt;/li&gt;
+  &lt;li&gt;[Bytecoin][https://bytecoin.org]&lt;/li&gt;
+  &lt;li&gt;Crossnote (testnet) : more info to be released soon&lt;/li&gt;
+  &lt;li&gt;[Dashcoin][http://dashcoin.info]&lt;/li&gt;
+  &lt;li&gt;[Dinastycoin][http://www.dinastycoin.com]&lt;/li&gt;
+  &lt;li&gt;[Ethanolium][https://bitcointalk.org/index.php?topic=1184064.0]&lt;/li&gt;
+  &lt;li&gt;[Karbowanec][http://karbowanec.com]&lt;/li&gt;
+  &lt;li&gt;[Magnatoj][https://bitcointalk.org/index.php?topic=1270755.0]&lt;/li&gt;
+  &lt;li&gt;[Quazarcoin][https://bitcointalk.org/index.php?topic=600658.260]&lt;/li&gt;
+  &lt;li&gt;[Redwind][https://bitcointalk.org/index.php?topic=904485.520]&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry>
     <id>tag:forknote.net,2016-04-22:/blog/2016-04-22-forknote-1/</id>
     <title type="html">Forknote 1.0.10.0.1 Release</title>
