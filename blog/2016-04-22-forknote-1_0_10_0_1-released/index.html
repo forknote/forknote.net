@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Forknote 1.0.11 Release</title>
+  <title>Forknote 1.0.10.0.1 Release</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -63,16 +63,16 @@
 
   <div id="wrapper">
     <div class="content">
-        <div class="change" id="/blog/2016-07-02-forknote-1/">
+        <div class="change" id="/blog/2016-04-22-forknote-1_0_10_0_1-released/">
         <h2 class="title">
-  <a href="/blog/2016-07-02-forknote-1/">Forknote 1.0.11 Release</a>
+  <a href="/blog/2016-04-22-forknote-1_0_10_0_1-released/">Forknote 1.0.10.0.1 Release</a>
 </h2>
 
 <div class="meta">
   <ul>
   <li class="published">
     <span class="fa fa-calendar"></span>
-    July 2, 2016
+    April 22, 2016
   </li>
   <li class="who_when">
     <img height="16" width="16" src="https://github.com/pmitchev.png" alt="Avatar for pmitchev"/>
@@ -83,49 +83,34 @@
 
 
         
-<p>Forknote 1.0.11 was released.</p>
+<p>Forknote 1.0.10.0.1 was released.</p>
+
+<p>Since Bytecoin hardforks at this version, because of the new block size, all existing Forknote blockchains (Dashcoin, Magnatoj, Ethanolium, …) hardforked or will hardfork as well.
+We urge everyone to update since old wallets won’t be able to support new block sizes.</p>
 
 <p>Changes:</p>
 
 <ul>
-  <li>Core changed to Bytecoin 1.0.11</li>
-  <li>
-<em>enable-cors</em> option added to the daemon</li>
-  <li>
-<em>enable-blockchain-indexes</em> option added to the daemon</li>
+  <li>Core changed to Bytecoin 1.0.10 (more info (https://bytecoin.org/news/bytecoin-1.0.10-new-block-size-rpc-wallet-fusion-transactions/))</li>
+  <li>–config-file option of forknoted and simplewallet is now mandatory</li>
 </ul>
 
 <p>Configuration variables changes:</p>
 
 <ul>
-  <li>CRYPTONOTE_COIN_VERSION - enables the support for Cryptonote coin clones</li>
-  <li>KILL_HEIGHT - use to define the maximum height of a blockchain</li>
-  <li>MANDATORY_TRANSACTION - only blocks with more than 1 real transaction (excluding the base transaction) are valid</li>
+  <li>UPGRADE_HEIGHT changed to UPGRADE_HEIGHT_V2</li>
+  <li>CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE changed to CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2</li>
+  <li>New parameters added: CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE, UPGRADE_HEIGHT_V3</li>
 </ul>
 
 <p>You can download this release from here:
-https://github.com/forknote/forknote/releases/tag/1.0.11</p>
-
-<p>Currently, Forknote support those networks:</p>
-
-<ul>
-  <li>[Bikercoin][http://bikercoin.org]</li>
-  <li>[Bytecoin][https://bytecoin.org]</li>
-  <li>Crossnote (testnet) : more info to be released soon</li>
-  <li>[Dashcoin][http://dashcoin.info]</li>
-  <li>[Dinastycoin][http://www.dinastycoin.com]</li>
-  <li>[Ethanolium][https://bitcointalk.org/index.php?topic=1184064.0]</li>
-  <li>[Karbowanec][http://karbowanec.com]</li>
-  <li>[Magnatoj][https://bitcointalk.org/index.php?topic=1270755.0]</li>
-  <li>[Quazarcoin][https://bitcointalk.org/index.php?topic=600658.260]</li>
-  <li>[Redwind][https://bitcointalk.org/index.php?topic=904485.520]</li>
-</ul>
+https://github.com/forknote/forknote/releases/tag/1.0.10.0.1</p>
 
         
 <div class="social-share">
-<div class="fb-like" data-href="http://forknote.net/blog/blog/2016-07-02-forknote-1/" data-title="Forknote 1.0.11 Release" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+<div class="fb-like" data-href="http://forknote.net/blog/blog/2016-04-22-forknote-1_0_10_0_1-released/" data-title="Forknote 1.0.10.0.1 Release" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://forknote.net/blog/2016-07-02-forknote-1/" data-text="Forknote 1.0.11 Release" data-hashtags="forknote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://forknote.net/blog/2016-04-22-forknote-1_0_10_0_1-released/" data-text="Forknote 1.0.10.0.1 Release" data-hashtags="forknote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 
 
@@ -149,15 +134,15 @@ https://github.com/forknote/forknote/releases/tag/1.0.11</p>
         <h2>Recent Posts</h2>
 <ul class="headlines sidebar-module">
 
-  <li><a href="/blog/2016-07-02-forknote-1/">Forknote 1.0.11 Release<br /><span class="date">July 2, 2016</span></a></li>
+  <li><a href="/blog/2016-07-02-forknote-1_0_11-released/">Forknote 1.0.11 Release<br /><span class="date">July 2, 2016</span></a></li>
 
-  <li><a href="/blog/2016-04-22-forknote-1/">Forknote 1.0.10.0.1 Release<br /><span class="date">April 22, 2016</span></a></li>
+  <li><a href="/blog/2016-04-22-forknote-1_0_10_0_1-released/">Forknote 1.0.10.0.1 Release<br /><span class="date">April 22, 2016</span></a></li>
 
-  <li><a href="/blog/2016-02-20-forknote-1/">Forknote 1.0.9.1 Release<br /><span class="date">February 20, 2016</span></a></li>
+  <li><a href="/blog/2016-02-20-forknote-1_0_9_1-released/">Forknote 1.0.9.1 Release<br /><span class="date">February 20, 2016</span></a></li>
 
-  <li><a href="/blog/2015-12-15-forknote-1/">Forknote 1.0.9 Release<br /><span class="date">December 15, 2015</span></a></li>
+  <li><a href="/blog/2015-12-15-forknote-1_0_9-released/">Forknote 1.0.9 Release<br /><span class="date">December 15, 2015</span></a></li>
 
-  <li><a href="/blog/2015-11-25-forknote-1/">Forknote Wallet 1.0.8.2 Release<br /><span class="date">November 25, 2015</span></a></li>
+  <li><a href="/blog/2015-11-25-forknote-1_0_8_2-released/">Forknote Wallet 1.0.8.2 Release<br /><span class="date">November 25, 2015</span></a></li>
 
   <li><a href="/blog/2015-10-28-cryptonote-generator-documentation/">Cryptonote generator documentation added<br /><span class="date">October 28, 2015</span></a></li>
 
