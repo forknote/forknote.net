@@ -8,14 +8,14 @@ author_name: pmitchev
 Forknote 1.0.11 was released.
 
 
-*Changes:*
+**Changes:**
 
  * Core changed to Bytecoin 1.0.11
  * _enable-cors_ option added to the daemon
  * _enable-blockchain-indexes_ option added to the daemon
 
 
-*Configuration variables changes:*
+**Configuration variables changes:**
 
  * _CRYPTONOTE_COIN_VERSION_ - enables the support for Cryptonote coin clones
  * _KILL_HEIGHT_ - use to define the maximum height of a blockchain
@@ -27,7 +27,7 @@ You can download this release from here:
 
 Currently, Forknote support those networks:
 
- * [Bikercoin](http://bikercoin.org))
+ * [Bikercoin](http://bikercoin.org)
  * [Bytecoin](https://bytecoin.org)
  * Crossnote (testnet) : more info to be released soon
  * [Dashcoin](http://dashcoin.info)
