@@ -34,8 +34,8 @@ daemon-host | Use daemon instance at host &lt;arg&gt; instead of localhost
 daemon-port | Use daemon instance at port &lt;arg&gt; instead of 8081
 set_log | Level of logging. Default is 1.
 wallet-rpc-bind-port | Starts wallet as rpc server for wallet operations, sets bind port for server
-MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet
-DEFAULT_FEE | Default fee of the transactions sent through simplewallet
+MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent
+DEFAULT_FEE | Default fee of the transactions sent
 SYNC_FROM_ZERO | Sync from block 0. Use for premine wallet or brainwallet
 
 ### Blockchain options

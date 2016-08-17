@@ -47,7 +47,8 @@ add-priority-node | Specify list of peers to connect to and attempt to keep the 
 add-exclusive-node | Specify list of peers to connect to only. If this option is given the options add-priority-node and seed-node are ignored
 seed-node | Connect to a node to retrieve peer addresses, and disconnect
 hide-my-port | Do not announce yourself as peerlist candidate
-MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet
+MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent
+SYNC_FROM_ZERO | Sync from block 0. Use for premine wallet or brainwallet
 
 ### Blockchain options
 
