@@ -8,24 +8,7 @@ class SearchFilter < Nanoc::Filter
   $search_file_path = File.join(Dir.pwd, "static", "search-index.json")
   $search_file_contents = { :pages => [] }
 
-  sidebar = File.open(File.join(Dir.pwd, "layouts", "sidebar.html"))
-  $sidebar_doc = Nokogiri::HTML(sidebar)
-  sidebar.close
-
   def run(content, params={})
-    # uses nokogiri to determine parent section name
-    containing_li_text = $sidebar_doc.xpath("//a[@href='#{@item.identifier}']/../../../h3/a[2]/text()")
-
-    # we're looking at an overview page
-    containing_li_text = $sidebar_doc.xpath("//a[@href='#{@item.identifier}']/text()") if containing_li_text.empty?
-
-    page = { :url => @item.identifier, :title => @item[:title].split("|")[0].strip, :section => "Blog/#{containing_li_text}" }
-
-    $search_file_contents[:pages] << page
-    $search_file_contents[:pages] = merge_sort($search_file_contents[:pages])
-
-    write_search_file
-
     content
   end
 

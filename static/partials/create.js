@@ -489,6 +489,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
         $scope.coin_json = (JSON.parse(JSON.stringify($scope.coin)));
         delete $scope.coin_json.core.ADDRESSES;
         $scope.coin_json.core.CHECKPOINTS = "";
+        $scope.coin_json.core.MAX_BLOCK_SIZE_INITIAL = $scope.coin.core['CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE'];
         $scope.coin_json_stringified = JSON.stringify($scope.coin_json, null, 4);
         $scope.$broadcast('show-errors-check-validity');
         if ($scope.coinForm.$valid) {
@@ -534,6 +535,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
                 }
             }
         }
+        $scope.coin_daemon_config += "MAX_BLOCK_SIZE_INITIAL=" + $scope.coin.core['CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE'] + "\n";
         $scope.coin_daemon_config += "UPGRADE_HEIGHT_V2=1" + "\n";
         $scope.coin_daemon_config += "UPGRADE_HEIGHT_V3=2" + "\n";
         if(!$scope.coin.core['SEED_NODES'].length) {
