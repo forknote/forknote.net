@@ -37,7 +37,7 @@ source | Path to file. Used only with "add" action
 ## Changes
 
 Key | Description
-action | Available options: replace, add_above, add_bellow, delete
+action | Available options: replace, add_above, add_below, delete
 marker | Place in the file where to perform the "action"
 parameters | "text" - array of strings, used as new or added text. Use %s for variables<br />"var" - variable from the configuration file
 
@@ -63,7 +63,7 @@ parameters | "text" - array of strings, used as new or added text. Use %s for va
                         }
                     }
                     {
-                        "action":"add_bellow",
+                        "action":"add_below",
                         "marker":"size_t blockGrantedFullRewardZone()",
                         "parameters": {
                             "text":[
