@@ -44,9 +44,9 @@ EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to c
 UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
 UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains
 DIFFICULTY_CUT | Timestamps to cut after sorting
+DIFFICULTY_CUT | Timestamps to cut after sorting
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
-MAX_TRANSACTION_SIZE_LIMIT | Maximum size of the transactions sent through simplewallet
-DEFAULT_FEE | Default fee of the transactions sent through simplewallet 
+DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
 
 
 ## Example

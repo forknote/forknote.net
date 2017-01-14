@@ -8,16 +8,21 @@ sidebar_nav: sidebar-documentation
 
 # Forknote command line client overview
 
-Forknote works through 2 separate binary files operated through command line:
+Forknote works through 3 separate binary files operated through command line:
 
 * **forknoted** – daemon to synchronize the block chain and mine cryptonote tokens.
 
 * **simplewallet** – wallet to receive and send funds.
 
+* **walletd** – RPC wallet for services.
+
 
 ## Install Forknote
 
 1. Unzip the archive to one separate folder
+
+2. Create or download the desired configuration: [Forknote configurations][github_forknote_configs]
+
 
 
 ## Launch Forknote
@@ -51,7 +56,7 @@ help | Show all daemon commands
 exit | Exit forknoted
 
 
-## Wallet: send and receive payments
+## Simplewallet: send and receive payments
 
 *Main article: [Simplewallet configuration and commands][simplewallet_commands]*
 
@@ -69,5 +74,15 @@ help | Show all wallet commands
 exit | Exit simplewallet
 
 
+## Walletd:
+
+*Main article: [RPC wallet introduction][rpc_wallet_index]*
+
+The RPC wallet is the way for services to send, recieve and track transactions.
+
+
+
 [daemon_commands]: /documentation/daemon/
 [simplewallet_commands]: /documentation/simplewallet/
+[rpc_wallet_index]: /documentation/rpc-wallet/json-rpc-api/
+[github_forknote_configs]: https://github.com/forknote/configs

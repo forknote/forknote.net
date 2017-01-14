@@ -58,8 +58,8 @@ Option | Description
 BYTECOIN_NETWORK | Used for network packages in order not to mix two different cryptocoin networks
 CHECKPOINT | Checkpoints. Format: HEIGHT:HASH
 CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE | The maximum size of a block not resulting into penelty.
-CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 | The maximum size of a block not resulting into penelty. Used only by old (v1) coins
-CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 | The maximum size of a block not resulting into penelty. Used only by old (v2) coins
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 | The maximum size of a block not resulting into penelty. Used by (v1) blockchains
+CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 | The maximum size of a block not resulting into penelty. Used by (v2) blockchains
 CRYPTONOTE_COIN_VERSION | Use '1' for Cryptonote coin clones (the new version)
 CRYPTONOTE_DISPLAY_DECIMAL_POINT | 1 coin = 10^(this value) atomic units
 CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW | Number of blocks to unlock miner transactions
@@ -67,10 +67,17 @@ CRYPTONOTE_NAME | Cryptonote name. Used for storage directory
 CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX | Prefix of the wallet address. Since the rules for address prefixes are nontrivial you may use a prefix generator
 DEFAULT_DUST_THRESHOLD | The amount bellow this value will be considered as dust
 DIFFICULTY_CUT | Timestamps to cut after sorting
+DIFFICULTY_CUT_V1 | Timestamps to cut after sorting. Used by (v1) blockchains
+DIFFICULTY_CUT_V2 | Timestamps to cut after sorting. Used by (v2) blockchains
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
+DIFFICULTY_LAG_V1 | Lag of calculating the difficulty in terms of blocks. Used by (v1) blockchains
+DIFFICULTY_LAG_V2 | Lag of calculating the difficulty in terms of blocks. Used by (v2) blockchains
 DIFFICULTY_TARGET | Difficulty target is an ideal time period between blocks. Measured in seconds.
+DIFFICULTY_WINDOW | Window length for calculation the difficulty
+DIFFICULTY_WINDOW_V1 | Window length for calculation the difficulty. Used by (v1) blockchains
+DIFFICULTY_WINDOW_V2 | Window length for calculation the difficulty. Used by (v2) blockchains
 EMISSION_SPEED_FACTOR | Constant defines emission curve slope. This parameter is required to calulate block reward.
-EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 coins
+EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct errors
 GENESIS_BLOCK_REWARD | Amount of premined coins. In atomic units
 GENESIS_COINBASE_TX_HEX | The hex of the transaction in the genesis block
 KILL_HEIGHT | End blockchain at height
@@ -79,8 +86,10 @@ MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in
 MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons
 MONEY_SUPPLY | Total amount of coins to be emitted.
 P2P_STAT_TRUSTED_PUB_KEY | P2P stat trusted pub key
+TAIL_EMISSION_REWARD | Block reward will never drop below this value.
 UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
 UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains
+ZAWY_DIFFICULTY_V2 | '1' if the coin uses Zawy difficulty. Active if the block major version is >=2
 
 ##Example of a config file
 
