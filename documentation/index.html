@@ -66,7 +66,7 @@
       
 <h1 id="forknote-command-line-client-overview">Forknote command line client overview</h1>
 
-<p>Forknote works through 2 separate binary files operated through command line:</p>
+<p>Forknote works through 3 separate binary files operated through command line:</p>
 
 <ul>
   <li>
@@ -75,12 +75,20 @@
   <li>
     <p><strong>simplewallet</strong> – wallet to receive and send funds.</p>
   </li>
+  <li>
+    <p><strong>walletd</strong> – RPC wallet for services.</p>
+  </li>
 </ul>
 
 <h2 id="install-forknote">Install Forknote</h2>
 
 <ol>
-  <li>Unzip the archive to one separate folder</li>
+  <li>
+    <p>Unzip the archive to one separate folder</p>
+  </li>
+  <li>
+    <p>Create or download the desired configuration: <a href="https://github.com/forknote/configs">Forknote configurations</a></p>
+  </li>
 </ol>
 
 <h2 id="launch-forknote">Launch Forknote</h2>
@@ -142,7 +150,7 @@
   </tbody>
 </table>
 
-<h2 id="wallet-send-and-receive-payments">Wallet: send and receive payments</h2>
+<h2 id="simplewallet-send-and-receive-payments">Simplewallet: send and receive payments</h2>
 
 <p><em>Main article: <a href="/documentation/simplewallet/">Simplewallet configuration and commands</a></em></p>
 
@@ -186,6 +194,12 @@
     </tr>
   </tbody>
 </table>
+
+<h2 id="walletd">Walletd:</h2>
+
+<p><em>Main article: <a href="/documentation/rpc-wallet/json-rpc-api/">RPC wallet introduction</a></em></p>
+
+<p>The RPC wallet is the way for services to send, recieve and track transactions.</p>
 
 
     </div>

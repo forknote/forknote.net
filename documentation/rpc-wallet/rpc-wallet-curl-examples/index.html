@@ -139,7 +139,7 @@ curl -X POST -i -H "Accept: application/json" -d '{"params": {},"jsonrpc": "2.0"
 <h3 id="secretspendkey">secretSpendKey</h3>
 
 <pre class="terminal">
-curl -X POST -i -H "Accept: application/json" -d '{"params": {"secretSpendKey": "7d2ba46048a75235cc260913d4fd85769bc02203583bfdc795bae996ff314421"},"jsonrpc": "2.0", "id": "test","method":"createAddress"}' http://localhost:9090/json_rpc
+curl -X POST -i -H "Accept: application/json" -d '{"params": {"spendSecretKey": "7d2ba46048a75235cc260913d4fd85769bc02203583bfdc795bae996ff314421"},"jsonrpc": "2.0", "id": "test","method":"createAddress"}' http://localhost:9090/json_rpc
 </pre>
 
 <h3 id="spendpublickey">spendPublicKey</h3>
