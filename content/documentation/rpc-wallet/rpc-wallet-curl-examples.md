@@ -155,3 +155,9 @@ not working
 curl -X POST -i -H "Accept: application/json" -d '{"params": {"anonymity":0, "fee":1000000,"transfers":[{"amount":100000000,"address":"D8ExoFUt2nU961ytoh3YGHb1wF5UoszHmEDjzoPvipdPHz5geH6SPZoddLoNAN5iSDQ6PCQPnMPshMgZMAfjdxmYFMvVuVe"}], "changeAddress": "D8ExoFUt2nU961ytoh3YGHb1wF5UoszHmEDjzoPvipdPHz5geH6SPZoddLoNAN5iSDQ6PCQPnMPshMgZMAfjdxmYFMvVuVe"},"jsonrpc": "2.0", "id": "test","method":"sendTransaction"}' http://localhost:9090/json_rpc
 </pre>
 
+
+## getUnspendOuts
+
+<pre class="terminal">
+curl -X POST -i -H "Accept: application/json" -d '{"params": {"address": "D8ExoFUt2nU961ytoh3YGHb1wF5UoszHmEDjzoPvipdPHz5geH6SPZoddLoNAN5iSDQ6PCQPnMPshMgZMAfjdxmYFMvVuVe"} ,"jsonrpc": "2.0", "id": "test","method":"getUnspendOuts"}' http://localhost:9090/json_rpc
+</pre>
