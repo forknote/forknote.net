@@ -1,1 +1,0 @@
-curl -X POST -i -H "Accept: application/json" -d '{"params": {"address": "D4HKyBuZPqF4GizL13kM6rK5H6iF2Em9BA55tdaMKyDHBEs674sG5gah3aWN9KJHHbJkfG9LwE3qfNy67iN8i2JBREdH4ZB"} ,"jsonrpc": "2.0", "id": "test","method":"getUnspendOuts"}' http://localhost:9090/json_rpc
