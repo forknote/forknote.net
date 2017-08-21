@@ -26,6 +26,17 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
     $scope.coin.core.CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 10;
     $scope.coin.core.CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE = 100000;
     $scope.coin.core.CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 86;
+    $scope.coin.core.DIFFICULTY_CUT_V1 = 60;
+    $scope.coin.core.DIFFICULTY_CUT_V2 = 60;
+    $scope.coin.core.DIFFICULTY_CUT = 0;
+    $scope.coin.core.DIFFICULTY_LAG_V1 = 15;
+    $scope.coin.core.DIFFICULTY_LAG_V2 = 15;
+    $scope.coin.core.DIFFICULTY_LAG = 0;
+    $scope.coin.core.DIFFICULTY_WINDOW_V1 = 720;
+    $scope.coin.core.DIFFICULTY_WINDOW_V2 = 720;
+    $scope.coin.core.DIFFICULTY_WINDOW = 17;
+    $scope.coin.core.ZAWY_DIFFICULTY_V3 = 1;
+
     $scope.address_prefix = 'F';
     $scope.ports_range_min = 1024;
     $scope.ports_range_max = 49151;
@@ -340,6 +351,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
 
 // Difficulty target changed
     $scope.difficultyTargetChanged = function () {
+        setDifficultyWindow();
         setMinedMoneyUnlockWindow();
     }
 
@@ -386,8 +398,8 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
                 break;
             }
 
-            if (i === 7) { 
-                j++; 
+            if (i === 7) {
+                j++;
                 i = -1;
             }
 
@@ -414,6 +426,13 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
     }
 
 // Set mined money unlock window
+    function setDifficultyWindow() {
+        $scope.coin.core.DIFFICULTY_WINDOW_V1 = Math.ceil(24 * 60 * 60 / $scope.coin.core.DIFFICULTY_TARGET);
+        $scope.coin.core.DIFFICULTY_WINDOW_V2 = Math.ceil(24 * 60 * 60 / $scope.coin.core.DIFFICULTY_TARGET);
+        return 0;
+    }
+
+// Set mined money unlock window
     function setMinedMoneyUnlockWindow() {
         $scope.coin.core.CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = Math.ceil(1200 / $scope.coin.core.DIFFICULTY_TARGET);
         return 0;
@@ -430,18 +449,18 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
     }
 
     $scope.P2PDefaultPortChanged = function (){
-        $scope.coin.core.RPC_DEFAULT_PORT = $scope.coin.core.P2P_DEFAULT_PORT + 1;        
+        $scope.coin.core.RPC_DEFAULT_PORT = $scope.coin.core.P2P_DEFAULT_PORT + 1;
     }
 
     $scope.networkIdentifierJson = {
     }
 
     $scope.networkIdentifierConfig = {
-        
+
     }
 
 // Randomize network identifier
-    $scope.randomizeNetworkIdentifier = function () { 
+    $scope.randomizeNetworkIdentifier = function () {
         var network_identifier = '';
         var deamon_network_identifier = '';
         for(var i = 0; i < 16; i++) {
@@ -537,7 +556,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
         }
         $scope.coin_daemon_config += "MAX_BLOCK_SIZE_INITIAL=" + $scope.coin.core['CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE'] + "\n";
         $scope.coin_daemon_config += "UPGRADE_HEIGHT_V2=1" + "\n";
-        $scope.coin_daemon_config += "UPGRADE_HEIGHT_V3=2" + "\n";
+        $scope.coin_daemon_config += "UPGRADE_HEIGHT_V3=25" + "\n";
         if(!$scope.coin.core['SEED_NODES'].length) {
             $scope.coin_daemon_config += "seed-node=127.0.0.1:" + $scope.coin.core['P2P_DEFAULT_PORT'];
         }
