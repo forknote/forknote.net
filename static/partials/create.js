@@ -37,6 +37,7 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
     $scope.coin.core.DIFFICULTY_WINDOW_V2 = 720;
     $scope.coin.core.DIFFICULTY_WINDOW = 17;
     $scope.coin.core.ZAWY_DIFFICULTY_V3 = 1;
+    $scope.coin.core.ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION = 3;
 
     $scope.address_prefix = 'F';
     $scope.ports_range_min = 1024;
