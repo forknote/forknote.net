@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Documentation added to Forknote</title>
+  <title>Forknote 2.1.1 Release</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/blog.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
@@ -63,16 +63,16 @@
 
   <div id="wrapper">
     <div class="content">
-        <div class="change" id="/blog/2015-10-12-documentation-added-to-forknote/">
+        <div class="change" id="/blog/2017-09-13-forknote-2_1_1-released/">
         <h2 class="title">
-  <a href="/blog/2015-10-12-documentation-added-to-forknote/">Documentation added to Forknote</a>
+  <a href="/blog/2017-09-13-forknote-2_1_1-released/">Forknote 2.1.1 Release</a>
 </h2>
 
 <div class="meta">
   <ul>
   <li class="published">
     <span class="fa fa-calendar"></span>
-    October 12, 2015
+    September 13, 2017
   </li>
   <li class="who_when">
     <img height="16" width="16" src="https://github.com/pmitchev.png" alt="Avatar for pmitchev"/>
@@ -83,22 +83,43 @@
 
 
         
-<p>Documentation was added for:</p>
+<p>Forknote 2.1.1 was released.</p>
+
+<p><strong>Changes:</strong></p>
 
 <ul>
-  <li><a href="/documentation/daemon/">Daemon</a></li>
-  <li><a href="/documentation/simplewallet/">Simplewallet</a></li>
-  <li><a href="/documentation/payment-gateway/">Payment gateway</a></li>
+  <li>Core changed to Bytecoin 2.1.1</li>
 </ul>
 
-<p>Guides for the most common questions were created:</p>
+<p><strong>Configuration variables changes:</strong></p>
 
 <ul>
-  <li><a href="/guides/getting-started/">Getting started</a></li>
-  <li><a href="/guides/create-coin/">Create coin</a></li>
-  <li><a href="/guides/starting-seed-node/">Starting seed node</a></li>
+  <li>
+<em>MIN_MIXIN</em> - minimum mixin amount. Not enforced by default on blockchain level</li>
+  <li>
+<em>MIXIN_START_HEIGHT</em> - use to define the maximum height of a blockchain</li>
+  <li>
+<em>MANDATORY_MIXIN_BLOCK_VERSION</em> - Enforce minimum mixin <em>MIN_MIXIN</em> on blockchain level, after block with major version bigger than <em>MANDATORY_MIXIN_BLOCK_VERSION</em>
+</li>
+  <li>
+<em>BUGGED_ZAWY_DIFFICULTY_BLOCK_INDEX</em> - used only by coins adopted bugged <em>ZAWY_DIFFICULTY_BLOCK_INDEX</em>
+</li>
 </ul>
 
+<p>You can download this release from here:
+<a href="https://github.com/forknote/forknote/releases/tag/2.1.1">https://github.com/forknote/forknote/releases/tag/2.1.1</a></p>
+
+<p><strong>Replay attack protection for Forknote blockchains</strong></p>
+
+<p>To protect your transactions from replay attacks, use in your config <em>MIN_MIXIN</em> greater than 0 and <em>MIXIN_START_HEIGHT</em> equal or greater than the fork’s height.</p>
+
+<p>Example for Dashcoin and Dashcoin Minergate:
+https://github.com/forknote/configs/blob/master/dashcoin.conf
+https://github.com/forknote/configs/blob/master/dashcoin.minergate.conf</p>
+
+<p>Example for Quazarcoin Forknote and Quazarcoin Minergate:
+https://github.com/forknote/configs/blob/master/quazarcoin.conf
+https://github.com/forknote/configs/blob/master/quazarcoin.minergate.conf</p>
 
         
 <div class="social-share">

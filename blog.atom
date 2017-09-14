@@ -3,13 +3,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://forknote.net/</id>
   <title>Forknote: Blog</title>
-  <updated>2016-07-01T21:00:00Z</updated>
+  <updated>2017-09-12T21:00:00Z</updated>
   <link rel="alternate" href="http://forknote.net/" />
   <link rel="self" href="http://forknote.net/blog.atom" />
   <author>
     <name>forknote</name>
     <uri>http://forknote.net/blog/</uri>
   </author>
+  <entry>
+    <id>tag:forknote.net,2017-09-13:/blog/2017-09-13-forknote-2_1_1-released/</id>
+    <title type="html">Forknote 2.1.1 Release</title>
+    <published>2017-09-12T21:00:00Z</published>
+    <updated>2017-09-12T21:00:00Z</updated>
+    <author>
+      <name>pmitchev</name>
+      <uri>http://forknote.net/blog/</uri>
+    </author>
+    <link rel="alternate" href="http://forknote.net/blog/2017-09-13-forknote-2_1_1-released/" />
+    <content type="html">
+&lt;p&gt;Forknote 2.1.1 was released.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Changes:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Core changed to Bytecoin 2.1.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Configuration variables changes:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+&lt;em&gt;MIN_MIXIN&lt;/em&gt; - minimum mixin amount. Not enforced by default on blockchain level&lt;/li&gt;
+  &lt;li&gt;
+&lt;em&gt;MIXIN_START_HEIGHT&lt;/em&gt; - use to define the maximum height of a blockchain&lt;/li&gt;
+  &lt;li&gt;
+&lt;em&gt;MANDATORY_MIXIN_BLOCK_VERSION&lt;/em&gt; - Enforce minimum mixin &lt;em&gt;MIN_MIXIN&lt;/em&gt; on blockchain level, after block with major version bigger than &lt;em&gt;MANDATORY_MIXIN_BLOCK_VERSION&lt;/em&gt;
+&lt;/li&gt;
+  &lt;li&gt;
+&lt;em&gt;BUGGED_ZAWY_DIFFICULTY_BLOCK_INDEX&lt;/em&gt; - used only by coins adopted bugged &lt;em&gt;ZAWY_DIFFICULTY_BLOCK_INDEX&lt;/em&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can download this release from here:
+&lt;a href="https://github.com/forknote/forknote/releases/tag/2.1.1"&gt;https://github.com/forknote/forknote/releases/tag/2.1.1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Replay attack protection for Forknote blockchains&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To protect your transactions from replay attacks, use in your config &lt;em&gt;MIN_MIXIN&lt;/em&gt; greater than 0 and &lt;em&gt;MIXIN_START_HEIGHT&lt;/em&gt; equal or greater than the fork’s height.&lt;/p&gt;
+
+&lt;p&gt;Example for Dashcoin and Dashcoin Minergate:
+https://github.com/forknote/configs/blob/master/dashcoin.conf
+https://github.com/forknote/configs/blob/master/dashcoin.minergate.conf&lt;/p&gt;
+
+&lt;p&gt;Example for Quazarcoin Forknote and Quazarcoin Minergate:
+https://github.com/forknote/configs/blob/master/quazarcoin.conf
+https://github.com/forknote/configs/blob/master/quazarcoin.minergate.conf&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <id>tag:forknote.net,2016-07-02:/blog/2016-07-02-forknote-1_0_11-released/</id>
     <title type="html">Forknote 1.0.11 Release</title>

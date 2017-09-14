@@ -78,7 +78,7 @@
 
 <pre><code>  --help                                Produce help message
   --version                             Output version information
-  --os-version 
+  --os-version
   --data-dir arg (=/Users/USER/.forknote)
                                         Specify data directory
   --config-file arg (=./configs/-.conf) Specify configuration file
@@ -190,6 +190,10 @@
   </thead>
   <tbody>
     <tr>
+      <td>BUGGED_ZAWY_DIFFICULTY_BLOCK_INDEX</td>
+      <td>used only by coins adopted bugged ZAWY_DIFFICULTY_BLOCK_INDEX</td>
+    </tr>
+    <tr>
       <td>BYTECOIN_NETWORK</td>
       <td>Used for network packages in order not to mix two different cryptocoin networks</td>
     </tr>
@@ -294,6 +298,10 @@
       <td>End blockchain at height</td>
     </tr>
     <tr>
+      <td>MANDATORY_MIXIN_BLOCK_VERSION</td>
+      <td>Enforce minimum mixin MIN_MIXIN on blockchain level, after block with major version bigger than MANDATORY_MIXIN_BLOCK_VERSION</td>
+    </tr>
+    <tr>
       <td>MANDATORY_TRANSACTION</td>
       <td>Only blocks with more than 1 transactions are valid (exluding the base transaction)</td>
     </tr>
@@ -302,8 +310,16 @@
       <td>The size of the initial block. Used to correct error in v1 coins</td>
     </tr>
     <tr>
+      <td>MIN_MIXIN</td>
+      <td>minimum mixin amount. Not enforced by default on blockchain level</td>
+    </tr>
+    <tr>
       <td>MINIMUM_FEE</td>
       <td>Transactions with less than this fee wouldn’t be accepted by daemons</td>
+    </tr>
+    <tr>
+      <td>MIXIN_START_HEIGHT</td>
+      <td>use to define the maximum height of a blockchain</td>
     </tr>
     <tr>
       <td>MONEY_SUPPLY</td>
@@ -326,6 +342,14 @@
       <td>Block hight to move to blocks with major version 3. Use ‘2’ for new blockchains</td>
     </tr>
     <tr>
+      <td>ZAWY_DIFFICULTY_BLOCK_INDEX</td>
+      <td>Activates Zawy difficulty after certain block height</td>
+    </tr>
+    <tr>
+      <td>ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION</td>
+      <td>Activates Zawy difficulty after block major version</td>
+    </tr>
+    <tr>
       <td>ZAWY_DIFFICULTY_V2</td>
       <td>‘1’ if the coin uses Zawy difficulty. Active if the block major version is &gt;=2</td>
     </tr>
@@ -334,7 +358,7 @@
 
 <h2 id="example-of-a-config-file">Example of a config file</h2>
 
-<pre class="terminal">$ cat ./fakecoin.conf 
+<pre class="terminal">$ cat ./fakecoin.conf
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
