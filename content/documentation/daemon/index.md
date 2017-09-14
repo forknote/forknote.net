@@ -87,7 +87,7 @@ MANDATORY_TRANSACTION | Only blocks with more than 1 transactions are valid (exl
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 coins
 MIN_MIXIN | minimum mixin amount. Not enforced by default on blockchain level
 MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons
-MIXIN_START_HEIGHT | use to define the maximum height of a blockchain
+MIXIN_START_HEIGHT | minimum block height of the used outputs for mixin
 MONEY_SUPPLY | Total amount of coins to be emitted.
 P2P_STAT_TRUSTED_PUB_KEY | P2P stat trusted pub key
 TAIL_EMISSION_REWARD | Block reward will never drop below this value.
