@@ -15,7 +15,7 @@ sidebar_nav: sidebar-documentation
 
       --help                                Produce help message
       --version                             Output version information
-      --os-version 
+      --os-version
       --data-dir arg (=/Users/USER/.forknote)
                                             Specify data directory
       --config-file arg (=./configs/-.conf) Specify configuration file
@@ -55,6 +55,7 @@ enable-blockchain-indexes | Enable blockchain indexes
 
 Option | Description
 -----------|-----------|
+BUGGED_ZAWY_DIFFICULTY_BLOCK_INDEX | used only by coins adopted bugged ZAWY_DIFFICULTY_BLOCK_INDEX
 BYTECOIN_NETWORK | Used for network packages in order not to mix two different cryptocoin networks
 CHECKPOINT | Checkpoints. Format: HEIGHT:HASH
 CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE | The maximum size of a block not resulting into penelty.
@@ -81,19 +82,24 @@ EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to c
 GENESIS_BLOCK_REWARD | Amount of premined coins. In atomic units
 GENESIS_COINBASE_TX_HEX | The hex of the transaction in the genesis block
 KILL_HEIGHT | End blockchain at height
+MANDATORY_MIXIN_BLOCK_VERSION | Enforce minimum mixin MIN_MIXIN on blockchain level, after block with major version bigger than MANDATORY_MIXIN_BLOCK_VERSION
 MANDATORY_TRANSACTION | Only blocks with more than 1 transactions are valid (exluding the base transaction)
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 coins
+MIN_MIXIN | minimum mixin amount. Not enforced by default on blockchain level
 MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons
+MIXIN_START_HEIGHT | use to define the maximum height of a blockchain
 MONEY_SUPPLY | Total amount of coins to be emitted.
 P2P_STAT_TRUSTED_PUB_KEY | P2P stat trusted pub key
 TAIL_EMISSION_REWARD | Block reward will never drop below this value.
 UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
 UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains
+ZAWY_DIFFICULTY_BLOCK_INDEX | Activates Zawy difficulty after certain block height
+ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION | Activates Zawy difficulty after block major version
 ZAWY_DIFFICULTY_V2 | '1' if the coin uses Zawy difficulty. Active if the block major version is >=2
 
 ##Example of a config file
 
-<pre class="terminal">$ cat ./fakecoin.conf 
+<pre class="terminal">$ cat ./fakecoin.conf
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
@@ -118,15 +124,15 @@ Command | Description | Args
 -----------|-----------|-----------|
 help | print forknoted commands | -
 start_mining | Start mining in several threads to a given wallet address | &#91;string&#93; wallet_address <br/> &#91;uint&#93; threads
-stop_mining | Stop mining | - 
-show_hr | Show current mining hashrate | - 
+stop_mining | Stop mining | -
+show_hr | Show current mining hashrate | -
 hide_hr | Stop showing current mining hashrate | -
 exit | Exit forknoted | -
 print_bc | Print blockchain info in a given blocks range | &#91;uint&#93; begin_height <br/> &#91;uint&#93; end_height (optional)
 print_block | Print block | &#91;string&#93; block_hash or &#91;uint&#93; block_height
-print_cn | Print connections | - 
-print_pl | Print peer list | - 
-print_pool | Print transaction pool (long format) | - 
-print_pool_sh | Print transaction pool (short format) | - 
-set_log | Change current log detailization level | &#91;uint&#93; log level (0 - 4) 
-print_tx | Print transaction | &#91;string&#93; transaction_hash 
+print_cn | Print connections | -
+print_pl | Print peer list | -
+print_pool | Print transaction pool (long format) | -
+print_pool_sh | Print transaction pool (short format) | -
+set_log | Change current log detailization level | &#91;uint&#93; log level (0 - 4)
+print_tx | Print transaction | &#91;string&#93; transaction_hash

@@ -14,18 +14,18 @@ body_class: download
 <div class="full-width-divider">
   <ul class="wrapper highlights">
     <li class="highlight-module">
-      <a href="https://github.com/forknote/forknote/releases/download/2.1.0.1/forknote-windows.zip"><span class="mega-octicon fa fa-windows"></span></a>
-      <h2><a href="https://github.com/forknote/forknote/releases/download/2.1.0.1/forknote-windows.zip">Windows CLI</a></h2>
+      <a href="https://github.com/forknote/forknote/releases/download/2.1.1/forknote-windows.zip"><span class="mega-octicon fa fa-windows"></span></a>
+      <h2><a href="https://github.com/forknote/forknote/releases/download/2.1.1/forknote-windows.zip">Windows CLI</a></h2>
       <p>Daemon, simplewallet and payment gateway for Windows (64bit)</p>
     </li>
     <li class="highlight-module">
-      <a href="https://github.com/forknote/forknote/releases/download/2.1.0.1/forknote-linux.tar.gz"><span class="mega-octicon fa fa-linux"></span></a>
-      <h2><a href="https://github.com/forknote/forknote/releases/download/2.1.0.1/forknote-linux.tar.gz">Linux CLI</a></h2>
+      <a href="https://github.com/forknote/forknote/releases/download/2.1.1/forknote-linux.tar.gz"><span class="mega-octicon fa fa-linux"></span></a>
+      <h2><a href="https://github.com/forknote/forknote/releases/download/2.1.1/forknote-linux.tar.gz">Linux CLI</a></h2>
       <p>Daemon, simplewallet and payment gateway for Ubuntu (64bit)</p>
     </li>
     <li class="highlight-module">
-      <a href="https://github.com/forknote/forknote/releases/download/2.1.0.1/forknote-mac.zip"><span class="mega-octicon fa fa-apple"></span></a>
-      <h2><a href="https://github.com/forknote/forknote/releases/download/2.1.0.1/forknote-mac.zip">Mac CLI</a></h2>
+      <a href="https://github.com/forknote/forknote/releases/download/2.1.1/forknote-mac.zip"><span class="mega-octicon fa fa-apple"></span></a>
+      <h2><a href="https://github.com/forknote/forknote/releases/download/2.1.1/forknote-mac.zip">Mac CLI</a></h2>
       <p>Daemon, simplewallet and payment gateway for Mac (64bit)</p>
     </li>
   </ul>
