@@ -78,7 +78,7 @@ curl -X POST -i -H "Accept: application/json" -d '{"params": {"spendSecretKey": 
 ### spendPublicKey
 
 <pre class="terminal">
-curl -X POST -i -H "Accept: application/json" -d '{"params": {"spendPublicKey": "9da3c85258fd194c027c20ee9063b2fe3dee48201c083b2574af89e02b18a884"},"jsonrpc": "2.0", "id": "test","method":"createAddress"}' http://localhost:9090/json_rpc
+curl -X POST -i -H "Accept: application/json" -d '{"params": {"spendPublicKey": "5c4da91676f4906575d03345aa3c822fadcbea432f2fd23701e2b466b73d0dec"},"jsonrpc": "2.0", "id": "test","method":"createAddress"}' http://localhost:9090/json_rpc
 </pre>
 
 
