@@ -38,14 +38,12 @@ CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 | The maximum size of a block not r
 CRYPTONOTE_DISPLAY_DECIMAL_POINT | 1 coin = 10^(this value) atomic units
 MINIMUM_FEE | Transactions with less than this fee wouldn't be accepted by daemons
 DEFAULT_DUST_THRESHOLD | The amount bellow this value will be considered as dust
-CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW | Number of blocks to unlock miner transactions 
+CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW | Number of blocks to unlock miner transactions
 MAX_BLOCK_SIZE_INITIAL | The size of the initial block. Used to correct error in v1 blockchains
 EXPECTED_NUMBER_OF_BLOCKS_PER_DAY | Expected number of blocks per day. Used to correct error in v1 blockchains
 UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
 UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains
 DIFFICULTY_CUT | Timestamps to cut after sorting
-DIFFICULTY_CUT | Timestamps to cut after sorting
-DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
 DIFFICULTY_LAG | Lag of calculating the difficulty in terms of blocks
 
 

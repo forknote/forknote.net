@@ -32,7 +32,7 @@ view key: f45a0505d89e4c3bbb91c3481861c12b2b0c6e43b9de23fa108a48a0db116901
 Your wallet has been generated.
 Use "help" command to see the list of available commands.
 Always use "exit" command when closing simplewallet to save
-current session's state. Otherwise, you will possibly need to synchronize 
+current session's state. Otherwise, you will possibly need to synchronize
 your wallet again. Your wallet key is NOT under risk anyway.
 **********************************************************************
 </pre>
@@ -52,9 +52,10 @@ Create the configuration file of your coin by using our [configuration form][cre
 
 Save the resulted configuration in the `configs` folder of Forknote.
 
+
 ###Example on Linux/Mac:
 
-<pre class="terminal">$ cat >configs/fakecoin.conf 
+<pre class="terminal">$ cat >configs/fakecoin.conf
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
@@ -64,7 +65,8 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1
 P2P_STAT_TRUSTED_PUB_KEY=
 
 UPGRADE_HEIGHT_V2=1
-UPGRADE_HEIGHT_V3=2
+UPGRADE_HEIGHT_V3=30
+ZAWY_DIFFICULTY_BLOCK_INDEX=30
 
 p2p-bind-port=8080
 rpc-bind-port=8081
@@ -94,6 +96,17 @@ After you know the IP of the VPS, you have to add `seed-node` to your configurat
 </pre>
 
 **Notice: Don't forget to delete the line seed-node=127.0.0.1:xxxxx**
+
+
+## Starting Mining
+
+To see your premined coins, you must start mining:
+
+<pre class="terminal">
+$ ./miner --daemon-address 127.0.0.1:8081  --address D9CTMkRfsJ594cuvX2pGXNWMFK5ARwxPN1x7bFC5wY5XTZxf12LjWUK5QkMVeSkD6gT532FepdaohRYkt99e9gdF6hyrUgx
+</pre>
+
+**Notice: The first few blocks may take a few hours to be found**
 
 
 [supported-parameters]: /documentation/daemon/#command-line-options-and-settings-options

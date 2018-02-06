@@ -69,6 +69,25 @@ $ ./simplewallet --config-file configs/bytecoin.conf
 </pre>
 
 
+## Mining with miner
+
+`miner` needs a running and synced daemon.
+
+To start mining:
+
+<pre class="terminal">
+$ ./miner --daemon-address 127.0.0.1:[DAEMON_RPC_PORT]  --address [WALLET_ADDRESS]
+</pre>
+
+
+### Examples
+
+Starting `miner` for the Dashcoin blockchain:
+
+<pre class="terminal">
+$ ./miner --daemon-address 127.0.0.1:29081  --address D6WLtrV1SBWV8HWQzQv8uuYuGy3uwZ8ah5iT5HovSqhTKMauquoTsKP8RBJzVqVesX87poYWQgkGWB4
+</pre>
+
 
 [bytecoin]: https://bytecoin.org/
 [create]: /create/

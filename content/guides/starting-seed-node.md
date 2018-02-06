@@ -52,7 +52,7 @@ Resolving github.com (github.com)... 192.30.252.32
 
 Unarchive the downloaded file.
 
-<pre class="terminal">$ tar -zxvf forknote-linux.tar.gz 
+<pre class="terminal">$ tar -zxvf forknote-linux.tar.gz
 
 forknote-linux/
 forknote-linux/configs/
@@ -71,7 +71,7 @@ Log into the forknote directory
 
 Write your configuration file
 
-<pre class="terminal">$ cat >configs/fakecoin.conf 
+<pre class="terminal">$ cat >configs/fakecoin.conf
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
@@ -81,7 +81,8 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1
 P2P_STAT_TRUSTED_PUB_KEY=
 
 UPGRADE_HEIGHT_V2=1
-UPGRADE_HEIGHT_V3=2
+UPGRADE_HEIGHT_V3=30
+ZAWY_DIFFICULTY_BLOCK_INDEX=30
 
 p2p-bind-port=8080
 rpc-bind-port=8081
@@ -100,7 +101,7 @@ Log with `root` user and change the directory to `/etc/init/`.
 
 Create the upstart config file.
 
-<pre class="terminal">$ cat >forknote-fakecoin-daemon.conf 
+<pre class="terminal">$ cat >forknote-fakecoin-daemon.conf
 
 description "fakecoin daemon"
 
@@ -118,7 +119,7 @@ respawn limit 5 30
 
 Start the service.
 
-<pre class="terminal">$ start forknote-fakecoin-daemon 
+<pre class="terminal">$ start forknote-fakecoin-daemon
 </pre>
 
 You now have your seed node up and running. It will automatically restart if something goes wrong.
@@ -126,7 +127,7 @@ You now have your seed node up and running. It will automatically restart if som
 
 Stopping the service.
 
-<pre class="terminal">$ stop forknote-fakecoin-daemon 
+<pre class="terminal">$ stop forknote-fakecoin-daemon
 </pre>
 
 

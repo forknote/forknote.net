@@ -55,7 +55,6 @@ enable-blockchain-indexes | Enable blockchain indexes
 
 Option | Description
 -----------|-----------|
-BUGGED_ZAWY_DIFFICULTY_BLOCK_INDEX | used only by coins adopted bugged ZAWY_DIFFICULTY_BLOCK_INDEX
 BYTECOIN_NETWORK | Used for network packages in order not to mix two different cryptocoin networks
 CHECKPOINT | Checkpoints. Format: HEIGHT:HASH
 CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE | The maximum size of a block not resulting into penelty.
@@ -94,8 +93,6 @@ TAIL_EMISSION_REWARD | Block reward will never drop below this value.
 UPGRADE_HEIGHT_V2 | Block hight to move to blocks with major version 2. Use '1' for new blockchains
 UPGRADE_HEIGHT_V3 | Block hight to move to blocks with major version 3. Use '2' for new blockchains
 ZAWY_DIFFICULTY_BLOCK_INDEX | Activates Zawy difficulty after certain block height
-ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION | Activates Zawy difficulty after block major version
-ZAWY_DIFFICULTY_V2 | '1' if the coin uses Zawy difficulty. Active if the block major version is >=2
 
 ##Example of a config file
 
@@ -109,7 +106,8 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1
 P2P_STAT_TRUSTED_PUB_KEY=
 
 UPGRADE_HEIGHT_V2=1
-UPGRADE_HEIGHT_V3=2
+UPGRADE_HEIGHT_V3=30
+ZAWY_DIFFICULTY_BLOCK_INDEX=30
 
 p2p-bind-port=8080
 rpc-bind-port=8081
