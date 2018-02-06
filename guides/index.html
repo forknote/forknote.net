@@ -70,6 +70,7 @@
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
   <li><a href="#connecting-the-daemon-to-a-blockchain" id="markdown-toc-connecting-the-daemon-to-a-blockchain">Connecting the daemon to a blockchain</a></li>
   <li><a href="#starting-simplewallet" id="markdown-toc-starting-simplewallet">Starting simplewallet</a></li>
+  <li><a href="#mining-with-miner" id="markdown-toc-mining-with-miner">Mining with miner</a></li>
 </ul>
 
 <p>Let’s walk through core Forknote concepts as we tackle a simple use case.</p>
@@ -125,6 +126,24 @@ $ ./simplewallet --config-file configs/dashcoin.conf
 
 <pre class="terminal">
 $ ./simplewallet --config-file configs/bytecoin.conf
+</pre>
+
+<h2 id="mining-with-miner">Mining with miner</h2>
+
+<p><code>miner</code> needs a running and synced daemon.</p>
+
+<p>To start mining:</p>
+
+<pre class="terminal">
+$ ./miner --daemon-address 127.0.0.1:[DAEMON_RPC_PORT]  --address [WALLET_ADDRESS]
+</pre>
+
+<h3 id="examples-2">Examples</h3>
+
+<p>Starting <code>miner</code> for the Dashcoin blockchain:</p>
+
+<pre class="terminal">
+$ ./miner --daemon-address 127.0.0.1:29081  --address D6WLtrV1SBWV8HWQzQv8uuYuGy3uwZ8ah5iT5HovSqhTKMauquoTsKP8RBJzVqVesX87poYWQgkGWB4
 </pre>
 
 

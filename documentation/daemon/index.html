@@ -190,10 +190,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>BUGGED_ZAWY_DIFFICULTY_BLOCK_INDEX</td>
-      <td>used only by coins adopted bugged ZAWY_DIFFICULTY_BLOCK_INDEX</td>
-    </tr>
-    <tr>
       <td>BYTECOIN_NETWORK</td>
       <td>Used for network packages in order not to mix two different cryptocoin networks</td>
     </tr>
@@ -345,14 +341,6 @@
       <td>ZAWY_DIFFICULTY_BLOCK_INDEX</td>
       <td>Activates Zawy difficulty after certain block height</td>
     </tr>
-    <tr>
-      <td>ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION</td>
-      <td>Activates Zawy difficulty after block major version</td>
-    </tr>
-    <tr>
-      <td>ZAWY_DIFFICULTY_V2</td>
-      <td>‘1’ if the coin uses Zawy difficulty. Active if the block major version is &gt;=2</td>
-    </tr>
   </tbody>
 </table>
 
@@ -368,7 +356,8 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1
 P2P_STAT_TRUSTED_PUB_KEY=
 
 UPGRADE_HEIGHT_V2=1
-UPGRADE_HEIGHT_V3=2
+UPGRADE_HEIGHT_V3=30
+ZAWY_DIFFICULTY_BLOCK_INDEX=30
 
 p2p-bind-port=8080
 rpc-bind-port=8081

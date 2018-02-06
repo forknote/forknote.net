@@ -70,6 +70,7 @@
   <li><a href="#creating-simplewallet-addresses" id="markdown-toc-creating-simplewallet-addresses">Creating simplewallet addresses</a></li>
   <li><a href="#creating-configuration-file" id="markdown-toc-creating-configuration-file">Creating configuration file</a></li>
   <li><a href="#adding-seed-nodes" id="markdown-toc-adding-seed-nodes">Adding seed nodes</a></li>
+  <li><a href="#starting-mining" id="markdown-toc-starting-mining">Starting Mining</a></li>
 </ul>
 
 <p>Let’s walk through the process of creating a configuration file for a new private blockchain.</p>
@@ -90,7 +91,7 @@ view key: f45a0505d89e4c3bbb91c3481861c12b2b0c6e43b9de23fa108a48a0db116901
 Your wallet has been generated.
 Use "help" command to see the list of available commands.
 Always use "exit" command when closing simplewallet to save
-current session's state. Otherwise, you will possibly need to synchronize 
+current session's state. Otherwise, you will possibly need to synchronize
 your wallet again. Your wallet key is NOT under risk anyway.
 **********************************************************************
 </pre>
@@ -111,7 +112,7 @@ Generated new wallet: D9CTMkRfsJ594cuvX2pGXNWMFK5ARwxPN1x7bFC5wY5XTZxf12LjWUK5Qk
 
 <h3 id="example-on-linuxmac">Example on Linux/Mac:</h3>
 
-<pre class="terminal">$ cat &gt;configs/fakecoin.conf 
+<pre class="terminal">$ cat &gt;configs/fakecoin.conf
 
 BYTECOIN_NETWORK=10101010-1010-1010-1010-101010101010
 CRYPTONOTE_DISPLAY_DECIMAL_POINT=12
@@ -121,7 +122,8 @@ GENESIS_COINBASE_TX_HEX=010a01ff0001ffffffffffff0f029b2e4c0271c0b42e7c53291a94d1
 P2P_STAT_TRUSTED_PUB_KEY=
 
 UPGRADE_HEIGHT_V2=1
-UPGRADE_HEIGHT_V3=2
+UPGRADE_HEIGHT_V3=30
+ZAWY_DIFFICULTY_BLOCK_INDEX=30
 
 p2p-bind-port=8080
 rpc-bind-port=8081
@@ -150,6 +152,16 @@ You can use our <a href="/guides/starting-seed-node/">guide about seed node crea
 </pre>
 
 <p><strong>Notice: Don’t forget to delete the line seed-node=127.0.0.1:xxxxx</strong></p>
+
+<h2 id="starting-mining">Starting Mining</h2>
+
+<p>To see your premined coins, you must start mining:</p>
+
+<pre class="terminal">
+$ ./miner --daemon-address 127.0.0.1:8081  --address D9CTMkRfsJ594cuvX2pGXNWMFK5ARwxPN1x7bFC5wY5XTZxf12LjWUK5QkMVeSkD6gT532FepdaohRYkt99e9gdF6hyrUgx
+</pre>
+
+<p><strong>Notice: The first few blocks may take a few hours to be found</strong></p>
 
 
     </div>
