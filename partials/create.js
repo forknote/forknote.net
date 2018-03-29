@@ -4,10 +4,9 @@
 angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$filter', '$timeout', function($scope, $http, $filter, $timeout, $document) {
 
     $scope.coin = {};
-    $scope.coin.base_coin = {};
     $scope.coin.core = {};
 
-    $scope.base_coin = 'bytecoin';
+    $scope.base_coin = 'bytecoin-v2';
     $scope.coin.core.ADDRESSES = [];
     $scope.coin.core.SEED_NODES = [];
     $scope.MONEY_SUPPLY = new JSBigInt(2).pow(64).subtract(1);
@@ -313,10 +312,9 @@ angular.module('create-coin').controller("CreateCtrl", ['$scope', '$http', '$fil
 
 // Core changed
     $scope.coreChanged = function () {
-        if ($scope.base_coin == "bytecoin") {
+        if ($scope.base_coin == "bytecoin-v2") {
             $scope.coin.extensions = [ "core/bytecoin.json", "print-genesis-tx.json", "versionized-parameters.json", "zawy-difficulty-algorithm.json" ];
-            $scope.coin.base_coin.name = "bytecoin";
-            $scope.coin.base_coin.git = "https://github.com/amjuarez/bytecoin.git";
+            $scope.coin.base_coin = "bytecoin-v2";
         }
     }
 
